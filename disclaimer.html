@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>免责声明 | TOPO Today</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; color: #333; padding: 2rem; line-height: 1.6; }
+    h2 { color: #000; }
+    section { max-width: 800px; margin: auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    footer { background: #000; color: #fff; padding: 1rem; text-align: center; margin-top: 3rem; }
+  </style>
+<link rel="privacy-policy" href="/privacy.html" />
+</head>
+<body>
+  <section>
+    <h2>免责声明</h2>
+<p>TOPO Today 致力于为本地用户提供最新、实用的生活资讯，但以下内容请您知悉：</p >
+<ul>
+  <li><strong>用户生成内容：</strong>平台大部分内容由注册用户发布，我们不对其真实性、合法性作担保。</li>
+  <li><strong>广告与推荐：</strong>平台展示的商家信息或广告均由用户提交，仅供参考。</li>
+  <li><strong>服务变更：</strong>我们有权在不提前通知的情况下，随时对网站内容和功能进行调整。</li>
+  <li><strong>责任限制：</strong>因使用本站信息而产生的任何损失，平台不承担任何法律责任。</li>
+</ul>
+
+
+
+    <p>如有任何疑问，请联系我们：zoey88889@gmail.com 或 dodvauniverse@gmail.com</p >
+  </section>
+
+  
+
+
+
+
+
+
+
+
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+</body>
+</html>

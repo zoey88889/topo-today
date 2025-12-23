@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>服务条款 | TOPO Today</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; color: #333; padding: 2rem; line-height: 1.6; }
+    h1 { color: #000; }
+    section { max-width: 800px; margin: auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    footer { background: #000; color: #fff; padding: 1rem; text-align: center; margin-top: 3rem; }
+  </style>
+<link rel="privacy-policy" href="/privacy.html" />
+</head>
+<body>
+  <section>
+    <h1>TOPO Today 服务条款</h1>
+    <p>欢迎使用 TOPO Today。本服务条款旨在阐明您与 TOPO Today（以下简称“我们”）之间的权利与义务。</p >
+
+    <h2>1. 用户义务</h2>
+    <p>用户须确保所发布的内容真实合法，不得含有任何违反法律法规的信息，包括但不限于虚假广告、违法交易、侵权行为等。</p >
+
+    <h2>2. 内容审核与下架</h2>
+    <p>我们保留对平台内容进行审核与删除的权利，尤其是在用户发布的内容违反规定、举报属实或影响其他用户体验的情况下。</p >
+
+    <h2>3. 隐私与安全</h2>
+    <p>我们尊重您的隐私，您在平台注册或发布的任何信息都将按照隐私政策进行处理，不会向第三方出售或泄露用户信息。</p >
+
+    <h2>4. 免责声明</h2>
+    <p>TOPO Today 为信息发布平台，对用户发布内容的真实性、准确性不承担法律责任，用户需自行甄别与判断。</p >
+
+    <h2>5. 修改与更新</h2>
+    <p>我们有权随时修改本条款，修改后的条款将于更新后立即生效，用户继续使用平台视为同意新条款。</p >
+
+    <p>如有任何疑问，请联系我们：zoey88889@gmail.com 或 dodvauniverse@gmail.com</p >
+  </section>
+
+  
+
+
+
+
+
+
+
+
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+</body>
+</html>

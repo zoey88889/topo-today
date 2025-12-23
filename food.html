@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>🍜 TOPO | 美食推荐</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; color: #333; }
+    h1 { text-align: center; }
+    form { margin-bottom: 2rem; background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
+    input, textarea { width: 100%; margin: 0.5rem 0; padding: 0.5rem; border: 1px solid #ccc; border-radius: 5px; }
+    button { padding: 0.5rem 1rem; background: #007bff; color: #fff; border: none; border-radius: 5px; }
+    .post { background: #fff; margin-bottom: 1rem; padding: 1rem; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.05);}
+    .post h3 { margin-top: 0; }
+    .delete { float: right; background: #e74c3c; padding: 2px 8px; color: #fff; border: none; border-radius: 4px; cursor: pointer;}
+     
+  </style>
+<link rel="privacy-policy" href="/privacy.html" />
+</head>
+<body>
+
+  <h1>🍜 TOPO 美食推荐平台</h1>
+<!-- 登录 / 登出按钮 -->
+<div class="auth-links" id="authArea">
+  <a href="login.html" id="loginBtn">登录 / 注册</a >
+  <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
+</div>
+
+<!-- 欢迎语区域 -->
+<div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
+
+  <!-- 表单 -->
+<!-- 表单 -->
+<form id="postForm" enctype="multipart/form-data">
+  <input type="text" id="title" placeholder="请输入推荐标题，如：法拉盛最棒的牛腩面！" required />
+  <input type="file" id="imageUpload" accept="image/*" multiple />
+  <textarea id="content" rows="4" placeholder="请写下推荐内容、地址、价格、特色等..." required></textarea>
+  <button type="submit">发布</button>
+</form>
+
+<!-- 初始化 Supabase 客户端 -->
+<!-- 用户自己发布的内容展示区 -->
+<div id="myPosts" style="margin:2rem auto; max-width:600px;"></div>
+
+
+<!-- 👇 加入显示用户发布内容的 JS -->
+<script>
+  async function loadMyPosts() {
+    const { data: userData } = await supabase.auth.getUser();
+    const user = userData?.user;
+
+    if (!user) {
+      document.getElementById('MyPosts').innerHTML = '⚠️ 请先登录查看你的发布信息';
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('posts')
+      .select('*')
+      .eq('author', user.email)
+      .eq('category', 'food') // ✅ 只显示当前板块的内容
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('获取失败', error);
+      return;
+    }
+
+    const container = document.getElementById('Posts');
+    container.innerHTML = '<h3>📋 你发布的内容：</h3>';
+
+    if (data.length === 0) {
+      container.innerHTML += '<p>🌿 暂无你的发布记录</p >';
+      return;
+    }
+
+    data.forEach(post => {
+      const div = document.createElement('div');
+      div.className = 'post';
+      div.innerHTML = `
+        <h4>${post.title}</h4>
+        <p>${post.content}</p >
+        ${post.images && post.images.length > 0
+          ? post.images.map(img => `< img src="${img}" style="max-width:100%; margin-top:10px;" />`).join('')
+          : ''
+        }
+        <hr />
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  // 页面加载后执行
+  loadMyPosts();
+</script>
+
+         <div class="post">
+            <h3>📢 想上广告？</h3>
+            <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p>
+            <a href="index.html">返回首页</a >
+        </div>
+    </div>
+  
+<!-- 先加载 Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<!-- 再加载你自己的初始化逻辑 -->
+<script src="supabase.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✈️ 留学移民</title>
+  <style>
+    body { font-family: sans-serif; background: #f7f7f7; margin: 0; padding: 2rem; }
+    form { margin-bottom: 2rem; }
+    input, textarea { width: 100%; padding: 10px; margin: 0.5rem 0; border: 1px solid #ccc; border-radius: 6px; }
+    button { padding: 0.6rem 1.5rem; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .post { background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 6px; box-shadow: 0 0 5px rgba(0,0,0,0.05); }
+    .post h3 { margin: 0; display: flex; justify-content: space-between; align-items: center; }
+    .delete { background: #f44336; border: none; color: white; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; }
+  
+  </style>
+<link rel="privacy-policy" href="/privacy.html" />
+</head>
+<body>
+  <h2>✈️ ✈️ 留学移民</h2>
+  <form id="postForm">
+    <input type="text" id="title" placeholder="请输入标题" required />
+    <textarea id="content" rows="4" placeholder="请输入内容…" required></textarea>
+    <button type="submit">发布</button>
+  </form>
+  <div id="postList"></div>
+  <script>
+    const form = document.getElementById('postForm');
+    const postList = document.getElementById('postList');
+    const STORAGE_KEY = 'visaPosts';
+    let posts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    renderPosts();
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+      if (!title || !content) return;
+      posts.unshift({ title, content });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+      form.reset();
+      renderPosts();
+    });
+
+    function renderPosts() {
+      postList.innerHTML = '';
+      posts.forEach((post, index) => {
+        const div = document.createElement('div');
+        div.className = 'post';
+        div.innerHTML = `
+          <h3>${post.title}<button class="delete" onclick="deletePost(${index})">删除</button></h3>
+          <p>${post.content}</p>`;
+        postList.appendChild(div);
+      });
+    }
+    function deletePost(index) {
+      posts.splice(index, 1);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+      renderPosts();
+    }
+  </script>
+           <div class="post">
+            <h3>📢 想上广告？</h3>
+            <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p>
+        </div>
+    </div>
+  <!-- 页脚 -->
+
+
+
+
+
+
+
+
+
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+</body>
+</html>
