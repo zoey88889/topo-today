@@ -99,18 +99,16 @@
     <h1>TOPO Today</h1>
 
 
-<!-- 登录 / 登出按钮 -->
-<div class="auth-links" id="authArea">
+<!-- 登录 / 登出区域 -->
+<div id="authArea">
   <a href="login.html" id="loginBtn">登录 / 注册</a >
-  <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
+  <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出登录</a >
 </div>
 
-<!-- 欢迎语区域 -->
-<div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
-
+<!-- 欢迎语显示 -->
+<div id="welcome" style="margin-top: 1rem; text-align: center;"></div>
 
   </header>
-
   <!-- 简易搜索栏 -->
   <nav>
     <input type="text" placeholder="🔍 搜索生活信息 / 店铺 / 服务" />
@@ -135,21 +133,6 @@
   <!-- 页脚 -->
   
 
-<!-- 先加载 Supabase SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-<!-- 再加载你自己的初始化逻辑 -->
-<script src="supabase.js"></script>
-<script src="post-upload.js"></script>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -161,6 +144,13 @@
       document.getElementById("footer").innerHTML = html;
     });
 </script>
+
+
+<!-- 先加载 Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<!-- 再加载你自己的初始化逻辑 -->
+<script src="supabase.js"></script>
 <script>
   window.supabase.auth.getSession().then(({ data: { session } }) => {
     const user = session?.user;
@@ -189,6 +179,6 @@
   // 也可以在这里更新 UI
 });
 </script>
-<script src="post-display.js"></script>
+
 </body>
 </html>
