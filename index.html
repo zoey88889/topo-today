@@ -178,6 +178,12 @@
   console.log("🔄 状态变化：", event, session);
   // 也可以在这里更新 UI
 });
+supabase.auth.signInWithOtp({
+  email: email,
+  options: {
+    emailRedirectTo: 'https://topoto.netlify.app/index.html' // ✅ 回到主页（或 food.html）
+  }
+});
 </script>
 
 </body>
