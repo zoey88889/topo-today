@@ -11,10 +11,11 @@ fs.readdirSync(TARGET_FOLDER).forEach(file => {
     const filePath = path.join(TARGET_FOLDER, file);
     const content = fs.readFileSync(filePath, "utf8");
 
+    // 避免重复插入
     if (!content.includes('rel="privacy-policy"')) {
       const updated = content.replace(
         /<head>/i,
-        `<head>\n${PRIVACY_TAG}`
+        `<head>\n  ${PRIVACY_TAG}`
       );
       fs.writeFileSync(filePath, updated, "utf8");
       console.log(`✅ 插入隐私标签成功: ${file}`);
