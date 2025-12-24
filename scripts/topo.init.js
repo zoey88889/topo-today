@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const category = fileName.replace(".html", "").toLowerCase();
   window.TOPO_CATEGORY = category;
 
+  // ✅ 设置标题
   document.title = "TOPO | " + category.toUpperCase();
 
-  // ✅ 登录状态判断（更安全）
+  // ✅ 登录状态识别
   const sessionResult = await window.supabase.auth.getSession();
   const session = sessionResult?.data?.session;
   const user = session?.user;
@@ -16,9 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const logoutBtn = document.getElementById("logoutBtn");
 
   if (user) {
-    if (welcomeBox) {
-      welcomeBox.textContent = `👋 欢迎回来，${user.email}`;
-    }
+    if (welcomeBox) welcomeBox.textContent = `👋 欢迎回来，${user.email}`;
     if (loginBtn) loginBtn.style.display = "none";
     if (logoutBtn) logoutBtn.style.display = "inline-block";
   } else {
@@ -26,11 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (loginBtn) loginBtn.style.display = "inline-block";
   }
 
-  // ✅ 加载帖子
-  const posts = category === "explore"
-    ? await loadPosts()
-    : await loadPosts(category);
-
-  console.log("📦 加载帖子：", posts);
+  // ✅ 加载当前分类帖子
+  const posts = await loadPosts(category);
   renderPosts(posts);
 });
