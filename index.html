@@ -151,40 +151,8 @@
 
 <!-- 再加载你自己的初始化逻辑 -->
 <script src="supabase.js"></script>
-<script>
-  window.supabase.auth.getSession().then(({ data: { session } }) => {
-    const user = session?.user;
+<script src="auth-init.js"></script>
 
-    const welcomeBox = document.getElementById("welcome");
-    const loginBtn = document.getElementById("loginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-
-    if (user) {
-      if (welcomeBox) {
-        welcomeBox.textContent = `👋 欢迎回来，${user.email}`;
-      }
-      if (loginBtn) loginBtn.style.display = "none";
-      if (logoutBtn) logoutBtn.style.display = "inline-block";
-    } else {
-      if (logoutBtn) logoutBtn.style.display = "none";
-    }
-  });
-
-  async function logout() {
-    await window.supabase.auth.signOut();
-    window.location.href = "index.html";
-  }
-  window.supabase.auth.onAuthStateChange((event, session) => {
-  console.log("🔄 状态变化：", event, session);
-  // 也可以在这里更新 UI
-});
-supabase.auth.signInWithOtp({
-  email: email,
-  options: {
-    emailRedirectTo: 'https://topoto.netlify.app/index.html' // ✅ 回到主页（或 food.html）
-  }
-});
-</script>
 
 </body>
 </html>
