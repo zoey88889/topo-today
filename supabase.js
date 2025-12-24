@@ -1,6 +1,6 @@
 window.supabase = window.supabase.createClient(
   'https://hmbpfxjszahfibfhezft.supabase.co',
-  'sb-publishable-PcGwCM6lAGzlGiwXNmRQPA-ahffzC-V'
+  'sb-publishable-i6GeQYXnUb6ammOACZXdPw-hiFHnp4W'
 );
 
 // 登录状态检测 + 欢迎显示
