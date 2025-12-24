@@ -11,22 +11,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // ✅ 从 Supabase 加载帖子
-async function loadPosts() {
-  const { data, error } = await window.supabase
+async function loadPosts(filterCategory = null) {
+  let query = window.supabase
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });
 
-  console.log("📦 所有帖子数据：", data);
-  return data || [];
-}
+  if (filterCategory) {
+    query = query.eq("category", filterCategory);
+  }
 
   const { data, error } = await query;
 
   if (error) {
-    console.error("❌ 加载帖子失败：", error.message);
+    console.error("❌ 加载失败：", error.message);
     return [];
   }
+  console.log("✅ 成功拉取数据：", data);
+  return data;
+}
+
 
 // ✅ 渲染帖子卡片
 function renderPosts(posts) {
