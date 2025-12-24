@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>登录 TOPO Today</title>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="supabase.js"></script> <!-- 初始化 Supabase 实例 -->
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/auth.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
 </head>
 <body>
-  <h1>🔐 登录 / 注册</h1>
 
  <div id="login-box" style="text-align: center; margin-top: 2rem;">
   <button onclick="loginWithGoogle()" class="login-btn">用 Google 登录</button>
@@ -51,24 +54,10 @@
       }
     }
 
-    // Magic Link 登录
-    async function loginWithMagicLink() {
-      const email = document.getElementById("email").value;
-      const { error } = await window.supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: 'https://topoto.netlify.app/index.html'
-        }
-      });
-      if (error) {
-        document.getElementById("status").textContent = "发送失败：" + error.message;
-        console.error("魔法链接发送失败", error);
-      } else {
-        document.getElementById("status").textContent = "📮 已发送登录链接，请查收邮箱！";
-      }
-    }
+  
  
   </script>
+
 <div id="footer"></div>
 <script>
   fetch("/components/footer.html")
@@ -77,6 +66,5 @@
       document.getElementById("footer").innerHTML = html;
     });
 </script>
-<script src="post-display.js"></script>
 </body>
 </html>

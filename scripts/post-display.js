@@ -1,5 +1,6 @@
 // ✅ 自动加载并渲染帖子内容
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log("✅ post-display.js 已加载！");
   // 从 URL 中提取分类，例如 /food.html → category = "food"
   const path = window.location.pathname;
   const fileName = path.split("/").pop(); // "food.html"
@@ -10,15 +11,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // ✅ 从 Supabase 加载帖子
-async function loadPosts(filterCategory = null) {
-  let query = window.supabase
+async function loadPosts() {
+  const { data, error } = await window.supabase
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });
 
-  if (filterCategory) {
-    query = query.eq("category", filterCategory);
-  }
+  console.log("📦 所有帖子数据：", data);
+  return data || [];
+}
 
   const { data, error } = await query;
 
@@ -26,9 +27,6 @@ async function loadPosts(filterCategory = null) {
     console.error("❌ 加载帖子失败：", error.message);
     return [];
   }
-
-  return data;
-}
 
 // ✅ 渲染帖子卡片
 function renderPosts(posts) {

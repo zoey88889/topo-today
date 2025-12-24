@@ -49,50 +49,22 @@
   <!-- 渲染容器 -->
   <div id="postContainer"></div>
 
-  <!-- 加载脚本 -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="supabase.js"></script>
-  <script src="auth.init.js"></script>
-  <script src="post-upload.js"></script>
-  <script src="post-display.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/auth.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
 
-<script>
-    const form = document.getElementById('postForm');
-    const postList = document.getElementById('postList');
-    const STORAGE_KEY = 'housingPosts';
-    let posts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    renderPosts();
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const title = document.getElementById('title').value.trim();
-      const content = document.getElementById('content').value.trim();
-      if (!title || !content) return;
-      posts.unshift({ title, content });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
-      form.reset();
-      renderPosts();
-    });
-
-    function renderPosts() {
-      postList.innerHTML = '';
-      posts.forEach((post, index) => {
-        const div = document.createElement('div');
-        div.className = 'post';
-        div.innerHTML = `
-          <h3>${post.title}<button class="delete" onclick="deletePost(${index})">删除</button></h3>
-          <p>${post.content}</p>`;
-        postList.appendChild(div);
-      });
-    }
-    function deletePost(index) {
-      posts.splice(index, 1);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
-      renderPosts();
-    }
-  </script>
 
 <!-- 页脚 -->
- 
+ <div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
 </body>
 </html>
