@@ -6,7 +6,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
-<script src="scripts/auth.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
 <script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
 <script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
 </head>
@@ -35,29 +35,7 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 </style>
-
-  <!-- ✅ 登录结果提示 -->
-  <div id="status" style="margin-top: 1rem;"></div>
-
-  <script>
-    // Google 登录
-    async function loginWithGoogle() {
-      const { error } = await window.supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: 'https://topoto.netlify.app/index.html' // 登录成功后跳转
-        }
-      });
-      if (error) {
-        document.getElementById("status").textContent = "登录失败：" + error.message;
-        console.error("Google 登录失败", error);
-      }
-    }
-
-  
  
-  </script>
-
 <div id="footer"></div>
 <script>
   fetch("/components/footer.html")
