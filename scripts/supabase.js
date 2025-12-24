@@ -6,6 +6,7 @@ window.supabase = window.supabase.createClient(
 );
 // 登录状态检测 + 欢迎显示
 window.supabase.auth.getSession().then(({ data: { session } }) => {
+  console.log("✅ Supabase 初始化完成！", window.supabase);
   console.log("✅ 当前 Session：", session); // ←💥加在这里
   const user = session?.user;
   const welcomeBox = document.getElementById("welcome");

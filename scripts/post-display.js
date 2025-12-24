@@ -1,16 +1,17 @@
-// ✅ 自动加载并渲染帖子内容
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("✅ post-display.js 已加载！");
-  // 从 URL 中提取分类，例如 /food.html → category = "food"
+
   const path = window.location.pathname;
-  const fileName = path.split("/").pop(); // "food.html"
+  const fileName = path.split("/").pop();             // e.g. "food.html"
   const category = fileName.replace(".html", "").toLowerCase();
+  console.log("📂 当前页面分类为：", category);
 
   const posts = await loadPosts(category);
+  console.log("📦 posts 拉取结果：", posts);
+
   renderPosts(posts);
 });
 
-// ✅ 从 Supabase 加载帖子
 async function loadPosts(filterCategory = null) {
   let query = window.supabase
     .from("posts")
@@ -27,19 +28,17 @@ async function loadPosts(filterCategory = null) {
     console.error("❌ 加载失败：", error.message);
     return [];
   }
-  console.log("✅ 成功拉取数据：", data);
+
   return data;
 }
 
-
-// ✅ 渲染帖子卡片
 function renderPosts(posts) {
   const container = document.getElementById("postContainer");
   if (!container) return;
 
   container.innerHTML = "";
 
-  if (posts.length === 0) {
+  if (!posts || posts.length === 0) {
     container.innerHTML = "<p style='opacity:0.6;'>暂无内容。</p >";
     return;
   }
@@ -47,25 +46,18 @@ function renderPosts(posts) {
   posts.forEach((post) => {
     const card = document.createElement("div");
     card.className = "post-card";
-    card.style = `
-      border: 1px solid #ddd;
-      padding: 16px;
-      margin-bottom: 16px;
-      border-radius: 10px;
-      background: #fff;
-    `;
+    card.style = "border: 1px solid #ccc; padding: 1rem; margin: 1rem 0; background: #fff; border-radius: 8px;";
 
-    // 取第一张图片
     const image = post.images?.[0]
-      ? `< img src="${post.images[0]}" style="width:100%; margin-top:12px; border-radius:8px;" />`
+      ? `< img src="${post.images[0]}" style="max-width:100%; border-radius: 6px; margin-top: 0.5rem;" />`
       : "";
 
     card.innerHTML = `
-      <h3>${post.title || "（无标题）"}</h3>
-      <p style="white-space:pre-line;">${post.content || ""}</p >
+      <h3>${post.title}</h3>
+      <p>${post.content}</p >
       ${image}
-      <p style="font-size: 12px; color: #666; margin-top: 10px;">
-        📁 ${post.category || "未分类"} ｜ 🕒 ${new Date(post.created_at).toLocaleString()}
+      <p style="font-size: 0.8rem; color: #777;">
+        📁 ${post.category || "无分类"} | 🕒 ${new Date(post.created_at).toLocaleString()}
       </p >
     `;
 
