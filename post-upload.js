@@ -40,6 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // ✅ 自动从页面名推断 category
+const path = window.location.pathname;
+const fileName = path.split("/").pop(); // food.html
+const category = fileName.replace(".html", "").toLowerCase();
+
     // 👇 插入数据到 posts 表
     const { error } = await window.supabase
       .from("posts")
@@ -48,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         content,
         images: imageUrls,
         author: user.email,
-        category: "food", // 你可以更换分类
+        category: category, // 你可以更换分类
       }]);
 
     if (error) {
