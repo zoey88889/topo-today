@@ -45,6 +45,16 @@
   );
 </script>
 
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+</body>
 <!-- 登录函数定义 -->
 <script>
   async function loginWithGoogle() {
@@ -58,13 +68,4 @@
     }
   }
 </script>
-<div id="footer"></div>
-<script>
-  fetch("/components/footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer").innerHTML = html;
-    });
-</script>
-</body>
 </html>

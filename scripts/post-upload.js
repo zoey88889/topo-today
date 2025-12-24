@@ -1,10 +1,13 @@
 // post-upload.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("postForm");
+  if (!form) return; // 没有表单就跳过
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    // ...
+  });
+});
 
     const title = document.getElementById("title").value.trim();
     const content = document.getElementById("content").value.trim();
@@ -67,5 +70,3 @@ const posts = await loadPosts(window.TOPO_CATEGORY);
 renderPosts(posts);
  
     }
-  });
-});
