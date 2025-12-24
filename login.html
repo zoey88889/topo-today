@@ -65,13 +65,10 @@
   <!-- 1️⃣ SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-  <!-- 2️⃣ 初始化 supabase -->
-  <script>
-    window.supabase = window.supabase.createClient(
-      'https://hmbpfxjszahfibfhezft.supabase.co',
-      'sb-publishable-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtYnBmeGpzemFoZmliZmhlemZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY0MTc3MTYsImV4cCI6MjA4MTk5MzcxNn0.t2RoqGIbRPAD2MYNVEQe6tl_dHQfN6X0NprjMqSeVqk'
-    );
-  </script>
+
+<!-- 再加载你自己的初始化逻辑 -->
+<script src="supabase.js"></script>
+<script src="auth.init.js"></script>
 
   <!-- 3️⃣ 登录逻辑 -->
   <script>
