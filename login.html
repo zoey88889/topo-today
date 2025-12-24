@@ -1,155 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <title>TOPO Today | 登录 / 注册</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 400px;
-      margin: 4rem auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    input, button {
-      width: 100%;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: black;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #333;
-    }
-    .msg {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 0.95rem;
-      color: #666;
-    }
-  </style>
-<link rel="privacy-policy" href="/privacy.html" />
+  <meta charset="UTF-8">
+  <title>登录 TOPO Today</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="supabase.js"></script> <!-- 初始化 Supabase 实例 -->
 </head>
 <body>
-  <div class="container">
-    <h2>欢迎登录 TOPO Today</h2>
+  <h1>🔐 登录 / 注册</h1>
 
-    <!-- 📧 邮箱 + 密码登录 -->
-    <input type="email" id="email" placeholder="邮箱地址" required />
-    <input type="password" id="password" placeholder="密码（至少6位）" required />
-    <button id="loginBtn">📩 注册 / 登录</button>
+  <div id="login-box" style="text-align: center;">
+    <!-- ✅ Google 登录按钮 -->
+    <button onclick="loginWithGoogle()">用 Google 登录</button>
 
-    <!-- 🔐 Google 登录 -->
-    <button onclick="loginWithGoogle()">🔐 使用 Google 登录</button>
-
-    <!-- ✨ Magic Link 登录 -->
-    <button onclick="loginWithMagic()">✨ 魔法链接登录</button>
-
-    <div class="msg" id="msg"></div>
+    <!-- ✅ Magic Link 邮箱登录 -->
+    <p>或使用魔法链接登录：</p >
+    <input type="email" id="email" placeholder="请输入你的邮箱">
+    <button onclick="loginWithMagicLink()">发送登录链接</button>
   </div>
 
-  <!-- 1️⃣ SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- ✅ 登录结果提示 -->
+  <div id="status" style="margin-top: 1rem;"></div>
 
-
-<!-- 再加载你自己的初始化逻辑 -->
-<script src="supabase.js"></script>
-<script src="auth.init.js"></script>
-
-  <!-- 3️⃣ 登录逻辑 -->
   <script>
-    const msgBox = document.getElementById("msg");
-
-    // 📧 注册 + 登录（带验证邮件）
-    document.getElementById("loginBtn").addEventListener("click", async () => {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      if (!email || !password) {
-        msgBox.textContent = "请输入邮箱和密码";
-        return;
-      }
-
-      try {
-        const { error: signupError } = await window.supabase.auth.signUp({ email, password });
-
-        if (!signupError) {
-          msgBox.textContent = "✅ 注册成功！请前往邮箱确认";
-        } else {
-          const { error: loginError } = await window.supabase.auth.signInWithPassword({ email, password });
-
-          if (!loginError) {
-            msgBox.textContent = "🎉 登录成功，正在跳转...";
-            setTimeout(() => window.location.href = "index.html", 1500);
-          } else {
-            msgBox.textContent = "❌ 登录失败：" + loginError.message;
-          }
-        }
-      } catch (err) {
-        msgBox.textContent = "❌ 系统错误：" + err.message;
-      }
-    });
-
-    // ✨ Magic Link 登录
-    async function loginWithMagic() {
-      const email = document.getElementById("email").value.trim();
-      if (!email) {
-        msgBox.textContent = "请输入邮箱后再点魔法链接";
-        return;
-      }
-
-      const { error } = await window.supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: 'https://topoto.netlify.app/index.html' // 登录后跳转
-        }
-      });
-
-      if (error) {
-        msgBox.textContent = "❌ 魔法链接发送失败：" + error.message;
-      } else {
-        msgBox.textContent = "📨 魔法链接已发送，请检查邮箱！";
-      }
-    }
-
-    // 🔐 Google 登录
+    // Google 登录
     async function loginWithGoogle() {
       const { error } = await window.supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'https://topoto.netlify.app/index.html'
+          redirectTo: 'https://topoto.netlify.app/index.html' // 登录成功后跳转
         }
       });
-
       if (error) {
-        msgBox.textContent = "❌ Google 登录失败：" + error.message;
+        document.getElementById("status").textContent = "登录失败：" + error.message;
+        console.error("Google 登录失败", error);
       }
     }
+
+    // Magic Link 登录
+    async function loginWithMagicLink() {
+      const email = document.getElementById("email").value;
+      const { error } = await window.supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: 'https://topoto.netlify.app/index.html'
+        }
+      });
+      if (error) {
+        document.getElementById("status").textContent = "发送失败：" + error.message;
+        console.error("魔法链接发送失败", error);
+      } else {
+        document.getElementById("status").textContent = "📮 已发送登录链接，请查收邮箱！";
+      }
+    }
+ 
   </script>
-
-
-
-
-
-
-
-
-
-
 <div id="footer"></div>
 <script>
   fetch("/components/footer.html")
