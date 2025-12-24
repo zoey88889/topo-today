@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const category = fileName.replace(".html", "").toLowerCase();
   window.TOPO_CATEGORY = category;
 
-  // 设置页面标题
   document.title = "TOPO | " + category.toUpperCase();
 
-  // ✅ 登录状态判断 + 欢迎语显示
-  const { data: { session } } = await window.supabase.auth.getSession();
+  // ✅ 登录状态判断（更安全）
+  const sessionResult = await window.supabase.auth.getSession();
+  const session = sessionResult?.data?.session;
   const user = session?.user;
 
   const welcomeBox = document.getElementById("welcome");
