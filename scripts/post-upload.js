@@ -61,7 +61,11 @@ const category = fileName.replace(".html", "").toLowerCase();
     } else {
       alert("✅ 发布成功！");
       form.reset(); // 清空表单
-      location.reload(); // 刷新页面显示新内容（可选）
+
+// 手动重新拉取并渲染帖子
+const posts = await loadPosts(window.TOPO_CATEGORY);
+renderPosts(posts);
+ 
     }
   });
 });

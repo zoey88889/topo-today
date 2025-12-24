@@ -28,10 +28,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // 🖼️ 自动加载帖子
+  document.addEventListener("DOMContentLoaded", async () => {
   const posts = (category === "explore")
     ? await loadPosts()
     : await loadPosts(category);
 
   console.log("📦 加载帖子：", posts);
   renderPosts(posts);
-});
+})

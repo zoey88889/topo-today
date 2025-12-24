@@ -129,7 +129,9 @@
       <a class="card" href="visa.html">✈️ 留学移民</a >
     </div>
   </div>
-
+<script>
+  window.TOPO_CATEGORY = "index";
+</script>
   <!-- 页脚 -->
   
 
@@ -148,10 +150,10 @@
 
 <!-- 先加载 Supabase SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-<!-- 再加载你自己的初始化逻辑 -->
-<script src="scripts/"></script>
-<script src="scripts/"></script>
+<script src="scripts/supabase.js"></script>
+<script src="scripts/auth.init.js"></script>     <!-- 必须先登录判断 -->
+<script src="scripts/post-display.js"></script>
+<script src="scripts/topo.init.js"></script>
 
 
 

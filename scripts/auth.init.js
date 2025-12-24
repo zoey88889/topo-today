@@ -20,6 +20,7 @@ window.addEventListener("load", async () => {
   }
 
   // ✅ 登录状态检测（适用于所有页面）
+  document.addEventListener("DOMContentLoaded", async () => {
   const { data: { session } } = await window.supabase.auth.getSession();
   const user = session?.user;
 
@@ -45,4 +46,4 @@ window.logout = async () => {
 // ✅ 登录状态变化监听（可选）
 window.supabase.auth.onAuthStateChange((event, session) => {
   console.log("🔄 Auth 状态变更：", event, session);
-});
+})
