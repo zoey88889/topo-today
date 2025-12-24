@@ -1,53 +1,60 @@
-// post-display.js
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-async function loadMyPosts() {
-  const { data: userData } = await window.supabase.auth.getUser();
-  const user = userData?.user;
+  const title = document.getElementById("title").value.trim();
+  const content = document.getElementById("content").value.trim();
+  const imageUpload = document.getElementById("imageUpload");
+  const files = imageUpload.files;
+
+  const { data: sessionData } = await window.supabase.auth.getSession();
+  const user = sessionData?.session?.user;
 
   if (!user) {
-    const fallback = document.getElementById('myPosts') || document.getElementById('Posts');
-    if (fallback) fallback.innerHTML = '⚠️ 请先登录查看你的发布信息';
+    alert("⚠️ 请先登录再发布内容！");
     return;
   }
 
-  const { data, error } = await window.supabase
-    .from('posts')
-    .select('*')
-    .eq('author', user.email)
-    .eq('category', 'food')
-    .order('created_at', { ascending: false });
+  let imageUrls = [];
+
+  if (files.length > 0) {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const filePath = `${user.id}/${Date.now()}_${file.name}`;
+
+      let { data, error } = await window.supabase.storage
+        .from("topo-uploads")
+        .upload(filePath, file);
+
+      if (error) {
+        console.error("图片上传失败：", error.message);
+      } else {
+        const url = window.supabase
+          .storage
+          .from("topo-uploads")
+          .getPublicUrl(filePath).data.publicUrl;
+        imageUrls.push(url);
+      }
+    }
+  }
+
+  // ✅ 插入 Supabase 数据表
+  const { error } = await window.supabase
+    .from("posts")
+    .insert([
+      {
+        title,
+        content,
+        images: imageUrls,
+        author: user.email,
+        category: "food" // 👈 核心字段，必须写
+      }
+    ]);
 
   if (error) {
-    console.error('获取失败', error);
+    alert("❌ 发布失败：" + error.message);
     return;
   }
 
-  const container = document.getElementById('myPosts') || document.getElementById('Posts');
-  if (!container) return;
-
-  container.innerHTML = '<h3>📋 你发布的内容：</h3>';
-
-  if (data.length === 0) {
-    container.innerHTML += '<p>🌿 暂无你的发布记录</p >';
-    return;
-  }
-
-  data.forEach(post => {
-    const div = document.createElement('div');
-    div.className = 'post';
-    div.innerHTML = `
-      <h4>${post.title}</h4>
-      <p>${post.content}</p >
-      ${
-        post.images && post.images.length > 0
-          ? post.images.map(img => `< img src="${img}" style="max-width:100%; margin-top:10px;" />`).join('')
-          : ''
-      }
-      <hr />
-    `;
-    container.appendChild(div);
-  });
-}
-
-// 自动执行
-window.addEventListener('DOMContentLoaded', loadMyPosts);
+  alert("✅ 发布成功！");
+  location.reload();
+});

@@ -38,8 +38,8 @@
 </form>
 
 <!-- 用户自己发布的内容展示区 -->
-<div id="myPosts" style="margin:2rem auto; max-width:600px;"></div>
 
+<div id="myPosts" style="margin:2rem auto; max-width:600px;"></div>
 <!-- 初始化 Supabase 客户端 -->
 
 
@@ -51,6 +51,11 @@
     </div>
   
 <!-- 先加载 Supabase SDK -->
+
+<script>
+  const currentCategory = "food";
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <!-- 再加载你自己的初始化逻辑 -->
@@ -58,8 +63,6 @@
 <script src="post-upload.js"></script>
 <script src="post-display.js"></script>
 <script src="auth.init.js"></script>
-
-
 
 
 
