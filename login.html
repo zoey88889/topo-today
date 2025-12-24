@@ -9,15 +9,29 @@
 <body>
   <h1>🔐 登录 / 注册</h1>
 
-  <div id="login-box" style="text-align: center;">
-    <!-- ✅ Google 登录按钮 -->
-    <button onclick="loginWithGoogle()">用 Google 登录</button>
+ <div id="login-box" style="text-align: center; margin-top: 2rem;">
+  <button onclick="loginWithGoogle()" class="login-btn">用 Google 登录</button>
+</div>
 
-    <!-- ✅ Magic Link 邮箱登录 -->
-    <p>或使用魔法链接登录：</p >
-    <input type="email" id="email" placeholder="请输入你的邮箱">
-    <button onclick="loginWithMagicLink()">发送登录链接</button>
-  </div>
+ <style>
+  .login-btn {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .login-btn:hover {
+    background-color: #222;
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+</style>
 
   <!-- ✅ 登录结果提示 -->
   <div id="status" style="margin-top: 1rem;"></div>
