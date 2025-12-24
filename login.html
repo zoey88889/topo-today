@@ -35,42 +35,7 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 </style>
-</script>
- document.addEventListener("DOMContentLoaded", async () => {
-  // ✅ Supabase getSession 拿当前用户
-  const { data: { session } } = await window.supabase.auth.getSession();
-  const user = session?.user;
 
-  const loginBtn = document.getElementById("loginBtn");
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  // ✅ 登录状态切换按钮显示
-  if (user) {
-    if (loginBtn) loginBtn.style.display = "none";
-    if (logoutBtn) logoutBtn.style.display = "inline-block";
-  } else {
-    if (logoutBtn) logoutBtn.style.display = "none";
-    if (loginBtn) loginBtn.style.display = "inline-block";
-  }
-
-  // ✅ 登录点击逻辑
-  if (loginBtn) {
-    loginBtn.addEventListener("click", async () => {
-      const { error } = await window.supabase.auth.signInWithOAuth({
-        provider: "google",
-      });
-      if (error) alert("❌ 登录失败：" + error.message);
-    });
-  }
-
-  // ✅ 登出点击逻辑
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
-      await window.supabase.auth.signOut();
-      location.reload();
-    });
-  }
-});
 <div id="footer"></div>
 <script>
   fetch("/components/footer.html")
