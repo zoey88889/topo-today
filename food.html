@@ -18,65 +18,41 @@
 </head>
 <body>
 
+  </head>
+
+<body>
   <h1>🍜 TOPO 美食推荐平台</h1>
-<!-- 登录 / 登出按钮 -->
-<div class="auth-links" id="authArea">
-  <a href="login.html" id="loginBtn">登录 / 注册</a >
-  <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
-</div>
 
-<!-- 欢迎语区域 -->
-<div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
+  <!-- 登录区 -->
+  <div class="auth-links" id="authArea">
+    <a href="login.html" id="loginBtn">登录 / 注册</a >
+    <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
+  </div>
 
-  <!-- 表单 -->
-<!-- 表单 -->
-<form id="postForm" enctype="multipart/form-data">
-  <input type="text" id="title" placeholder="请输入推荐标题，如：法拉盛最棒的牛腩面！" required />
-  <input type="file" id="imageUpload" accept="image/*" multiple />
-  <textarea id="content" rows="4" placeholder="请写下推荐内容、地址、价格、特色等..." required></textarea>
-  <button type="submit">发布</button>
-</form>
+  <div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
 
-<!-- 用户自己发布的内容展示区 -->
+  <!-- 表单区 -->
+  <form id="postForm" enctype="multipart/form-data">
+    <input type="text" id="title" placeholder="标题..." required />
+    <input type="file" id="imageUpload" accept="image/*" multiple />
+    <textarea id="content" rows="4" placeholder="写下推荐内容..." required></textarea>
+    <button type="submit">发布</button>
+  </form>
 
-<div id="myPosts" style="margin:2rem auto; max-width:600px;"></div>
-<!-- 初始化 Supabase 客户端 -->
+  <!-- 默认信息卡片 -->
+  <div class="post">
+    <h3>📢 想上广告？</h3>
+    <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p >
+    <a href="index.html">返回首页</a >
+  </div>
 
+  <!-- 渲染容器 -->
+  <div id="postContainer"></div>
 
-         <div class="post">
-            <h3>📢 想上广告？</h3>
-            <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p>
-            <a href="index.html">返回首页</a >
-        </div>
-    </div>
-  
-<!-- 先加载 Supabase SDK -->
-
-<script>
-  const currentCategory = "food";
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-<!-- 再加载你自己的初始化逻辑 -->
-<script src="supabase.js"></script>
-<script src="post-upload.js"></script>
-<script src="post-display.js"></script>
-<script src="auth.init.js"></script>
-
-
-
-
-
-
-
-<div id="footer"></div>
-<script>
-  fetch("/components/footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer").innerHTML = html;
-    });
-</script>
+  <!-- 加载脚本 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="supabase.js"></script>
+  <script src="auth.init.js"></script>
+  <script src="/scripts/post-display.js"></script>
 </body>
 </html>
