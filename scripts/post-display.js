@@ -12,23 +12,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderPosts(posts);
 });
 
-async function loadPosts(filterCategory = null) {
-  let query = window.supabase
+async function loadPosts() {
+  const { data, error } = await window.supabase
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });
-
-  if (filterCategory) {
-    query = query.eq("category", filterCategory);
-  }
-
-  const { data, error } = await query;
 
   if (error) {
     console.error("❌ 加载失败：", error.message);
     return [];
   }
 
+  console.log("🔍 全部 posts：", data);
   return data;
 }
 
