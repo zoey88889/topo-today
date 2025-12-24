@@ -1,25 +1,26 @@
-// ✅ 登录后 URL hash 中提取 token，写入 Supabase Session（仅在首页 index.html 生效）
-if (window.location.pathname.includes("index.html") && window.location.hash.includes("access_token")) {
-  const fragment = Object.fromEntries(
-    new URLSearchParams(window.location.hash.slice(1))
-  );
-  const { access_token, refresh_token } = fragment;
+// ✅ 登录后 URL hash 中提取 token，写入 Supabase Session（适用于所有页面）
+window.addEventListener("load", async () => {
+  const hash = window.location.hash;
+  if (hash.includes("access_token")) {
+    const fragment = Object.fromEntries(new URLSearchParams(hash.slice(1)));
+    const { access_token, refresh_token } = fragment;
 
-  window.supabase.auth.setSession({ access_token, refresh_token })
-    .then(({ data, error }) => {
-      if (error) {
-        console.error("❌ 设置 Session 失败:", error.message);
-      } else {
-        console.log("✅ 设置 Session 成功:", data);
-        window.location.href = "/index.html"; 
-            // ✅ 清除 hash 部分，防止暴露 token
-      history.replaceState(null, null, location.pathname);
-      }
+    const { data, error } = await window.supabase.auth.setSession({
+      access_token,
+      refresh_token,
     });
-}
 
-// ✅ 登录状态检测（适用于所有页面）
-window.supabase.auth.getSession().then(({ data: { session } }) => {
+    if (error) {
+      console.error("❌ 设置 session 失败:", error.message);
+    } else {
+      console.log("✅ session 设置成功:", data);
+      // ✅ 清理 token 的 URL hash
+      window.history.replaceState(null, null, location.pathname);
+    }
+  }
+
+  // ✅ 登录状态检测（适用于所有页面）
+  const { data: { session } } = await window.supabase.auth.getSession();
   const user = session?.user;
 
   const welcomeBox = document.getElementById("welcome");
@@ -35,13 +36,13 @@ window.supabase.auth.getSession().then(({ data: { session } }) => {
   }
 });
 
-// ✅ 登出逻辑
+// ✅ 登出逻辑（挂载在 window 上）
 window.logout = async () => {
   await window.supabase.auth.signOut();
   window.location.href = "/index.html";
 };
 
-// ✅ 监听状态变化（可选调试）
+// ✅ 登录状态变化监听（可选）
 window.supabase.auth.onAuthStateChange((event, session) => {
   console.log("🔄 Auth 状态变更：", event, session);
 });
