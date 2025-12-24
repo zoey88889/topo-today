@@ -1,61 +1,43 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  console.log("✅ post-display.js 已加载！");
+console.log("✅ post-display.js 已加载！");
 
-  const path = window.location.pathname;
-  const fileName = path.split("/").pop();             // e.g. "food.html"
-  const category = fileName.replace(".html", "").toLowerCase();
-  console.log("📂 当前页面分类为：", category);
+async function loadPosts(category) {
+  let query = window.supabase.from("posts").select("*").order("created_at", { ascending: false });
+  if (category) query = query.eq("category", category);
 
-  const posts = await loadPosts(category);
-  console.log("📦 posts 拉取结果：", posts);
-
-  renderPosts(posts);
-});
-
-async function loadPosts() {
-  const { data, error } = await window.supabase
-    .from("posts")
-    .select("*")
-    .order("created_at", { ascending: false });
-
+  const { data, error } = await query;
   if (error) {
-    console.error("❌ 加载失败：", error.message);
+    console.error("❌ 拉取失败：", error.message);
     return [];
   }
-
-  console.log("🔍 全部 posts：", data);
+  console.log("📦 成功拉取 posts：", data);
   return data;
 }
 
 function renderPosts(posts) {
   const container = document.getElementById("postContainer");
   if (!container) return;
-
   container.innerHTML = "";
 
-  if (!posts || posts.length === 0) {
-    container.innerHTML = "<p style='opacity:0.6;'>暂无内容。</p >";
+  if (posts.length === 0) {
+    container.innerHTML = "<p>⚠️ 暂无内容。</p >";
     return;
   }
 
-  posts.forEach((post) => {
+  posts.forEach(post => {
     const card = document.createElement("div");
-    card.className = "post-card";
-    card.style = "border: 1px solid #ccc; padding: 1rem; margin: 1rem 0; background: #fff; border-radius: 8px;";
-
-    const image = post.images?.[0]
-      ? `< img src="${post.images[0]}" style="max-width:100%; border-radius: 6px; margin-top: 0.5rem;" />`
-      : "";
-
+    card.className = "post";
     card.innerHTML = `
       <h3>${post.title}</h3>
       <p>${post.content}</p >
-      ${image}
-      <p style="font-size: 0.8rem; color: #777;">
-        📁 ${post.category || "无分类"} | 🕒 ${new Date(post.created_at).toLocaleString()}
-      </p >
+      ${post.images?.[0] ? `< img src="${post.images[0]}" alt="Image" />` : ""}
+      <div class="meta">🗓️ ${new Date(post.created_at).toLocaleString()}</div>
     `;
-
     container.appendChild(card);
   });
 }
+
+// 加载 + 渲染入口
+document.addEventListener("DOMContentLoaded", async () => {
+  const posts = await loadPosts(window.TOPO_CATEGORY);
+  renderPosts(posts);
+});
