@@ -1,9 +1,8 @@
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TOPO 👨‍⚕️ 医疗健康</title>
   <style>
     body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; color: #333; }
@@ -21,7 +20,9 @@
 <body>
 
   </head>
-  <h1>TOPO👨‍⚕️ 医疗健康 </h1>
+
+<body>
+  <h1>TOPO 👨‍⚕️ 医疗健康</h1>
 
   <!-- 登录区 -->
   <div class="auth-links" id="authArea">
@@ -46,20 +47,17 @@
     <a href="index.html">返回首页</a >
   </div>
 
-  
   <!-- 渲染容器 -->
   <div id="postContainer"></div>
 
-  <!-- 加载脚本 -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="supabase.js"></script>
-  <script src="scripts/topo.init.js"></script>      <!-- 登录/登出 --> 
-  <script src="post-upload.js"></script>
-  <script src="post-display.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
 
 
-<!-- 页脚 -->
- <div id="footer"></div>
+<div id="footer"></div>
 <script>
   fetch("/components/footer.html")
     .then(res => res.text())

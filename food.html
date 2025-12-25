@@ -29,16 +29,15 @@
     <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
   </div>
 
+  <div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
 
-  <div id="welcome" style="margin-bottom: 20px;"></div>
-<form id="postForm" enctype="multipart/form-data" style="margin-bottom: 2rem;">
-  <input type="text" id="title" placeholder="标题..." required /><br>
-  <textarea id="content" rows="4" placeholder="内容..." required></textarea><br>
-  <input type="file" id="imageUpload" accept="image/*" multiple /><br>
-  <button type="submit">发布内容</button>
-</form>
-  <!-- 帖子渲染容器 -->
-  <div id="postContainer"></div>
+  <!-- 表单区 -->
+  <form id="postForm" enctype="multipart/form-data">
+    <input type="text" id="title" placeholder="标题..." required />
+    <input type="file" id="imageUpload" accept="image/*" multiple />
+    <textarea id="content" rows="4" placeholder="写下推荐内容..." required></textarea>
+    <button type="submit">发布</button>
+  </form>
 
   <!-- 默认信息卡片 -->
   <div class="post">
@@ -46,33 +45,24 @@
     <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p >
     <a href="index.html">返回首页</a >
   </div>
-</head>
-<body>
+
+  <!-- 渲染容器 -->
+  <div id="postContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
 
 
-
-  <!-- 当前分类自动识别 -->
-  <script>
-    const path = window.location.pathname;
-    const fileName = path.split("/").pop();
-    const category = fileName.replace(".html", "").toLowerCase();
-    window.TOPO_CATEGORY = category;
-    document.title = "TOPO | " + category.toUpperCase();
-  </script>
-
-  <!-- 必须引入的模块 -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="scripts/supabase.js"></script>
-  <script src="scripts/post-submit.js"></script>
-  <script src="scripts/post-display.js"></script>
-  <script src="scripts/topo.init.js"></script>
-  <script src="scripts/post-upload.js"></script>
-
-  <!-- ✅ 添加这段渲染魔法： -->
+<div id="footer"></div>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    loadPosts("food").then(renderPosts);
-  });
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
 </script>
 </body>
 </html>
