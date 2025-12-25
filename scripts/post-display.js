@@ -9,6 +9,9 @@ async function loadPosts(category) {
   if (category) {
     query = query.eq("category", category);
   }
+const path = window.location.pathname;
+const category = path.split("/").pop().replace(".html", "").toLowerCase();
+loadPosts(category).then(renderPosts);
 
   const { data, error } = await query;
   if (error) {
@@ -19,6 +22,7 @@ async function loadPosts(category) {
   console.log("📦 拉回的 posts：", data);
   return data;
 }
+
 
 function renderPosts(posts) {
   const container = document.getElementById("postContainer");
