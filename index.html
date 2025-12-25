@@ -4,119 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TOPO Today - 华人生活信息平台</title>
-  <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; background: #f7f7f7; color: #333; }
-    header { background: #000; color: #fff; padding: 1.5rem; text-align: center; }
-    nav { background: #fff; display: flex; justify-content: center; padding: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    nav input { width: 50%; padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc; }
-    h1 { margin: 0; font-size: 1.8rem; }
-
-    .container { padding: 2rem; }
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
-      transition: background 0.2s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-    .card:hover {
-      background: #eef5ff;
-      cursor: pointer;
-    }
-
-    /* 💌 浮动按钮样式 */
-    .floating-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #f4bacd;
-      color: white;
-      font-size: 1.8rem;
-      padding: 0.8rem 1.1rem;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-      z-index: 999;
-      transition: all 0.3s ease;
-    }
-
-    .floating-btn:hover {
-      background: #fccce2;
-      transform: scale(1.05);
-    }
-
-    .floating-text {
-      display: block;
-      font-size: 0.75rem;
-      margin-top: 0.2rem;
-      text-align: center;
-      color: white;
-      opacity: 0.85;
-    }
-
-    .auth-links {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-
-    .auth-links a {
-      background: #000;
-      color: #fff;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-
-    .auth-links a:hover {
-      background: #444;
-    }
-  </style>
-<link rel="privacy-policy" href="/privacy.html" />
+  <link rel="stylesheet" href="styles/styles.css" />
 </head>
-
 <body>
 
   <!-- 🔘 浮动联系按钮 -->
-  <a href="contact.html" class="floating-btn">
+  <a href=" " class="floating-btn">
     💌
     <span class="floating-text">联系我们！</span>
   </a >
 
-  <!-- 页头 -->
-  <header>
-    <h1>TOPO Today</h1>
+  <!-- 顶部导航 -->
+  <header class="hero">
+    <div class="navbar">
+   
 
+    <!-- 登录登出按钮 -->
+    <div class="auth-links" id="authArea">
+      <a href="login.html" id="loginBtn">登录 / 注册</a >
+      <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
+    </div>
 
-<!-- 登录 / 登出区域 -->
-<div id="authArea">
-  <a href="login.html" id="loginBtn">登录 / 注册</a >
-  <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出登录</a >
-</div>
-
-<!-- 欢迎语显示 -->
-<div id="welcome" style="margin-top: 1rem; text-align: center;"></div>
-
+    <!-- 欢迎语 -->
+    <div id="welcome" style="text-align: center; margin-top: 1rem;"></div>
   </header>
-  <!-- 简易搜索栏 -->
+
+  <!-- 搜索 -->
   <nav>
     <input type="text" placeholder="🔍 搜索生活信息 / 店铺 / 服务" />
   </nav>
 
-  <!-- 栏目分类 -->
+  <!-- 主内容模块 -->
   <div class="container">
-    <h2 style="text-align:center;">🧭 HEF 导航</h2>
+    <section class="intro">
+      <h2>🛰️ 宇宙便利贴</h2>
+      <p>贴在你生活的每一处角落，为你导航、提醒、启发。</p >
+    </section>
+
+    <section class="modules">
+      <div class="card"><h3>📰 今日要闻</h3><p>纽约最新资讯，自动更新，随时同步。</p ><a href="news.html">进入</a ></div>
+      <div class="card"><h3>🌤️ 天气频道</h3><p>每日 AI 撷取天气提醒 + 出行建议</p ><a href="weather.html">查看</a ></div>
+      <div class="card"><h3>🚇 MTA 交通</h3><p>延误提醒 + 实时通知（开发中）</p ></div>
+      <div class="card"><h3>🧠 Dodobot 建议</h3><p>“今天适合穿厚一点哦～”</p ></div>
+      <div class="card"><h3>📮 投稿入口</h3><p>社区开放投稿，晒出你的生活</p ><a href="submit.html">我也要发！</a ></div>
+    </section>
+
+    <!-- 栏目分类 -->
+    <h2 style="text-align:center;">📂 栏目导航 HEF</h2>
     <div class="category-grid">
       <a class="card" href="food.html">🍜 美食推荐</a >
       <a class="card" href="housing.html">🏠 房源信息</a >
@@ -129,32 +63,27 @@
       <a class="card" href="visa.html">✈️ 留学移民</a >
     </div>
   </div>
-<script>
-  window.TOPO_CATEGORY = "index";
-</script>
-  <!-- 页脚 -->
-  
 
+  <!-- Footer 区域（动态加载） -->
+  <div id="footer"></div>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>
+  <script src="scripts/topo.init.js"></script>
+  <script>
+    // 折叠菜单功能
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    }
 
-
-<div id="footer"></div>
-<script>
-  fetch("/components/footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer").innerHTML = html;
-    });
-</script>
-
-
-<!-- 先加载 Supabase SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script src="scripts/supabase.js"></script>
-<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->    
-
-
-
-
+    // 渲染 footer
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
 </body>
 </html>

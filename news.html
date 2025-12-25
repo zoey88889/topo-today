@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📰 TOPO TODAY | 今日新闻</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+  <header class="hero">
+    <h1>📰 今日要闻</h1>
+    <p>自动汇聚纽约华人圈与本地生活新闻</p >
+  </header>
+
+  <section class="intro">
+    <p style="text-align: center; margin-bottom: 1.5rem;">
+      本页面由 TOPO 自动生成，每日更新 3–5 条精选资讯。
+      <br />内容涵盖生活提醒、社区新闻、政策变化、好物优惠等。
+    </p >
+  </section>
+
+  <section class="modules" id="postContainer">
+    <!-- 所有新闻卡片将由 post-display.js 自动注入 -->
+  </section>
+
+  <!-- 脚本加载 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>
+  <script src="scripts/post-upload.js"></script>
+  <script src="scripts/post-display.js"></script>
+
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+</body>
+</html>
