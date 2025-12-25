@@ -21,35 +21,40 @@ async function loadPosts(category) {
 }
 
 function renderPosts(posts) {
-  console.log("🧾 正在渲染 posts：", posts);
   const container = document.getElementById("postContainer");
-  if (!container) return;
-
-  container.innerHTML = "";
+  container.innerHTML = ""; // 清空原有内容
 
   if (posts.length === 0) {
-    container.innerHTML = "<p>暂无内容。</p >";
+    container.innerHTML = `<p style="text-align:center;">⚠️ 暂无内容。</p >`;
     return;
   }
 
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const card = document.createElement("div");
     card.className = "post";
-    card.innerHTML = `
-      <h3>${post.title}</h3>
-      <p>${post.content}</p >
-      ${post.images?.[0] ? `< img src="${post.images[0]}" style="max-width: 100%; border-radius: 8px; margin-top: 8px;" />` : ""}
-      <small>🗓️ ${new Date(post.created_at).toLocaleString()}</small>
+    card.style = `
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     `;
+
+    // ✅ 处理图片（可选）
+    let imageHTML = "";
+    if (post.images && post.images.length > 0) {
+      imageHTML = `< img src="${post.images[0]}" style="max-width:100%; border-radius: 6px; margin-top: 1rem;" />`;
+    }
+
+    // ✅ 构建 HTML
+    card.innerHTML = `
+      <h3>${post.title || "(无标题)"}</h3>
+      <p>${post.content || "(无内容)"}</p >
+      ${imageHTML}
+      <small style="color:#888;">🕒 ${new Date(post.created_at).toLocaleString()}</small>
+    `;
+
     container.appendChild(card);
   });
 }
-
-// 🚀 页面加载后自动拉取 + 渲染
-document.addEventListener("DOMContentLoaded", async () => {
-  const path = window.location.pathname;
-  const fileName = path.split("/").pop();
-  const category = fileName.replace(".html", "").toLowerCase();
-  const posts = await loadPosts(category);
-  renderPosts(posts);
-});
