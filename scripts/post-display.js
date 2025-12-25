@@ -21,6 +21,7 @@ async function loadPosts(category) {
 }
 
 function renderPosts(posts) {
+  console.log("🧾 正在渲染 posts：", posts);
   const container = document.getElementById("postContainer");
   if (!container) return;
 
