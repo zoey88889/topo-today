@@ -1,32 +1,8 @@
-// ✅ 渲染入口，放最外层！执行函数之后调用渲染
-const path = window.location.pathname;
-const category = path.split("/").pop().replace(".html", "").toLowerCase();
-loadPosts(category).then(renderPosts);
-
-// ✅ 拉取帖子
-async function loadPosts(category) {
-  let query = window.supabase
-    .from("posts")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (category) {
-    query = query.eq("category", category);
-  }
-
-  const { data, error } = await query;
-  if (error) {
-    console.error("❌ 拉取失败：", error.message);
-    return [];
-  }
-
-  console.log("📦 拉回的 posts：", data);
-  return data;
-}
-
-// ✅ 渲染帖子
+// ✅ 1. 渲染函数先定义
 function renderPosts(posts) {
   const container = document.getElementById("postContainer");
+  if (!container) return;
+
   container.innerHTML = "";
 
   if (posts.length === 0) {
@@ -61,3 +37,32 @@ function renderPosts(posts) {
     container.appendChild(card);
   });
 }
+
+// ✅ 2. 数据拉取函数
+async function loadPosts(category) {
+  let query = window.supabase
+    .from("posts")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (category) {
+    query = query.eq("category", category);
+  }
+
+  const { data, error } = await query;
+  if (error) {
+    console.error("❌ 拉取失败：", error.message);
+    return [];
+  }
+
+  console.log("📦 拉回的 posts：", data);
+  return data;
+}
+
+// ✅ 3. 页面加载完后调用渲染
+document.addEventListener("DOMContentLoaded", () => {
+  const pagePath = window.location.pathname;
+  const category = pagePath.split("/").pop().replace(".html", "").toLowerCase();
+
+  loadPosts(category).then(renderPosts);
+});
