@@ -1,96 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌤️ 天气频道 | TOPO TODAY</title>
-  <link rel="stylesheet" href="styles/styles.css" />
+  <meta charset="UTF-8">
+  <title>天气频道 - TOPO TODAY</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #fff9db;
+      color: #333;
+    }
+    .rss-card {
+      background: #fff;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    .rss-card h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    .rss-card p {
+      margin: 0.5rem 0;
+    }
+    .rss-card small {
+      color: #888;
+    }
+  </style>
 </head>
-
 <body>
-  <header class="hero">
-    <h1>🌤️ 天气频道</h1>
-    <p>每日 AI 撷取天气提醒 + 出行建议</p >
-  </header>
+  <h1>🌤️ 天气提醒 · Weather Alerts</h1>
+  <div id="rssContainer">⏳ 正在加载天气信息...</div>
 
-  <!-- 欢迎区 + 登录提示 -->
-  <div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
-
-  <!-- 投稿表单（如允许发布） -->
-  <section class="modules">
-    <form id="postForm" enctype="multipart/form-data" style="background:#fff; padding:2rem; border-radius:8px; max-width:600px; margin: 0 auto;">
-      <input type="text" id="title" placeholder="请输入标题，如：今日大雪，请注意出行" required />
-      <input type="file" id="imageUpload" accept="image/*" multiple />
-      <textarea id="content" rows="5" placeholder="写下天气情况、建议事项、出行提醒…" required></textarea>
-      <button type="submit" style="margin-top: 1rem;">✨ 发布天气提醒</button>
-    </form>
-  </section>
-
-  <!-- 展示区域 -->
-  <div id="postContainer" style="margin-top: 2rem;"></div>
-
-  <!-- 自动识别当前分类 -->
   <script>
-    window.TOPO_CATEGORY = "weather";
-  </script>
+    async function fetchRSS() {
+      const feedUrl = encodeURIComponent("https://forecast.weather.gov/wwamap/rss/ny.php");
+      const apiUrl = `https://api.allorigins.win/get?url=${feedUrl}`;
 
-  <!-- 脚本加载 -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="scripts/supabase.js"></script>
-  <script src="scripts/post-upload.js"></script>
-  <script src="scripts/post-display.js"></script>
+      try {
+        const res = await fetch(apiUrl);
+        const result = await res.json();
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(result.contents, "text/xml");
+        const items = xml.querySelectorAll("item");
 
-  <section id="rssContainer" class="modules" style="padding:2rem;"></section>
+        const container = document.getElementById("rssContainer");
+        container.innerHTML = "";
 
-<script>
-  async function fetchRSSFeed() {
-    const proxy = "https://api.allorigins.win/get?url=";
-    const feedUrl = encodeURIComponent("https://forecast.weather.gov/wwamap/rss/ny.php");
+        items.forEach((item, index) => {
+          if (index > 4) return; // 最多显示 5 条
+          const title = item.querySelector("title")?.textContent || "无标题";
+          const link = item.querySelector("link")?.textContent;
+          const pubDate = item.querySelector("pubDate")?.textContent;
 
-    const res = await fetch(proxy + feedUrl);
-    const data = await res.json();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, "text/xml");
-    const items = xml.querySelectorAll("item");
+          const card = document.createElement("div");
+          card.className = "rss-card";
+          card.innerHTML = `
+            <h3>📌 ${title}</h3>
+            <p><a href=" " target="_blank">🔗 查看详情</a ></p >
+            <small>${pubDate}</small>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        document.getElementById("rssContainer").innerHTML = "❌ 加载失败，请稍后再试！";
+        console.error(err);
+      }
+    }
 
-    const container = document.getElementById("rssContainer");
-    container.innerHTML = ""; // 清空
-
-    items.forEach((item, index) => {
-      if (index >= 5) return; // 限制展示 5 条
-      const title = item.querySelector("title").textContent;
-      const desc = item.querySelector("description").textContent;
-      const link = item.querySelector("link").textContent;
-
-      const card = document.createElement("div");
-      card.className = "card";
-      card.style = `
-        background: #fff9db;
-        border-left: 6px solid #ffc107;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-radius: 8px;
-      `;
-
-      card.innerHTML = `
-     <h3 style="margin-bottom:0.5rem;">🌤️ ${title}</h3>
-     <p style="font-size:0.9rem;">${desc}</p >
-     <a href="${link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
-      `;
-      container.appendChild(card);
-    });
-  }
-
-  fetchRSSFeed();
-</script>
-  <!-- 页脚 -->
-  <div id="footer"></div>
-  <script>
-    fetch("/components/footer.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("footer").innerHTML = html;
-      });
+    fetchRSS();
   </script>
 </body>
 </html>
