@@ -1,8 +1,9 @@
-// ✅ post-display.js
+// ✅ 渲染入口，放最外层！执行函数之后调用渲染
 const path = window.location.pathname;
 const category = path.split("/").pop().replace(".html", "").toLowerCase();
 loadPosts(category).then(renderPosts);
 
+// ✅ 拉取帖子
 async function loadPosts(category) {
   let query = window.supabase
     .from("posts")
@@ -23,10 +24,10 @@ async function loadPosts(category) {
   return data;
 }
 
-
+// ✅ 渲染帖子
 function renderPosts(posts) {
   const container = document.getElementById("postContainer");
-  container.innerHTML = ""; // 清空原有内容
+  container.innerHTML = "";
 
   if (posts.length === 0) {
     container.innerHTML = `<p style="text-align:center;">⚠️ 暂无内容。</p >`;
@@ -45,13 +46,11 @@ function renderPosts(posts) {
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     `;
 
-    // ✅ 处理图片（可选）
     let imageHTML = "";
-    if (post.images && post.images.length > 0) {
+    if (Array.isArray(post.images) && post.images.length > 0) {
       imageHTML = `< img src="${post.images[0]}" style="max-width:100%; border-radius: 6px; margin-top: 1rem;" />`;
     }
 
-    // ✅ 构建 HTML
     card.innerHTML = `
       <h3>${post.title || "(无标题)"}</h3>
       <p>${post.content || "(无内容)"}</p >
