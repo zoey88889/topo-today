@@ -6,7 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>📰 TOPO TODAY | 今日新闻</title>
   <link rel="stylesheet" href="styles/styles.css" />
-</head>
+<!-- 🌐 语言切换 -->
+<div style="position: absolute; top: 1rem; right: 1rem;">
+  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
+    <option value="zh">🌏 中文</option>
+    <option value="en">🇺🇸 english</option>
+    <option value="ko">🇰🇷 한국어</option>
+  </select>
+</div>
+</header>
 
 <body>
   <header class="hero">
@@ -52,12 +60,13 @@ async function fetchRSSFeed() {
     const card = document.createElement("div");
     card.className = "card";
     card.style = `
-      background: #fff9db;
-      border-left: 6px solid #ffc107;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-    `;
+  background: #000;
+  border-left: 6px solid #0ff;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
+  color: #fff;
+`;
 
     card.innerHTML = `
       <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
