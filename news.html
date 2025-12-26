@@ -49,9 +49,9 @@ async function fetchRSSFeed() {
   container.innerHTML = "";
 
   if (items.length === 0) {
-    container.innerHTML = `<p style="text-align:center;">⚠️ 暂无新闻数据。</p >`;
-    return;
-  }
+  container.innerHTML = `<p style="text-align:center;">📡 🤖 TOPO AI 正在同步资讯中，请稍候刷新页面</p >`;
+  return;
+}
 
   items.forEach((item, index) => {
     if (index >= 5) return; // 限制 5 条
