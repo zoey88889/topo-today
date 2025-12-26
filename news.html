@@ -72,11 +72,11 @@ async function fetchRSSFeed() {
   color: #fff;
 `;
 
-    card.innerHTML = `
-      <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
-      <p style="font-size:0.9rem;">${desc}</p >
-      <a href="${link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
-    `;
+   card.innerHTML = `
+  <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
+  <p style="font-size:0.9rem;">${desc}</p >
+  <small style="display:block; margin-top: 0.5rem; color: #ccc;">来源：New York Times · <a href="${link}" target="_blank" style="color: #0af;">查看原文</a ></small>
+`;
     container.appendChild(card);
   });
 }
