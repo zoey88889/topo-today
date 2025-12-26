@@ -33,12 +33,11 @@
   <h1>🌤️ 天气提醒 · Weather Alerts</h1>
   <div id="rssContainer">⏳ 正在加载天气信息...</div>
 
- 
-<script>
+
 <script>
   async function fetchRSSFeed() {
     const proxy = "https://api.allorigins.win/get?url=";
-    const feedUrl = encodeURIComponent("https://w1.weather.gov/xml/current_obs/KNYC.rss");
+    const feedUrl = encodeURIComponent("https://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=349727");
 
     try {
       const res = await fetch(proxy + feedUrl);
