@@ -5,52 +5,72 @@
   <title>🧧 华人资讯频道 | TOPO Today</title>
   <link rel="stylesheet" href="styles/styles.css" />
 
-  <style>
-    body {
-      background: #fff3e0;
-      font-family: "Helvetica Neue", sans-serif;
-    }
-    header {
-      background: #ef6c00;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
-    .modules {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .rss-card {
-      background: #ffffff;
-      border-left: 6px solid #fb8c00;
-      padding: 1.3rem;
-      margin: 1.2rem auto;
-      border-radius: 12px;
-      max-width: 800px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-    .rss-card h3 {
-      margin-bottom: 0.6rem;
-    }
-    .rss-card p {
-      font-size: 0.9rem;
-      color: #444;
-    }
-    .rss-card a {
-      font-size: 0.85rem;
-      color: #e65100;
-      text-decoration: none;
-    }
-    .rss-card a:hover {
-      text-decoration: underline;
-    }
-    .rss-card small {
-      color: #888;
-      display: block;
-      margin-top: 0.4rem;
-    }
-  </style>
+<style>
+  body {
+  background: #fff3e0;
+  font-family: "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #ef6c00;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.modules {
+  max-width: 1080px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* 卡片样式 */
+.rss-card {
+  background: #ffffff;
+  border-left: 6px solid #fb8c00;
+  padding: 1.3rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.rss-card:hover {
+  transform: translateY(-5px);
+}
+
+.rss-card h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+  color: #d84315;
+}
+
+.rss-card p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.rss-card a {
+  font-size: 0.85rem;
+  color: #e65100;
+  text-decoration: none;
+}
+
+.rss-card a:hover {
+  text-decoration: underline;
+}
+
+.rss-card small {
+  color: #888;
+  display: block;
+  margin-top: 0.4rem;
+}
+</style>
 </head>
 
 <body>
