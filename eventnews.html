@@ -52,16 +52,25 @@
   </style>
 </head>
 <body>
-  <header class="hero">
-    <h1>🎉 本地活动频道</h1>
-    <p>发现纽约每周热门活动、节庆和展览～</p >
-  </header>
+<header>
+  <h1>🎉 本地活动频道</h1>
+  <p>发现纽约每周热门活动、节庆和展览～</p >
+</header>
 
   <section class="modules">
     <h2>📍 本周精选活动</h2>
-    <div id="eventsContainer" class="rss-section"></div>
+    <div id="eventsContainer">🌀 正在加载活动信息...</div>
   </section>
 
   <script src="/rss/events.js"></script>
+  <!-- 页脚 -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
 </body>
 </html>
