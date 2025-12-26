@@ -35,9 +35,9 @@
 
 <script>
 async function fetchRSSFeed() {
-  const rssUrl = "https://rss.weather.gov/rss/nyzone1.rss";
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
+ const rssUrl = "https://rss.weather.gov/rss/nyzone1.rss";
+const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
+const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&api_key=${apiKey}`;
   const res = await fetch(apiUrl);
   const json = await res.json();
 
