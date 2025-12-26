@@ -35,6 +35,7 @@
 
  
 <script>
+<script>
   async function fetchRSSFeed() {
     const proxy = "https://api.allorigins.win/get?url=";
     const feedUrl = encodeURIComponent("https://w1.weather.gov/xml/current_obs/KNYC.rss");
@@ -45,45 +46,22 @@
 
       const parser = new DOMParser();
       const xml = parser.parseFromString(data.contents, "text/xml");
-      const items = xml.querySelectorAll("item");
+      const item = xml.querySelector("item");
+
+      const title = item?.querySelector("title")?.textContent || "暂无标题";
+      const desc = item?.querySelector("description")?.textContent || "暂无描述";
+      const link = item?.querySelector("link")?.textContent || "#";
 
       const container = document.getElementById("rssContainer");
-      container.innerHTML = "";
-
-      if (items.length === 0) {
-        container.innerHTML = "<p>暂无天气数据。</p >";
-        return;
-      }
-
-      items.forEach((item, index) => {
-        if (index >= 5) return;
-
-        const title = item.querySelector("title")?.textContent || "未命名";
-        const desc = item.querySelector("description")?.textContent || "";
-        const link = item.querySelector("link")?.textContent || "#";
-
-        const card = document.createElement("div");
-        card.className = "card";
-        card.style = `
-          background: #fff9db;
-          border-left: 6px solid #ffc107;
-          padding: 1rem;
-          margin-bottom: 1rem;
-          border-radius: 8px;
-        `;
-
-        card.innerHTML = `
-          <h3 style="margin-bottom:0.5rem;">🌤️ ${title}</h3>
-          <p style="font-size:0.9rem;">${desc}</p >
-          <a href=" " target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
-        `;
-
-        container.appendChild(card);
-      });
-    } catch (error) {
-      console.error("❌ RSS 加载失败", error);
-      const container = document.getElementById("rssContainer");
-      container.innerHTML = "<p style='color:red;'>⚠️ 天气数据加载失败，请稍后再试。</p >";
+      container.innerHTML = `
+        <div class="card" style="background:#fff9db; border-left:6px solid #ffc107; padding:1rem; border-radius:8px;">
+          <h3>🌤️ ${title}</h3>
+          <p>${desc}</p >
+          <a href="${link}" target="_blank">🔗 查看详情</a >
+        </div>
+      `;
+    } catch (e) {
+      console.error("天气RSS加载失败", e);
     }
   }
 
