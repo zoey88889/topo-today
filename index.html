@@ -13,9 +13,6 @@
     <option value="ko">🇰🇷 한국어</option>
   </select>
 </div>
-</header>
-<body>
-
   <!-- 🔘 浮动联系按钮 -->
   <a href="contact.html" class="floating-btn">
     💌
@@ -24,9 +21,12 @@
 
   <!-- 顶部导航 -->
   <header class="hero">
-    <div class="navbar">
+      <!-- 主内容模块 -->
+  <div class="container">
+    <section class="intro">
+      <h1>🌍TOPO TODAY</h2>
+      <p>AI 驱动的生活资讯宇宙总站</p >
    
-
     <!-- 登录登出按钮 -->
     <div class="auth-links" id="authArea">
       <a href="login.html" id="loginBtn">登录 / 注册</a >
@@ -42,12 +42,27 @@
     <input type="text" placeholder="🔍 搜索生活信息 / 店铺 / 服务" />
   </nav>
 
-  <!-- 主内容模块 -->
-  <div class="container">
+    <!-- 🎯 热门头条 banner 卡片Hot Picks -->
+     <div class="rss-card hot-topic" style="
+  background: #1f1b4d;
+  border-left: 6px solid #ff4081;
+  color: #fff;
+">
+  <h3>🤑 Powerball 头奖破记录 $1.8B！</h3>
+  <p>此前连续 44 期无人中头奖，本期奖金滚存至 18 亿美元以上。开奖号码为 4、25、31、52、59，Powerball 为 19。</p >
+ <small>来源：New York Times</small><br>
+<a href=" " target="_blank" style="color:#0ff;">
+  🔗 查看详情 — NYTimes 报导
+</a >
+</div>
+ <!-- 🔥主内容板块 -->
+    <div class="container">
     <section class="intro">
       <h2>🛰️ 宇宙便利贴</h2>
       <p>贴在你生活的每一处角落，为你导航、提醒、启发。</p >
     </section>
+  <div id="hotPicksContainer" class="rss-section"></div>
+</section>
 
     <section class="modules">
       <div class="card"><h3>📰 今日要闻</h3><p>纽约最新资讯，自动更新，随时同步。（开发中）</p ><a href="news.html">进入</a ></div>
@@ -56,6 +71,29 @@
       <div class="card"><h3>🧠 Dodobot 建议</h3><p>“今天适合穿厚一点哦～”</p ></div>
       <div class="card"><h3>📮 投稿入口</h3><p>社区开放投稿，晒出你的生活（测试/开发中）</p ><a href="submit.html">我也要发！</a ></div>
     </section>
+       <!-- 🔥 热门头条 -->
+    <section class="modules">
+      <h2>🔥 热门头条 Hot Picks</h2>
+      <div id="hotPicksContainer" class="rss-section"></div>
+    </section>
+
+<!-- 📰 今日资讯 -->
+<section class="modules">
+  <h2>📰 今日资讯 Daily News</h2>
+  <div id="dailyNewsContainer" class="rss-section"></div>
+</section>
+
+<!-- 🌍 本地生活 -->
+<section class="modules">
+  <h2>🌍 本地生活 Life Tips</h2>
+  <div id="lifeTipsContainer" class="rss-section"></div>
+</section>
+
+<!-- 🎟️ 高热度新闻 -->
+<section class="modules">
+  <h2>🎟️ 高热度新闻 Trending</h2>
+  <div id="trendingContainer" class="rss-section"></div>
+</section>
 
     <!-- 栏目分类 -->
     <h2 style="text-align:center;">📂 栏目导航 HEF</h2>
