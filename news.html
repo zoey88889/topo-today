@@ -1,12 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>📰 TOPO TODAY | 今日新闻</title>
-  <link rel="stylesheet" href="styles/styles.css" />
-<!-- 🌐 语言切换 -->
+</head>
+<body>
+  <!-- 🌐 语言切换 -->
 <div style="position: absolute; top: 1rem; right: 1rem;">
   <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
     <option value="zh">🌏 中文</option>
@@ -14,9 +11,14 @@
     <option value="ko">🇰🇷 한국어</option>
   </select>
 </div>
-</header>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📰 TOPO TODAY | 今日新闻</title>
+  <link rel="stylesheet" href="styles/styles.css" />
 
-<body>
+
+
+
   <header class="hero">
     <h1>📰 今日要闻</h1>
     <p>自动汇聚纽约华人圈与本地生活新闻</p >
@@ -59,7 +61,7 @@ async function fetchRSSFeed() {
 
     const card = document.createElement("div");
     card.className = "card";
-    card.style = `
+ card.style = `
   background: #000;
   border-left: 6px solid #0ff;
   padding: 1.2rem;
