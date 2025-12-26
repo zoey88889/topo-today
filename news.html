@@ -1,112 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>📰 TOPO TODAY | 今日新闻</title>
+  <title>📰 TOPO TODAY | 今日要闻</title>
   <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body {
+      background: linear-gradient(to bottom, #f5f7fa, #e2eafc);
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .hero {
+      background: linear-gradient(to right, #3f51b5, #5c6bc0);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      border-bottom: 4px solid #303f9f;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+    .language-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .language-switcher select {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .intro {
+      text-align: center;
+      margin: 1rem auto 2rem;
+      max-width: 680px;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      padding: 0 1rem;
+      max-width: 960px;
+      margin: 0 auto 2rem;
+    }
+    .card {
+      background: #ffffff;
+      border-left: 6px solid #3f51b5;
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      background: #f5f5f5;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #777;
+      border-top: 1px solid #ccc;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- 🌐 语言切换 -->
-  <div style="position: absolute; top: 1rem; right: 1rem;">
-    <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
+  <!-- 🌐 语言切换器 -->
+  <div class="language-switcher">
+    <select id="langswitcher">
       <option value="zh">🌏 中文</option>
       <option value="en">🇺🇸 English</option>
       <option value="ko">🇰🇷 한국어</option>
     </select>
   </div>
-  <!-- 其余内容从这里开始：页面头部、内容区等 -->
+
+  <!-- 顶部介绍区 -->
   <header class="hero">
     <h1>📰 今日要闻</h1>
-    <p>自动汇聚纽约华人圈与本地生活新闻</p >
+    <p>自动汇聚全球热点 · AI 精选生成 · 实时同步</p >
   </header>
 
-
+  <!-- 简介文案 -->
   <section class="intro">
-    <p style="text-align: center; margin-bottom: 1.5rem;">
-      本页面由 TOPO 自动生成，每日更新 3–5 条精选资讯。
-      <br />内容涵盖生活提醒、社区新闻、政策变化、好物优惠等。
+    <p>
+      本页面由 TOPO 系统自动生成。每日清晨自动推送，覆盖财经、科技、娱乐、国际、华人五大板块。
+      <br />精准、高效、有温度的资讯平台，由你掌控每一天节奏。
     </p >
   </section>
-<section class="modules">
-  <h2>📰 新闻总览 | News Categories</h2>
-  <div class="category-grid">
-    <a class="card" href="business.html">💼 商业财经</a >
-    <a class="card" href="tech.html">🧠 科技创新</a >
-    <a class="card" href="entertainment.html">🎬 娱乐文化</a >
-    <a class="card" href="global.html">🌍 国际新闻</a >
-    <a class="card" href="chinese.html">🧧 华人新闻</a >
-  </div>
-</section>
 
-
-  <section class="modules" id="postContainer">
-    <!-- 所有新闻卡片将由 post-display.js 自动注入 -->
+  <!-- 分类导航 -->
+  <section>
+    <div class="category-grid">
+      <a class="card" href="business.html">💼 商业财经</a >
+      <a class="card" href="tech.html">🧠 科技创新</a >
+      <a class="card" href="entertainment.html">🎬 娱乐文化</a >
+      <a class="card" href="global.html">🌍 国际新闻</a >
+      <a class="card" href="chinese.html">🧧 华人资讯</a >
+      <a class="card" href="eventnews.html">🎉 周边活动</a >
+      <a class="card" href="weather.html">☁️ 天气资讯</a >
+    </div>
   </section>
-  <div id="rssContainer" class="modules" style="padding:2rem;"></div>
-<script>
-async function fetchRSSFeed() {
-  const rssUrl = "https://rss.nytimes.com/services/xml/rss/nyt/NYRegion.xml"; // ✅ 纽约时报·本地频道
-  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";  // ← 可选，如有 rss2json 的 API key，可加速
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
-  const res = await fetch(apiUrl);
-  const json = await res.json();
+</body>
 
-  const items = json.items || [];
-  const container = document.getElementById("rssContainer");
-  container.innerHTML = "";
-
-  if (items.length === 0) {
-  container.innerHTML = `<p style="text-align:center;">📡 🤖 TOPO AI 正在同步资讯中，请稍候刷新页面</p >`;
-  return;
-}
-
-  items.forEach((item, index) => {
-    if (index >= 5) return; // 限制 5 条
-    const title = item.title || "无标题";
-    const desc = item.description || "无描述";
-    const link = item.link || "#";
-
-    const card = document.createElement("div");
-    card.className = "card";
- card.style = `
-  background: #000;
-  border-left: 6px solid #0ff;
-  padding: 1.2rem;
-  margin-bottom: 1.2rem;
-  border-radius: 10px;
-  color: #fff;
-`;
-
-   card.innerHTML = `
-  <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
-  <p style="font-size:0.9rem;">${desc}</p >
-  <small style="display:block; margin-top: 0.5rem; color: #ccc;">来源：New York Times · <a href="${link}" target="_blank" style="color: #0af;">查看原文</a ></small>
-`;
-    container.appendChild(card);
-  });
-}
-
-fetchRSSFeed();
-  </script>
-  <!-- 脚本加载 -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="scripts/supabase.js"></script>
-  <script src="scripts/post-upload.js"></script>
-  <script src="scripts/post-display.js"></script>
-
-  <!-- 页脚 -->
-  <div id="footer"></div>
-  <script>
-    fetch("/components/footer.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("footer").innerHTML = html;
-      });
-  </script>
     <!-- 多语言切换脚本（可选） -->
   <script>
     document.getElementById('langswitcher').addEventListener('change', function () {
@@ -123,5 +131,15 @@ fetchRSSFeed();
       }
     });
   </script>
+<!-- 页脚 -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
 </body>
 </html>

@@ -3,29 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>天气频道 - TOPO TODAY</title>
-  <style>
+     <style>
     body {
-      font-family: Arial, sans-serif;
+      background: #f4f8f4;
+      font-family: "Helvetica Neue", sans-serif;
+    }
+    header {
+      background: #bef0b3;
+      color: white;
+      text-align: center;
       padding: 2rem;
-      background: #fff9db;
-      color: #333;
+    }
+    .modules {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     .rss-card {
-      background: #fff;
-      padding: 1.2rem;
+      background: #ffffff;
+      border-left: 6px solid #64fb85;
+      padding: 1.3rem;
+      margin: 1.2rem auto;
       border-radius: 12px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
+      max-width: 800px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
     .rss-card h3 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
     }
     .rss-card p {
-      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .rss-card a {
+      font-size: 0.85rem;
+      color: #ccf9bc;
+      text-decoration: none;
+    }
+    .rss-card a:hover {
+      text-decoration: underline;
     }
     .rss-card small {
       color: #888;
+      display: block;
+      margin-top: 0.4rem;
     }
   </style>
 </head>
@@ -41,96 +62,50 @@
   </div>
 
   <!-- 其余内容从这里开始：页面头部、内容区等 -->
-  <header class="hero">
-    <h1>🌤️ 天气提醒 · Weather Alerts</h1>
-  </header>
-  <section class="intro">
-    <p style="text-align: center; margin-bottom: 1.5rem;">
-      本页面由 TOPO 自动生成，每日更新天气预测。
-      <br />内容涵盖未来几天的天气情况及重要天气提醒。
-    </p >
-  </section>
+ <header class="hero">
+  <h1>📡 TOPO 今日助手</h1>
+  <p>天气提醒 · 穿搭建议 · AI 语录 · 小贴士</p >
+</header>
 
+<section class="modules">
+  <div class="card" style="background:#fff9db; border-left:6px solid #ffc107;">
+    <h3>🌤️ 今日天气</h3>
+    <p>纽约今日气温 3°C ~ 7°C，风大，建议保暖出行。</p >
+  </div>
 
-  <section class="modules" id="postContainer">
-    <!-- 所有新闻卡片将由 post-display.js 自动注入 -->
-  </section>
-<div id="rssContainer" class="modules" style="padding:2rem;"></div>
+  <div class="card" style="background:#ede7f6; border-left:6px solid #673ab7;">
+    <h3>🧥 穿搭建议</h3>
+    <p>推荐：羽绒外套 + 围巾，避免长时间户外停留。</p >
+  </div>
+
+  <div class="card" style="background:#e3f2fd; border-left:6px solid #2196f3;">
+    <h3>🤖 Dodobot 今日建议</h3>
+    <p>“今天你不需要完美，只需要勇敢出门。”</p >
+  </div>
+
+  <div class="card" style="background:#fce4ec; border-left:6px solid #ec407a;">
+    <h3>📍 小提醒</h3>
+    <p>地铁 7 号线预计早高峰略有延迟，建议提前 10 分钟出门。</p >
+  </div>
+</section>
+
+<section class="modules">
+  <h2>🌤️ 天气提醒 & Dodobot 提示</h2>
+  <div id="weatherTips"></div>
+  <div id="aiAdvice"></div>
+</section>
+
+<script src="scripts/ai-weather.js"></script>
+  
+<!-- 页脚 -->
+<div id="footer"></div>
 <script>
-async function fetchRSSFeed() {
-  const rssUrl = "https://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=349727";
-  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";  // ← 可选，如有 rss2json 的 API key，可加速
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
-  const res = await fetch(apiUrl);
-  const json = await res.json();
-
-  const items = json.items || [];
-  const container = document.getElementById("rssContainer");
-  container.innerHTML = "";
-
-  if (items.length === 0) {
-    container.innerHTML = `<p style="text-align:center;">⚠️ 暂无新闻数据。</p >`;
-    return;
-  }
-
-  items.forEach((item, index) => {
-    if (index >= 5) return; // 限制 5 条
-    const title = item.title || "无标题";
-    const desc = item.description || "无描述";
-    const link = item.link || "#";
-
-    const card = document.createElement("div");
-    card.className = "card";
-    card.style = `
-      background: #fff9db;
-      border-left: 6px solid #ffc107;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-    `;
-
-    card.innerHTML = `
-      <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
-      <p style="font-size:0.9rem;">${desc}</p >
-      <a href="${link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
-    `;
-    container.appendChild(card);
-  });
-}
-
-fetchRSSFeed();
-  </script>
-  <!-- 脚本加载 -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="scripts/supabase.js"></script>
-  <script src="scripts/post-upload.js"></script>
-  <script src="scripts/post-display.js"></script>
-
-  <!-- 页脚 -->
-  <div id="footer"></div>
-  <script>
-    fetch("/components/footer.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("footer").innerHTML = html;
-      });
-  </script>
-    <!-- 多语言切换脚本（可选） -->
-  <script>
-    document.getElementById('langswitcher').addEventListener('change', function () {
-      const lang = this.value;
-      if (lang === 'zh') {
-        document.querySelector('h1').innerText = "📰 今日要闻";
-        document.querySelector('.hero p').innerText = "自动汇聚纽约华人圈与本地生活新闻";
-      } else if (lang === 'en') {
-        document.querySelector('h1').innerText = "📰 Today's News";
-        document.querySelector('.hero p').innerText = "Automatically curated headlines from the NYC Chinese community.";
-      } else if (lang === 'ko') {
-        document.querySelector('h1').innerText = "📰 오늘의 뉴스";
-        document.querySelector('.hero p').innerText = "뉴욕 중국 커뮤니티의 소식을 자동으로 수집합니다.";
-      }
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
     });
-  </script>
+</script>
+
 </body>
 </html>

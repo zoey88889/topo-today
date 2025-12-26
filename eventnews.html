@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎉 活动频道 | TOPO TODAY</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+   <style>
+    body {
+      background: #fff3e0;
+      font-family: "Helvetica Neue", sans-serif;
+    }
+    header {
+      background: #ef91f9;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .modules {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #fb64f4;
+      padding: 1.3rem;
+      margin: 1.2rem auto;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .rss-card h3 {
+      margin-bottom: 0.6rem;
+    }
+    .rss-card p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .rss-card a {
+      font-size: 0.85rem;
+      color: #f4e7f2;
+      text-decoration: none;
+    }
+    .rss-card a:hover {
+      text-decoration: underline;
+    }
+    .rss-card small {
+      color: #888;
+      display: block;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>🎉 本地活动频道</h1>
+    <p>发现纽约每周热门活动、节庆和展览～</p >
+  </header>
+
+  <section class="modules">
+    <h2>📍 本周精选活动</h2>
+    <div id="eventsContainer" class="rss-section"></div>
+  </section>
+
+  <script src="rss/events.js"></script>
+</body>
+</html>
