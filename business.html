@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💼 商业财经频道 | TOPO TODAY</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body { background: #f3f4f6; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #2196f3;
+      margin: 1rem auto;
+      padding: 1.2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .rss-card h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+    .rss-card p { font-size: 0.9rem; color: #444; }
+    .rss-card a { color: #1a73e8; text-decoration: none; font-size: 0.85rem; }
+    .rss-card small { display: block; color: #aaa; margin-top: 0.3rem; font-size: 0.75rem; }
+    header { background: #003366; color: white; padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💼 商业财经频道</h1>
+  <p>自动聚合 Bloomberg、CNBC、财经华文媒体等财经新闻</p >
+</header>
+
+<section id="rssContainer" class="modules" style="padding: 2rem;"></section>
+
+<script>
+async function fetchBusinessRSS() {
+  const rssUrl = "https://feeds.marketwatch.com/marketwatch/topstories/";
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+  try {
+    const res = await fetch(apiUrl);
+    const json = await res.json();
+    const items = json.items || [];
+
+    const container = document.getElementById("rssContainer");
+    container.innerHTML = "";
+
+    if (items.length === 0) {
+      container.innerHTML = `<p style="text-align:center;">📡 暂无商业新闻，请稍后再试。</p >`;
+      return;
+    }
+
+    items.slice(0, 6).forEach(item => {
+      const title = item.title || "暂无标题";
+      const desc = item.description || "暂无摘要";
+      const link = item.link || "#";
+      const pubDate = item.pubDate?.split(" ")[0] || "";
+
+      const card = document.createElement("div");
+      card.className = "rss-card";
+      card.innerHTML = `
+        <h3>💼 ${title}</h3>
+        <p>${desc.slice(0, 90)}...</p >
+        <a href="${link}" target="_blank">🔗 查看原文</a >
+        <small>来源：MarketWatch | ${pubDate}</small>
+      `;
+      container.appendChild(card);
+    });
+  } catch (err) {
+    document.getElementById("rssContainer").innerHTML = `<p style="text-align:center;">⚠️ 获取失败，请检查网络或 API 状态。</p >`;
+    console.error(err);
+  }
+}
+
+fetchBusinessRSS();
+</script>
+
+<!-- Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
+</body>
+</html>
