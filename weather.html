@@ -35,20 +35,26 @@
 
 <script>
 async function fetchRSSFeed() {
- const rssUrl = "https://rss.weather.gov/rss/nyzone1.rss";
-const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
-const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&api_key=${apiKey}`;
+  const rssUrl = "https://rss.nytimes.com/services/xml/rss/nyt/NYRegion.xml"; // ✅ 纽约时报·本地频道
+  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";  // ← 可选，如有 rss2json 的 API key，可加速
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
   const res = await fetch(apiUrl);
   const json = await res.json();
 
   const items = json.items || [];
   const container = document.getElementById("rssContainer");
-  container.innerHTML = ""; // 清空旧内容
+  container.innerHTML = "";
+
+  if (items.length === 0) {
+    container.innerHTML = `<p style="text-align:center;">⚠️ 暂无新闻数据。</p >`;
+    return;
+  }
 
   items.forEach((item, index) => {
-    if (index >= 5) return; // 限制展示条数
-    const title = item.title || "暂无标题";
-    const desc = item.description || "暂无描述";
+    if (index >= 5) return; // 限制 5 条
+    const title = item.title || "无标题";
+    const desc = item.description || "无描述";
     const link = item.link || "#";
 
     const card = document.createElement("div");
@@ -62,9 +68,9 @@ const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponen
     `;
 
     card.innerHTML = `
-      <h3 style="margin-bottom:0.5rem;">🌤️ ${title}</h3>
+      <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
       <p style="font-size:0.9rem;">${desc}</p >
-      <a href="${item.link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
+      <a href="${link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
     `;
     container.appendChild(card);
   });
