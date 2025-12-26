@@ -33,7 +33,6 @@
   <h1>🌤️ 天气提醒 · Weather Alerts</h1>
   <div id="rssContainer">⏳ 正在加载天气信息...</div>
 
-
 <script>
   async function fetchRSSFeed() {
     const proxy = "https://api.allorigins.win/get?url=";
@@ -45,27 +44,44 @@
 
       const parser = new DOMParser();
       const xml = parser.parseFromString(data.contents, "text/xml");
-      const item = xml.querySelector("item");
-
-      const title = item?.querySelector("title")?.textContent || "暂无标题";
-      const desc = item?.querySelector("description")?.textContent || "暂无描述";
-      const link = item?.querySelector("link")?.textContent || "#";
+      const items = xml.querySelectorAll("item");
 
       const container = document.getElementById("rssContainer");
-      container.innerHTML = `
-        <div class="card" style="background:#fff9db; border-left:6px solid #ffc107; padding:1rem; border-radius:8px;">
-          <h3>🌤️ ${title}</h3>
-          <p>${desc}</p >
-          <a href="${link}" target="_blank">🔗 查看详情</a >
-        </div>
-      `;
-    } catch (e) {
-      console.error("天气RSS加载失败", e);
+      container.innerHTML = "";
+
+      items.forEach((item, index) => {
+        if (index >= 5) return; // 限制 5 条
+        const title = item.querySelector("title")?.textContent || "暂无标题";
+        const desc = item.querySelector("description")?.textContent || "暂无描述";
+        const link = item.querySelector("link")?.textContent || "#";
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style = `
+          background: #fff9db;
+          border-left: 6px solid #ffc107;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          border-radius: 8px;
+        `;
+
+        card.innerHTML = `
+          <h3 style="margin-bottom:0.5rem;">🌤️ ${title}</h3>
+          <p style="font-size:0.9rem;">${desc}</p >
+          <a href="${link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
+        `;
+
+        container.appendChild(card);
+      });
+    } catch (error) {
+      console.error("❌ RSS 读取失败：", error);
+      document.getElementById("rssContainer").innerHTML = "<p>⚠️ 无法加载天气数据。</p >";
     }
   }
 
   fetchRSSFeed();
 </script>
+
 
   <!-- 脚本加载 -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
