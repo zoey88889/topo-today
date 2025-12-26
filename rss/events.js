@@ -36,6 +36,5 @@ async function fetchEventRSS() {
     `;
     container.appendChild(card);
   });
-}
 
 fetchEventRSS();
