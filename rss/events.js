@@ -1,5 +1,5 @@
 async function fetchEventRSS() {
-  const rssUrl = "https://www.nyc.gov/site/dca/events/events-rss.page";
+  const rssUrl = "https://www.eventbrite.com/d/ny--new-york/events--this-week/rss/";
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
   const res = await fetch(apiUrl);
