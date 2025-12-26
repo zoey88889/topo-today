@@ -34,10 +34,10 @@
   <section class="modules" id="postContainer">
     <!-- 所有新闻卡片将由 post-display.js 自动注入 -->
   </section>
-
+<div id="rssContainer" class="modules" style="padding:2rem;"></div>
 <script>
 async function fetchRSSFeed() {
-  const rssUrl = "https://rss.nytimes.com/services/xml/rss/nyt/NYRegion.xml"; // ✅ 纽约时报·本地频道
+  const rssUrl = "https://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=349727";
   const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";  // ← 可选，如有 rss2json 的 API key，可加速
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
