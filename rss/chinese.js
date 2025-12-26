@@ -1,15 +1,19 @@
 const rssSources = [
   {
-    name: "世界日报",
-    url: "https://www.worldjournal.com/feed",
+    name: "BBC 中文网",
+    url: "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"
+  },
+  {
+    name: "德国之声中文",
+    url: "https://rss.dw.com/rdf/rss-chi-all"
+  },
+  {
+    name: "法广中文 RFI",
+    url: "https://www.rfi.fr/tw/rss"
   },
   {
     name: "星岛日报",
-    url: "https://www.singtaousa.com/feed", // 如失效可替换
-  },
-  {
-    name: "纽约华人资讯网",
-    url: "https://ny.huarenlife.com/feed", // 未来自营频道
+    url: "https://www.singtaousa.com/feed"
   }
 ];
 

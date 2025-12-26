@@ -1,10 +1,11 @@
 async function fetchEventRSS() {
-  const rssUrl = "https://www.eventbrite.com/d/ny--new-york/events--this-week/rss/";
-  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&api_key=${apiKey}`;
+  const rssUrl = "https://www.nyc.gov/site/dca/events/events-rss.page";
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
   const res = await fetch(apiUrl);
-  const json = await res.json();
+  const data = await res.json();
+  console.log(data.items);
+}
 
   const items = json.items || [];
   const container = document.getElementById("eventsContainer");

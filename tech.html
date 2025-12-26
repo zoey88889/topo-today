@@ -86,7 +86,7 @@ async function fetchTechRSS() {
       card.innerHTML = `
         <h3>💻 ${title}</h3>
         <p>${desc.slice(0, 90)}...</p >
-        <a href="" target="_blank">🔗 查看原文</a >
+        <a href="${link}" target="_blank">🔗 查看原文</a >
         <small>来源：The Verge | ${pubDate}</small>
       `;
       container.appendChild(card);

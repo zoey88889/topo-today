@@ -5,18 +5,50 @@
   <title>🧧 华人资讯频道 | TOPO Today</title>
   <link rel="stylesheet" href="styles/styles.css" />
 
-<style>
-  body {
-  background: #fff3e0;
-  font-family: "Helvetica Neue", sans-serif;
-  margin: 0;
-  padding: 0;
+  <style>
+    body {
+      background: #f3f4f6;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  .rss-card {
+  background: #ffffff;
+  border-left: 6px solid #f18f39;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  width: 100%;              /* 让卡片填满网格单元 */
+  box-sizing: border-box;   /* 避免撑破 */
 }
-
-header {
-  background: #ef6c00;
-  color: white;
-  text-align: center;
+    .rss-card h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    .rss-card p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .rss-card a {
+      color: #fab570;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .rss-card small {
+      display: block;
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+    }
+    header {
+      background: #f7be98;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+.center-wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
   padding: 2rem 1rem;
 }
 
@@ -25,52 +57,14 @@ header {
   margin: 2rem auto;
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
 }
-
-/* 卡片样式 */
-.rss-card {
-  background: #ffffff;
-  border-left: 6px solid #fb8c00;
-  padding: 1.3rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
+.chinese-theme .rss-card {
+  border-left: 6px solid #f18f39;
+  background: #fff8f1;
 }
-
-.rss-card:hover {
-  transform: translateY(-5px);
-}
-
-.rss-card h3 {
-  margin-bottom: 0.6rem;
-  font-size: 1.1rem;
-  color: #d84315;
-}
-
-.rss-card p {
-  font-size: 0.95rem;
-  color: #444;
-  line-height: 1.5;
-}
-
-.rss-card a {
-  font-size: 0.85rem;
-  color: #e65100;
-  text-decoration: none;
-}
-
-.rss-card a:hover {
-  text-decoration: underline;
-}
-
-.rss-card small {
-  color: #888;
-  display: block;
-  margin-top: 0.4rem;
-}
-</style>
+  </style>
 </head>
 
 <body>
@@ -78,10 +72,9 @@ header {
     <h1>🧧 华人生活新闻频道</h1>
     <p>自动同步世界日报、星岛日报、本地华文头条资讯</p >
   </header>
+<div id="chineseNewsContainer" class="modules rss-section chinese-theme"></div>
+  
 
-  <section class="modules">
-    <h2>📌 今日头条 · 华人圈</h2>
-    <div id="chineseNewsContainer" class="rss-section"></div>
   </section>
 
   <script src="rss/chinese.js"></script>
