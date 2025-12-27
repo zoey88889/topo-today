@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>👗 Styleboard | TOPO 每日穿搭灵感板</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body {
+      background: #f8f5ff;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #b39ddb;
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    .styleboard-container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .style-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .style-card:hover {
+      transform: translateY(-4px);
+    }
+    .style-card img {
+      width: 100%;
+      display: block;
+    }
+    .style-card .caption {
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🎨 TOPO Styleboard</h1>
+    <p>每日穿搭灵感 · AI视觉推荐 · Dreamstyle × Real life</p >
+  </header>
+
+  <section class="styleboard-container">
+    <!-- Example Card 1 -->
+    <div class="style-card">
+      <img src="https://source.unsplash.com/400x500/?fashion,coat" alt="Style of the Day">
+      <div class="caption">🧥 冬日温柔系穿搭推荐 · 米色大衣 × 羊毛围巾</div>
+    </div>
+
+    <!-- Example Card 2 -->
+    <div class="style-card">
+      <img src="https://source.unsplash.com/400x500/?fashion,korean" alt="Style Lookbook">
+      <div class="caption">🎀 韩系OOTD · 针织毛帽 × 短裙 × 厚底靴</div>
+    </div>
+
+    <!-- Example Card 3 -->
+    <div class="style-card">
+      <img src="https://source.unsplash.com/400x500/?streetstyle" alt="Street Style">
+      <div class="caption">👟 街头感穿搭 · 高帮帆布鞋 × 牛仔外套</div>
+    </div>
+
+    <!-- 未来动态注入区域 -->
+    <div class="style-card">
+      <img src="https://source.unsplash.com/400x500/?fashion,minimal" alt="Minimal Look">
+      <div class="caption">✨ 极简白调穿搭 · 通勤感UP！</div>
+    </div>
+  </section>
+</body>
+</html>

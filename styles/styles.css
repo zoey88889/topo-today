@@ -224,6 +224,13 @@ nav input {
   color: #999;
   font-size: 0.8rem;
 }
+.floating-btn:hover {
+  animation: pulse 0.6s infinite alternate;
+}
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
 /* 页脚 */
 footer.footer {
   text-align: center;

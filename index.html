@@ -9,6 +9,15 @@
 
 <body>
   <!-- 🌐 语言切换 -->
+   <div class="rss-card" data-lang="zh">
+  <h3>📰 中文标题</h3>
+  <p>这是中文内容。</p >
+</div>
+
+<div class="rss-card" data-lang="en" style="display:none;">
+  <h3>📰 English Title</h3>
+  <p>This is the English content.</p >
+</div>
   <div style="position: absolute; top: 1rem; right: 1rem;">
     <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
       <option value="zh">🌏 中文</option>
@@ -71,7 +80,27 @@
       <h2>📰 今日资讯 · RSS Highlights</h2>
       <div id="dailyNewsContainer" class="rss-section"></div>
 </section>
-
+<!-- index.html 中 -->
+<a href="#" class="floating-btn" style="bottom: 100px; background: #ff80ab;">
+  👗
+  <span class="floating-text">穿搭灵感</span>
+</a >
+<a href="travel.html" class="floating-btn" style="bottom: 160px; background: #81d4fa;">
+  ✈️
+  <span class="floating-text">旅行推荐</span>
+</a >
+<a href="beauty1.html" class="floating-btn" style="bottom: 220px; background: #f48fb1;">
+  💄
+  <span class="floating-text">美妆精选</span>
+</a >
+<a href="fashion.html" class="floating-btn" style="bottom: 280px; background: #97ece4;">
+  👗
+  <span class="floating-text">时尚灵感</span>
+</a >
+<a href="meditation.html" class="floating-btn" style="bottom: 280px; background: #a5d6a7;">
+  🧘
+  <span class="floating-text">心灵片刻</span>
+</a >
 
     <!-- 🧭 精选频道导航 -->
     <section class="modules">
@@ -107,34 +136,36 @@
       </div>
     </section>
 </main>
+<div class="rss-card">
+  <h3>📢 NYPD 公布新年活动安全路线图</h3>
+  <p>🧠 TOPO 摘要：为保障跨年活动安全，警方将封锁部分街道并部署 3000 名安保人员，计划从 12 月 31 日中午起对时报广场周边实施交通管制。</p >
+  <a href="https://twitter.com/NYPD/status/1740000000" target="_blank">🔗 来源：NYPD 官方推特</a >
+</div>
 
-<section class="topo-dashboard">
-  <h2>🧠 TOPO AI 每日新闻摘要｜01.XX</h2>
-  <ul class="summary-list">
-    <li>
-      <strong>🗽 纽约焦点：</strong>
-      曼哈顿街头调查：鞋子、收据、电话残骸揭示城市日常
-      <br />
-      <span class="summary">🤖 TOPO 摘要：来自 NYT 的观察者笔记，从人类丢弃物品，窥探都市节奏感。</span>
-      <br /><small>📡 来源：New York Times ｜<a href=" ">🔗 查看原文</a ></small>
-    </li>
-    <li>
-      <strong>💼 财经趋势：</strong>
-      CPI 同比上涨 3.4%，美联储暂缓降息
-      <br />
-      <span class="summary">🤖 TOPO 摘要：市场观望气氛浓厚，分析师预计 3 月将为关键节点。</span>
-      <br /><small>📡 来源：CNBC ｜<a href="#">🔗 查看原文</a ></small>
-    </li>
-    <li>
-      <strong>🎬 娱乐更新：</strong>
-      奥斯卡提名出炉，《芭比》女主意外缺席
-      <br />
-      <span class="summary">🤖 TOPO 摘要：网络炸锅，粉丝质疑“粉红电影”被冷处理。</span>
-      <br /><small>📡 来源：BBC ｜<a href="#">🔗 查看原文</a ></small>
-    </li>
-    <!-- 更多条目可按需添加 -->
-  </ul>
-</section>
+<div class="rss-card">
+  <h3>🎉 Flushing 唐人街跨年庆典准备中</h3>
+  <p>🧠 TOPO 摘要：皇后区法拉盛将举行本地跨年市集和烟火活动，吸引大量亚裔家庭参加，预计人流量将突破 1 万人次。</p >
+  <a href="https://www.qns.com/2025/12/flushing-nyc-new-year-festival/" target="_blank">🔗 来源：QNS 本地新闻网</a >
+</div>
+
+<div class="rss-card">
+  <h3>🎭 曼哈顿冬季灯光节火热进行中</h3>
+  <p>🧠 TOPO 摘要：冬季灯光艺术展已在 Madison Square Park 开幕，设有多个互动灯光装置，免费入场至 1 月 10 日。</p >
+  <a href="https://www.nycgo.com/events/lightscape-2025/" target="_blank">🔗 来源：NYC Go 官方</a >
+</div>
+
+<div class="rss-card">
+  <h3>🚌 MTA 宣布跨年夜地铁免费搭乘</h3>
+  <p>🧠 TOPO 摘要：为鼓励安全出行，MTA 公共交通系统将在 12 月 31 日晚上 8 点至次日凌晨 5 点提供免费乘车服务。</p >
+  <a href="https://new.mta.info/press-release/2025-new-year-service" target="_blank">🔗 来源：MTA Press</a >
+</div>
+
+<div class="rss-card">
+  <h3>🧧 唐人街春节灯饰布置提前上线</h3>
+  <p>🧠 TOPO 摘要：尽管春节仍有数周，曼哈顿唐人街已率先挂起彩灯与横幅，营造节日氛围，商家陆续推出贺年礼盒促销。</p >
+  <a href="https://www.dnainfo.com/nyc/2025-chinatown-newyear/" target="_blank">🔗 来源：DNAinfo</a >
+</div>
+
   <!-- 📎 页脚 -->
   <div id="footer"></div>
 
