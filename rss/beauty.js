@@ -1,7 +1,7 @@
 async function fetchBeautyRSS() {
-  const rssUrl = "https://www.vogue.com/beauty/rss"; // 可替换为 Vogue Beauty 等源
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
+  const rssUrl = "https://www.byrdie.com/rss"; // 推荐美妆内容源
+const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
+const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&api_key=${apiKey}`;
   const res = await fetch(apiUrl);
   const json = await res.json();
 

@@ -1,5 +1,6 @@
 async function fetchFashionRSS() {
-  const rssUrl = "https://www.elle.com/rss/all.xml"; // Vogue / 可替换为 Hypebae、Elle 等
+  const rssUrl = "const rssUrl = "https://www.highsnobiety.com/rss"; // 潮流时尚媒体"; // Vogue / 可替换为 Hypebae、Elle 等
+  
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
   const res = await fetch(apiUrl);
