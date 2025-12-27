@@ -1,7 +1,8 @@
 async function fetchBeautyRSS() {
-  const rssUrl = "https://www.byrdie.com/rss"; // 推荐美妆内容源
-const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
-const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&api_key=${apiKey}`;
+  const rssUrl = "https://www.allure.com/feed/rss"; // ✅ Allure RSS feed
+  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz"; // 你的 rss2json key
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&api_key=${apiKey}`;
+
   const res = await fetch(apiUrl);
   const json = await res.json();
 
@@ -27,15 +28,13 @@ const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponen
     const summary = generateSummary(item.description);
 
     card.innerHTML = `
-      <h3>💋 ${item.title}</h3>
+      <h3>💄 ${item.title}</h3>
       <p>${summary}</p >
       <a href="${item.link}" target="_blank">🔗 查看原文</a >
-      <small>来源：VOGUE RSS Feed</small>
+      <small>来源：Allure 美妆频道</small>
     `;
     container.appendChild(card);
   });
 }
 
 fetchBeautyRSS();
-
-
