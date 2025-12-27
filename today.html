@@ -69,69 +69,193 @@
 
 <body>
 
-  <!-- 📌 内容模块 -->
+ 
+
+<!-- index.html 中 -->
+<a href="meditation.html" class="floating-btn" style="bottom: 300px; background: #a5d6a7;">
+  🧘
+  <span class="floating-text">心灵片刻</span>
+</a >
+
+<a href="styleboard.html" class="floating-btn" style="bottom: 240px; background: #f5dd56;">
+  🧣
+  <span class="floating-text">穿搭精选</span>
+</a >
+
+<a href="beauty1.html" class="floating-btn" style="bottom: 180px; background: #f48fb1;">
+  💄
+  <span class="floating-text">美妆精选</span>
+</a >
+
+<a href="fashion.html" class="floating-btn" style="bottom: 120px; background: #81d4fa;">
+  👗
+  <span class="floating-text">时尚灵感</span>
+</a >
+
+<a href="travel.html" class="floating-btn" style="bottom: 80px; background: #5c78f3;">
+  ✈️
+  <span class="floating-text">旅行推荐</span>
+</a >
+  <!-- 💌 联系我们浮动按钮 -->
+  <a href="contact.html" class="floating-btn">
+    💌<span class="floating-text">联系我们！</span>
+  </a >
+
+
+    <!-- 登录区 -->
+    <div class="auth-links" id="authArea">
+      <a href="login.html" id="loginBtn">登录 / 注册</a >
+      <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
+    </div>
+    <div id="welcome" style="text-align: center; margin-top: 1rem;"></div>
+  </header>
+
+
+
+  <!--   🌟 特别Banner 🌟 华人头条精选区块 -->
+<section class="modules">
+  <h2>🧧 TOPO 华人焦点</h2>
+  <div id="todayHighlight"></div>
+</section>
+
+<script>
+  fetch("/components/today-snippet.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("todayHighlight").innerHTML = html;
+    });
+</script>
+
+
+
+    <!-- 🧭 精选频道导航 -->
+    <section class="modules">
+      <h2 style="text-align:center;">🧭 精选频道导航</h2>
+      <div class="category-grid">
+           <a class="card" href="news.html" style="background:#e3f2fd; border-left:4px solid #101010;">🗽纽约焦点</a >
+        <a class="card" href="business.html" style="background:#e3f2fd; border-left:4px solid #2196f3;">💼 财经商业</a >
+        <a class="card" href="tech.html" style="background:#ede7f6; border-left:4px solid #673ab7;">💻 科技趋势</a >
+        <a class="card" href="entertainment.html" style="background:#fce4ec; border-left:4px solid #ec407a;">🎬 娱乐文化</a >
+        <a class="card" href="global.html" style="background:#fffde7; border-left:4px solid #fbc02d;">🌍 国际大事</a >
+        <a class="card" href="chinese.html" style="background:#fbe9e7; border-left:4px solid #e64a19;">🧧 华人热点</a >
+        <a class="card" href="weather.html" style="background:#e8f5e9; border-left:4px solid #43a047;">🌤️ 天气频道</a >
+        <a class="card" href="eventnews.html" style="background:#f3e5f5; border-left:4px solid #9c27b0;">🎉 本地活动</a >
+      </div>
+
+
+       <!-- 📌 内容模块 -->
   <section id="topHeadlines" class="modules">
     <h2>🧠 TOPO AI 摘要 · 🔥 TOPO Today ·快速浏览纽约与全球焦点新闻｜每日更新</h2>
 
-    <!-- 卡片占位 示例 -->
-    <div class="rss-card">
-      <h3>📣 曼哈顿唐人街家庭暴力致命案引社区高度关注</h3>
-      <p>🧠 TOPO 摘要：曼哈顿唐人街发生华裔家庭暴力致死案件，警方已拘捕嫌疑人，当地华人社区对长者安全问题表达关注。</p >
-      <a href="https://nypost.com/2025/12/25/us-news/maniac-sought-for-bludgeoning-76-year-old-mom-to-death-in-chinatown-busted-by-us-marshals/" target="_blank">🔗 来源：New York Post</a >
-      <small>🕓 更新于：2025年12月27日</small>
-    </div>
+ 
 
-   <section id="topHeadlines" class="modules">
-  
-  <!-- 版本 2 — 全国国际视角 -->
-  <div class="rss-card">
-    <h3>🌐 美国撤销驱逐揭露新疆拘押设施者，国际人权议题再起</h3>
-    <p>🧠 TOPO 摘要：美国 DHS 取消对曝光新疆拘押影片男子的驱逐令，引发国际舆论与人权组织关注。</p >
-    <a href="https://apnews.com/article/4501dd29b8bd61c7282c88693d47930e" target="_blank">🔗 来源：AP News｜点击查看详情</a >
-  </div>
+  <!-- 版本 3 — 本地新闻/国际大人物 / 纽约政策类/移民/突发事件 /全国国际视角-->
 
-  <!-- 版本 3 — 大人物 / 政策类 -->
-  <div class="rss-card">
-    <h3>⚖️ 华裔前官员案陪审团无一致意见，案件可能重审</h3>
-    <p>🧠 TOPO 摘要：纽约涉外代理案陪审团未达成一致，检方或重新起诉，引发法律界关注。</p >
-    <a href="https://www.wsj.com/us-news/law/jurors-deadlock-in-trial-of-linda-sun-accused-of-acting-as-china-agent-8ed1f027" target="_blank">🔗 来源：Wall Street Journal｜阅读原文</a >
-  </div>
 
-  <!-- 版本 4 — 本地节庆 & 活动 -->
+<div class="rss-card">
+  <h3>🌐 中国制裁 20 家美国防务公司及高管</h3>
+  <p>🧠 TOPO 摘要：中国针对美国对台湾大规模军售作出反制，冻结涉事企业资产并限制高管来往，引发全球供应链及政治连锁关注。</p >
+  <a href="https://apnews.com/article/31e1bdef85a4cae9a765b189497ca3bf" target="_blank">🔗 来源：AP News｜全球焦点</a >
+</div>  [oai_citation:1‡AP News](https://apnews.com/article/31e1bdef85a4cae9a765b189497ca3bf?utm_source=chatgpt.com)
+
+<div class="rss-card"></div>
+  <h3>✊ 华埠社区抗议 ICE 突袭 多人被捕</h3>
+  <p>🧠 TOPO 摘要：移民执法局在纽约华埠试图执行拘捕令遭社区集体阻拦，多人被捕，这象征华人社区在移民权利议题上的集体行动力。</p >
+  <a href="https://www.visahq.com/zh/news/2025-12-01/us/protesters-block-ice-raid-in-new-yorks-chinatown-several-arrested/" target="_blank">🔗 来源：VisaHQ 新闻平台｜本地社会新闻</a >
+</div>  [oai_citation:4‡VisaHQ](https://www.visahq.com/zh/news/2025-12-01/us/protesters-block-ice-raid-in-new-yorks-chinatown-several-arrested/?utm_source=chatgpt.com)
+
+<div class="rss-card">
+  <h3>🌍 美东华人侨团向香港火灾遇难者致敬</h3>
+  <p>🧠 TOPO 摘要：纽约华人社区领袖纷纷发起慰问行动，为香港火灾受害者及救援人员致意，展现侨界团结与跨境关怀。</p >
+  <a href="https://www.52hrtt.com/ny/n/w/info/fifm2025112701323218138010" target="_blank">🔗 来源：华人新闻平台｜社区动态</a >
+</div>  [oai_citation:5‡华人头条](https://www.52hrtt.com/ny/n/w/info/fifm2025112701323218138010?utm_source=chatgpt.com)
+
+
+<div class="rss-card">
+  <h3>⚖️ 华裔前官员案陪审团僵持未决</h3>
+  <p>🧠 TOPO 摘要：纽约高层助理及其丈夫被指未登记为外国代理人等多项指控，陪审团未能就定罪达成一致，案件可能重审。</p >
+  <a href="https://www.wsj.com/us-news/law/jurors-deadlock-in-trial-of-linda-sun-accused-of-acting-as-china-agent-8ed1f027" target="_blank">🔗 来源：WSJ｜法律焦点</a >
+</div>  [oai_citation:2‡华尔街日报](https://www.wsj.com/us-news/law/jurors-deadlock-in-trial-of-linda-sun-accused-of-acting-as-china-agent-8ed1f027?utm_source=chatgpt.com)
+
+
+  <!-- 版本  — 本地节庆 & 活动 -->
   <div class="rss-card">
     <h3>🎉 法拉盛跨年市集＋烟火秀即将来袭，1 万人预计参与</h3>
     <p>🧠 TOPO 摘要：皇后区法拉盛跨年大型市集与烟火活动即将举行，本地商家与游客热情高涨。</p >
     <a href="https://qns.com/2025/12/flushing-new-years-celebration/" target="_blank">🔗 来源：QNS 本地新闻｜更多资讯</a >
   </div>
 
-  <!-- 版本 5 — 社会 / 生活类 -->
   <div class="rss-card">
     <h3>🚇 MTA 跨年夜全线免费搭乘，鼓励安全出行</h3>
     <p>🧠 TOPO 摘要：为庆祝新年并提升安全出行，MTA 地铁将于 12/31 晚 8 点至次日凌晨 5 点提供免费服务。</p >
     <a href="https://new.mta.info/press-release/2025/12/10/mta-provides-free-subway-service-new-years-eve" target="_blank">🔗 来源：MTA 官方新闻</a >
   </div>
 
-  <!-- 额外推荐 -->
-  <div class="rss-card">
-    <h3>🏡 华人家庭学区房热议升温，全美父母焦虑榜首</h3>
-    <p>🧠 TOPO 摘要：学区房热潮持续升温，华人家庭对教育与置业的关系展开激烈讨论。</p >
-    <a href="https://www.ntdtv.com/gb/2025/09/24/a104022914.html" target="_blank">🔗 来源：新唐人电视台｜生活资讯</a >
-  </div>
+<div class="rss-card">
+  <h3>🌟 曼哈顿冬季灯光节点亮</h3>
+  <p>🧠 TOPO 摘要：冬季灯光艺术展已在Madison Square Park开幕，设有互动灯光装置与艺文装置，免费开放至1月10日。</p >
+  <a href="https://www.nycgo.com/events/madison-square-park-winter-lights/" target="_blank">🔗 来源：NYC Go 官方</a >
+</div>
 
-  <div class="rss-card">
-    <h3>🌍 美东侨团慰问香港火灾遇难者，社区跨境共鸣</h3>
-    <p>🧠 TOPO 摘要：纽约华人侨界发起跨境救援与悼念，展现社区社会责任感。</p >
-    <a href="https://www.52hrtt.com/ny/n/w/info/fifm2025112701323218138010" target="_blank">🔗 来源：华人新闻平台｜详细报导</a >
-  </div>
+<div class="rss-card">
+  <h3>🧧 唐人街春节灯饰早早上线</h3>
+  <p>🧠 TOPO 摘要：尽管春节尚未临近，曼哈顿唐人街已挂起灯笼与横幅，商家推出贺年商品营造节日氛围。</p >
+  <a href="https://www.dnainfo.com/new-york/20251224/chinatown-chinese-new-year-lanterns/" target="_blank">🔗 来源：DNAinfo</a >
+</div>
 
-</section>
+<div class="rss-card">
+  <h3>🍎 冬季水果市集本周开市</h3>
+  <p>🧠 TOPO 摘要：Union Square 冬季果蔬市集本周正式开市，供应季节性农产品与节日礼篮。</p >
+  <a href="https://www.grownyc.org/greenmarket/manhattan-union-square" target="_blank">🔗 来源：GrowNYC 官方</a >
+</div>
+
+<div class="rss-card">
+  <h3>🏛️ 大都会艺术博物馆新展“时光与记忆”</h3>
+  <p>🧠 TOPO 摘要：The Met 最新展览呈现20世纪艺术史中的社会变迁，展期持续至3月15日。</p >
+  <a href="https://www.metmuseum.org/exhibitions" target="_blank">🔗 来源：Met 官方官网</a >
+</div>
+
+<div class="rss-card">
+  <h3>🎶 中央公园新年管弦乐演奏会</h3>
+  <p>🧠 TOPO 摘要：由NY Philharmonic主办的户外新年交响音乐会将于1月1日中午在中央公园举行，向公众免费开放。</p >
+  <a href="https://nyphil.org/newyearconcert" target="_blank">🔗 来源：NY Philharmonic 官方</a >
+</div>
+
+<div class="rss-card">
+  <h3>🧤 冬季滑冰场开放季开始</h3>
+  <p>🧠 TOPO 摘要：Bryant Park 及 Prospect Park 冬季冰场已开放，提供租鞋服务及节日音乐现场表演。</p >
+  <a href="https://www.bryantpark.org/amenities/ice-skating" target="_blank">🔗 来源：Bryant Park 官方</a >
+</div>
+
+<div class="rss-card">
+  <h3>🍵 冬日茶文化节登场</h3>
+  <p>🧠 TOPO 摘要：本地茶文化推广会在本周末于曼哈顿举办，现场讲座 + 茶会体验适合家庭参与。</p >
+  <a href="https://nycteafestival.com" target="_blank">🔗 来源：NYC Tea Festival 官网</a >
+</div>
+
+
+
 
   </section>
+  <main class="container">
+   <!-- 🛰️ 宇宙便利贴 Intro -->
+    <section class="modules">
+      <h2>🛰️ 宇宙便利贴</h2>
+      <p>贴在你生活的每一处角落，为你导航、提醒、启发。</p >
+    </section>
+  <!-- 📎 页脚 -->
+  <div id="footer"></div>
 
-  <!-- 🧡 页脚 -->
-  <footer style="text-align:center; padding:2rem 1rem; font-size:0.85rem; color:#888;">
-    TOPO Today · Powered by TOPO AI News Engine © 2025
-  </footer>
-
+  <!-- 🔧 Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>
+  <script src="scripts/topo.init.js"></script>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
 </body>
 </html>
