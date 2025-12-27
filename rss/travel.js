@@ -1,19 +1,23 @@
 async function fetchTravelRSS() {
 
-  const sources = [
-    {
-      label: "Travel + Leisure",
-      url: "https://www.travelandleisure.com/rss"
-    },
-    {
-      label: "Lonely Planet",
-      url: "https://www.lonelyplanet.com/news/rss"
-    },
-    {
-      label: "NatGeo Travel",
-      url: "https://www.nationalgeographic.com/content/natgeo/en_us/travel/_jcr_content/rss.xml"
-    }
-  ];
+const rssSources = [
+  {
+    name: "Condé Nast Traveler",
+    url: "https://www.cntraveler.com/rss"
+  },
+  {
+    name: "Culture Trip",
+    url: "https://theculturetrip.com/feed"
+  },
+  {
+    name: "The Points Guy",
+    url: "https://thepointsguy.com/rss/"
+  },
+  {
+    name: "Skift",
+    url: "https://skift.com/feed/"
+  }
+];
 
   const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
   const container = document.getElementById("travelContainer");
