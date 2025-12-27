@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>📰 TOPO TODAY | 今日要闻</title>
+    <!-- 顶部介绍区 -->
+  <header class="hero">
+    <h1>📰 纽约热门头条 Hot Picks</h1>
+    <p>自动汇聚全球热点 · AI 精选生成 · 实时同步</p >
+  </header>
+  
   <link rel="stylesheet" href="styles/styles.css" />
+
+  <!-- 简介文案 -->
+  <section class="intro">
+    <p>
+     
+      <br />本页面由 TOPO 自动生成，每日更新 3～5 条精选资讯。
+      内容涵盖生活提醒、社区新闻、政策变化等。
+    </p >
+  </section>
   <style>
     body {
       background: linear-gradient(to bottom, #f5f7fa, #e2eafc);
@@ -86,35 +100,86 @@
     </select>
   </div>
 
-  <!-- 顶部介绍区 -->
-  <header class="hero">
-    <h1>📰 今日要闻</h1>
-    <p>自动汇聚全球热点 · AI 精选生成 · 实时同步</p >
-  </header>
 
-  <!-- 简介文案 -->
-  <section class="intro">
-    <p>
-      本页面由 TOPO 系统自动生成。每日清晨自动推送，覆盖财经、科技、娱乐、国际、华人五大板块。
-      <br />精准、高效、有温度的资讯平台，由你掌控每一天节奏。
-    </p >
+
+
+
+<body>
+  <!-- 🌐 语言切换 -->
+  <div style="position: absolute; top: 1rem; right: 1rem;">
+    <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
+      <option value="zh">🌏 中文</option>
+      <option value="en">🇺🇸 English</option>
+      <option value="ko">🇰🇷 한국어</option>
+    </select>
+  </div>
+
+
+  <section class="modules" id="postContainer">
+    <!-- 所有新闻卡片将由 post-display.js 自动注入 -->
   </section>
+  <div id="rssContainer" class="modules" style="padding:2rem;"></div>
+<script>
+async function fetchRSSFeed() {
+  const rssUrl = "https://rss.nytimes.com/services/xml/rss/nyt/NYRegion.xml"; // ✅ 纽约时报·本地频道
+  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";  // ← 可选，如有 rss2json 的 API key，可加速
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
-  <!-- 分类导航 -->
-  <section>
-    <div class="category-grid">
-      <a class="card" href="business.html">💼 商业财经</a >
-      <a class="card" href="tech.html">🧠 科技创新</a >
-      <a class="card" href="entertainment.html">🎬 娱乐文化</a >
-      <a class="card" href="global.html">🌍 国际新闻</a >
-      <a class="card" href="chinese.html">🧧 华人资讯</a >
-      <a class="card" href="eventnews.html">🎉 周边活动</a >
-      <a class="card" href="weather.html">☁️ 天气资讯</a >
-    </div>
-  </section>
+  const res = await fetch(apiUrl);
+  const json = await res.json();
 
-</body>
+  const items = json.items || [];
+  const container = document.getElementById("rssContainer");
+  container.innerHTML = "";
 
+  if (items.length === 0) {
+    container.innerHTML = `<p style="text-align:center;">⚠️ 暂无新闻数据。</p >`;
+    return;
+  }
+
+  items.forEach((item, index) => {
+    if (index >= 5) return; // 限制 5 条
+    const title = item.title || "无标题";
+    const desc = item.description || "无描述";
+    const link = item.link || "#";
+
+    const card = document.createElement("div");
+    card.className = "card";
+ card.style = `
+  background: #000;
+  border-left: 6px solid #0ff;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
+  color: #fff;
+`;
+
+    card.innerHTML = `
+      <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
+      <p style="font-size:0.9rem;">${desc}</p >
+      <a href="${link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
+    `;
+    container.appendChild(card);
+  });
+}
+
+fetchRSSFeed();
+  </script>
+  <!-- 脚本加载 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>
+  <script src="scripts/post-upload.js"></script>
+  <script src="scripts/post-display.js"></script>
+
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
     <!-- 多语言切换脚本（可选） -->
   <script>
     document.getElementById('langswitcher').addEventListener('change', function () {
@@ -131,7 +196,7 @@
       }
     });
   </script>
-<!-- 页脚 -->
+  <!-- 页脚 -->
 <div id="footer"></div>
 <script>
   fetch("/components/footer.html")
@@ -140,6 +205,6 @@
       document.getElementById("footer").innerHTML = html;
     });
 </script>
-
 </body>
 </html>
+
