@@ -51,7 +51,7 @@ const rssSources = [
         card.innerHTML = `
           <h3>✈️ ${item.title}</h3>
           <p>${summary}</p >
-          <a href=" " target="_blank">🔗 查看原文</a >
+          <a href="${item.link}" target="_blank">🔗 查看原文</a >
           <small>来源：${src.label}</small>
         `;
         container.appendChild(card);
