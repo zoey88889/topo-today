@@ -180,7 +180,50 @@ nav input {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.topo-dashboard {
+  background: #fff3e0;
+  padding: 2rem 1rem;
+  border-top: 2px solid #ff9800;
+  margin: 3rem auto;
+  max-width: 960px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
 
+.topo-dashboard h2 {
+  font-size: 1.4rem;
+  color: #d84315;
+  margin-bottom: 1rem;
+}
+
+.summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-list li {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  border-left: 5px solid #ffa726;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.summary-list li .summary {
+  display: block;
+  margin-top: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.summary-list li small {
+  display: block;
+  margin-top: 0.4rem;
+  color: #999;
+  font-size: 0.8rem;
+}
 /* 页脚 */
 footer.footer {
   text-align: center;
