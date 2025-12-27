@@ -1,5 +1,5 @@
 async function fetchFashionRSS() {
-  const rssUrl = "https://www.vogue.com/feed"; // Vogue / 可替换为 Hypebae、Elle 等
+  const rssUrl = "https://www.harpersbazaar.com/rss"; // Vogue / 可替换为 Hypebae、Elle 等
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
   const res = await fetch(apiUrl);
@@ -30,7 +30,7 @@ async function fetchFashionRSS() {
       <h3>💅 ${item.title}</h3>
       <p>${summary}</p >
       <a href="${item.link}" target="_blank">🔗 查看原文</a >
-      <small>来源：Vogue 时尚 RSS</small>
+      <small>来源：BAZAAR 时尚 RSS</small>
     `;
     container.appendChild(card);
   });

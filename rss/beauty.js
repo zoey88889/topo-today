@@ -1,5 +1,5 @@
 async function fetchBeautyRSS() {
-  const rssUrl = "https://www.allure.com/feed"; // 可替换为 Vogue Beauty 等源
+  const rssUrl = "https://www.vogue.com/beauty/rss"; // 可替换为 Vogue Beauty 等源
   const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
   const res = await fetch(apiUrl);
@@ -30,7 +30,7 @@ async function fetchBeautyRSS() {
       <h3>💋 ${item.title}</h3>
       <p>${summary}</p >
       <a href="${item.link}" target="_blank">🔗 查看原文</a >
-      <small>来源：Allure RSS Feed</small>
+      <small>来源：VOGUE RSS Feed</small>
     `;
     container.appendChild(card);
   });
