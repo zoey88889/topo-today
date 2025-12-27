@@ -21,7 +21,7 @@ const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
 const container = document.getElementById("travelContainer");
 
 function generateSummary(description) {
-  if (!description) return "🧠 TOPO AI 正在生成摘要，请稍后刷新";
+  if (!description) return "📡 TOPO AI 正在同步全球旅行灵感...";
   const clean = description.replace(/<[^>]+>/g, "").slice(0, 100);
   return `🌍 TOPO 摘要：${clean}...`;
 }
