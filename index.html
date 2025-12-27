@@ -68,13 +68,7 @@
   <span class="floating-text">华人焦点</span>
 </a >
 
-<script>
-  fetch("/components/today-snippet.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("todayHighlight").innerHTML = html;
-    });
-</script>
+
 
 
 
@@ -157,5 +151,12 @@
         document.getElementById("footer").innerHTML = html;
       });
   </script>
+  <script>
+  fetch("/components/today-snippet.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("todayHighlight").innerHTML = html;
+    });
+</script>
 </body>
 </html>

@@ -5,18 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🗞️ TOPO Today · 今日特别头条</title>
   <link rel="stylesheet" href="styles/styles.css" />
-  
 </head>
 
 <body>
 
-<script>
-  fetch("/components/today-snippet.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("todayHighlight").innerHTML = html;
-    });
-</script>
+<header class="hero">
+  <h1>🗞️ TOPO 华人焦点</h1>
+  <p>每日追踪 🔥 华人与纽约焦点资讯，由 TOPO AI 摘要引擎生成</p >
+</header>
+
+<main class="container">
+
+  <!-- 🌟 华人焦点区域 -->
+  <section class="modules">
+    <h2>🧧 TOPO 华人焦点</h2>
+    <div id="todayHighlight"></div>
+    <p style="text-align: center; margin-top: 1rem;">
+      <a href="https://topoai.nyc/chinese-news" target="_blank">🔗 查看更多华人焦点新闻
+      </a >
+    </p >
+  </section>
+
+
 <!-- index.html 中 -->
 <a href="meditation.html" class="floating-btn" style="bottom: 300px; background: #a5d6a7;">
   🧘
@@ -58,27 +68,7 @@
 
  
 
-  <!--   🌟 特别Banner 🌟 华人头条精选区块 -->
-<section class="modules">
-  <h2>🧧 TOPO 华人焦点</h2>
- <p style="text-align: center; margin-top: 1rem;">
-  <a href="today.html" style="color:#f63d05; text-decoration: underline; font-weight:bold;">🔍 查看更多 TOPO 华人焦点资讯</a >
-</p >
-<a href="today.html" class="floating-btn" style="bottom: 360px; background: #f93c03;">
-  🧠
-  <span class="floating-text">华人焦点</span>
-</a >
-
-<script>
-  fetch("/components/today-snippet.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("todayHighlight").innerHTML = html;
-    });
-</script>
-
   <!-- 版本 3 — 本地新闻/国际大人物 / 纽约政策类/移民/突发事件 /全国国际视角-->
-
 
 <div class="rss-card">
   <h3>🌐 中国制裁 20 家美国防务公司及高管</h3>
@@ -178,6 +168,14 @@
 </div>
 
 
+
+<script>
+  fetch("/components/today-snippet.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("todayHighlight").innerHTML = html;
+    });
+</script>
 
 
   </section>
