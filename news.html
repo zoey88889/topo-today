@@ -90,29 +90,7 @@
   </style>
 </head>
 
-<body>
-  <!-- 🌐 语言切换器 -->
-  <div class="language-switcher">
-    <select id="langswitcher">
-      <option value="zh">🌏 中文</option>
-      <option value="en">🇺🇸 English</option>
-      <option value="ko">🇰🇷 한국어</option>
-    </select>
-  </div>
 
-
-
-
-
-<body>
-  <!-- 🌐 语言切换 -->
-  <div style="position: absolute; top: 1rem; right: 1rem;">
-    <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
-      <option value="zh">🌏 中文</option>
-      <option value="en">🇺🇸 English</option>
-      <option value="ko">🇰🇷 한국어</option>
-    </select>
-  </div>
 
 
   <section class="modules" id="postContainer">
@@ -132,10 +110,15 @@ async function fetchRSSFeed() {
   const container = document.getElementById("rssContainer");
   container.innerHTML = "";
 
-  if (items.length === 0) {
-    container.innerHTML = `<p style="text-align:center;">🛰️TOPO AI 的👨‍🚀 播报员 DodvaBot 蓝胖子报道 以下内容：</p >`;
-    return;
-  }
+ if (items.length === 0) {
+  container.innerHTML = `
+    <div style="text-align:center; font-size:0.95rem;">
+      🛰️ TOPO AI 播报员 DodvaBot 正在赶往现场…
+      <br />
+      ⏳ 请稍候，新闻即将抵达地球站！
+    </div>`;
+  return;
+}
 
   items.forEach((item, index) => {
     if (index >= 5) return; // 限制 5 条
@@ -153,12 +136,18 @@ async function fetchRSSFeed() {
   border-radius: 10px;
   color: #fff;
 `;
+function generateSummary(description) {
+  if (!description) return "🧠 TOPO AI 正在生成摘要，请稍后刷新查看";
+  const clean = description.replace(/<[^>]+>/g, "").slice(0, 100);
+  return `🤖 TOPO 摘要：${clean}...`;
+}
+const summary = generateSummary(item.description);
 
-    card.innerHTML = `
-      <h3 style="margin-bottom:0.5rem;">📰 ${title}</h3>
-      <p style="font-size:0.9rem;">${desc}</p >
-      <a href="${link}" target="_blank" style="font-size:0.85rem; color: #2196f3;">🔗 查看详情</a >
-    `;
+card.innerHTML = `
+  <h3>📰 ${title}</h3>
+  <p>${summary}</p >
+  <small>来源：New York Times · <a href=" " target="_blank" style="color: #0af;">查看原文</a ></small>
+`;
     container.appendChild(card);
   });
 }
