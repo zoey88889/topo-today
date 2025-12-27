@@ -183,7 +183,7 @@ nav input {
 .topo-dashboard {
   background: #1d1d1c;
   padding: 2rem 1rem;
-  border-top: 2px solid #ff9800;
+  border-top: 2px solid #3b3a3a;
   margin: 3rem auto;
   max-width: 960px;
   border-radius: 8px;
@@ -192,7 +192,7 @@ nav input {
 
 .topo-dashboard h2 {
   font-size: 1.4rem;
-  color: #d84315;
+  color: #606ef0;
   margin-bottom: 1rem;
 }
 
@@ -206,7 +206,7 @@ nav input {
   background: #010101;
   padding: 1rem;
   margin-bottom: 1.2rem;
-  border-left: 5px solid #ffa726;
+  border-left: 5px solid #5e5e5d;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
