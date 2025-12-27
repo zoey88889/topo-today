@@ -175,6 +175,17 @@ nav input {
   width: 100%;              /* 让卡片填满网格单元 */
   box-sizing: border-box;   /* 避免撑破 */
 }
+/* 通用模块区 */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+
 #todayHighlight h3 {
   margin-top: 0;
   color: #333;
