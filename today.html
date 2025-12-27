@@ -5,72 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🗞️ TOPO Today · 今日特别头条</title>
   <link rel="stylesheet" href="styles/styles.css" />
-  <style>
-    body {
-      background: #f9f9f9;
-      font-family: "Helvetica Neue", sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #ffc107;
-      color: #000;
-      padding: 2.2rem 1rem;
-      text-align: center;
-    }
-    .modules {
-      max-width: 1080px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .rss-card {
-      background: #fff;
-      border-left: 6px solid #ff9800;
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-    .rss-card h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    .rss-card p {
-      font-size: 0.95rem;
-      color: #444;
-      line-height: 1.6;
-    }
-    .rss-card a {
-      font-size: 0.85rem;
-      color: #ff5722;
-      text-decoration: none;
-    }
-    .rss-card small {
-      color: #888;
-      display: block;
-      margin-top: 0.4rem;
-    }
-    .special-banner {
-      background: #fff8e1;
-      border-left: 6px solid #ff6f00;
-      text-align: center;
-      padding: 1.2rem;
-      margin: 1.5rem auto;
-      max-width: 960px;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    .special-banner a {
-      color: #ff5722;
-      font-weight: 500;
-    }
-  </style>
+  
 </head>
 
 <body>
 
  
-
+  <!--   🌟 特别Banner 🌟 华人头条精选区块 -->
+<section class="modules">
+  <h2>🧧 TOPO 华人焦点 ·TOPO AI 摘要   TOPO Today ·快速浏览纽约与全球焦点新闻｜每日更新</h2>
+  <div id="todayHighlight"></div>
+</section>
 <!-- index.html 中 -->
 <a href="meditation.html" class="floating-btn" style="bottom: 300px; background: #a5d6a7;">
   🧘
@@ -112,12 +57,6 @@
 
 
 
-  <!--   🌟 特别Banner 🌟 华人头条精选区块 -->
-<section class="modules">
-  <h2>🧧 TOPO 华人焦点</h2>
-  <div id="todayHighlight"></div>
-</section>
-
 <script>
   fetch("/components/today-snippet.html")
     .then(res => res.text())
@@ -127,27 +66,6 @@
 </script>
 
 
-
-    <!-- 🧭 精选频道导航 -->
-    <section class="modules">
-      <h2 style="text-align:center;">🧭 精选频道导航</h2>
-      <div class="category-grid">
-           <a class="card" href="news.html" style="background:#e3f2fd; border-left:4px solid #101010;">🗽纽约焦点</a >
-        <a class="card" href="business.html" style="background:#e3f2fd; border-left:4px solid #2196f3;">💼 财经商业</a >
-        <a class="card" href="tech.html" style="background:#ede7f6; border-left:4px solid #673ab7;">💻 科技趋势</a >
-        <a class="card" href="entertainment.html" style="background:#fce4ec; border-left:4px solid #ec407a;">🎬 娱乐文化</a >
-        <a class="card" href="global.html" style="background:#fffde7; border-left:4px solid #fbc02d;">🌍 国际大事</a >
-        <a class="card" href="chinese.html" style="background:#fbe9e7; border-left:4px solid #e64a19;">🧧 华人热点</a >
-        <a class="card" href="weather.html" style="background:#e8f5e9; border-left:4px solid #43a047;">🌤️ 天气频道</a >
-        <a class="card" href="eventnews.html" style="background:#f3e5f5; border-left:4px solid #9c27b0;">🎉 本地活动</a >
-      </div>
-
-
-       <!-- 📌 内容模块 -->
-  <section id="topHeadlines" class="modules">
-    <h2>🧠 TOPO AI 摘要 · 🔥 TOPO Today ·快速浏览纽约与全球焦点新闻｜每日更新</h2>
-
- 
 
   <!-- 版本 3 — 本地新闻/国际大人物 / 纽约政策类/移民/突发事件 /全国国际视角-->
 
