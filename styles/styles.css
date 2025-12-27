@@ -112,6 +112,7 @@ nav input {
   transition: transform 0.2s ease;
   color: #fff;
 }
+
 .card:hover {
   transform: translateY(-5px);
   background: #222;
@@ -165,6 +166,15 @@ nav input {
 }
 
 /* RSS 区块渲染 */
+#todayHighlight {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
 .rss-section {
   display: flex;
   flex-direction: column;
@@ -173,8 +183,11 @@ nav input {
   padding: 1rem;
 }
 .rss-card {
-  animation: fadeIn 0.6s ease forwards;
-  opacity: 0;
+  background: #fffdfc;
+  border-left: 6px solid #ff7043;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -196,34 +209,7 @@ nav input {
   margin-bottom: 1rem;
 }
 
-.summary-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.summary-list li {
-  background: #010101;
-  padding: 1rem;
-  margin-bottom: 1.2rem;
-  border-left: 5px solid #5e5e5d;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-}
-
-.summary-list li .summary {
-  display: block;
-  margin-top: 0.5rem;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.summary-list li small {
-  display: block;
-  margin-top: 0.4rem;
-  color: #999;
-  font-size: 0.8rem;
-}
 .floating-btn:hover {
   animation: pulse 0.6s infinite alternate;
 }

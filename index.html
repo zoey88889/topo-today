@@ -57,18 +57,16 @@
       <h2>🛰️ 宇宙便利贴</h2>
       <p>贴在你生活的每一处角落，为你导航、提醒、启发。</p >
     </section>
-  <!-- 🔎 搜索栏 -->
-  <nav>
-    <input type="text" placeholder="🔍 搜索生活信息 / 店铺 / 服务" />
-  </nav>
-
-
 
   <!--   🌟 特别Banner 🌟 华人头条精选区块 -->
 <section class="modules">
   <h2>🧧 TOPO 华人焦点</h2>
   <div id="todayHighlight"></div>
 </section>
+<a href="today.html" class="floating-btn" style="bottom: 360px; background: #ff7043;">
+  🧠
+  <span class="floating-text">华人焦点</span>
+</a >
 
 <script>
   fetch("/components/today-snippet.html")
@@ -133,7 +131,11 @@
     </section>
 </main>
 
- 
+   <!-- 🔎 搜索栏 -->
+  <nav>
+    <input type="text" placeholder="🔍 搜索生活信息 / 店铺 / 服务" />
+  </nav>
+
   <!-- 📎 页脚 -->
   <div id="footer"></div>
 
