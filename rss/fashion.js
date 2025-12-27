@@ -29,7 +29,7 @@ async function fetchFashionRSS() {
     card.innerHTML = `
       <h3>💅 ${item.title}</h3>
       <p>${summary}</p >
-      <a href="${item.link}" target="_blank">🔗 查看原文</a >
+      <a href="${link}" target="_blank">🔗 查看原文</a >
       <small>来源：BAZAAR 时尚 RSS</small>
     `;
     container.appendChild(card);
