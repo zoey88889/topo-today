@@ -1,80 +1,25 @@
-async function fetchWeatherRSS() {
-  const rssUrl = "https://rss.weather.gov/rss/nyzone1.rss"; // 国家气象局 NY 区
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-  const container = document.getElementById("weatherTips");
-  container.innerHTML = "";
+document.addEventListener("DOMContentLoaded", () => {
+  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz"; ← 替换为你自己的 key
+  const city = "New York";
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=zh_cn`;
 
-  try {
-    const res = await fetch(apiUrl);
-    const json = await res.json();
-    const items = json.items || [];
+  fetch(apiUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      const temp = Math.round(data.main.temp);
+      const desc = data.weather[0].description;
+      const iconCode = data.weather[0].icon;
+      const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-    if (items.length === 0) {
-      container.innerHTML = `<p style="text-align:center;">📡 TOPO AI 正在连接天气源，请稍候…</p >`;
-      return;
-    }
-
-    items.slice(0, 3).forEach(item => {
-      const title = item.title || "暂无标题";
-      const desc = item.description || "暂无描述";
-      const link = item.link || "#";
-
-      const card = document.createElement("div");
-      card.className = "rss-card";
-      card.style = `
-        background: #e8f5e9;
-        border-left: 6px solid #43a047;
-        padding: 1.2rem;
-        margin-bottom: 1.2rem;
-        border-radius: 10px;
-        color: #333;
+      const weatherHTML = `
+        <div class="weather-card">
+          <h3>☀️ 当前天气 · ${city}</h3>
+          < img src="${iconUrl}" alt="${desc}" style="width:60px;">
+          <p>${desc}，${temp}°C</p >
+        </div>
       `;
 
-      card.innerHTML = `
-        <h3 style="margin-bottom:0.5rem;">🌤️ ${title}</h3>
-        <p style="font-size:0.9rem;">${desc}</p >
-        <small style="display:block; margin-top:0.5rem; color:#777;">来源：Weather.gov · <a href="${link}" target="_blank" style="color:#388e3c;">查看原文</a ></small>
-      `;
-      container.appendChild(card);
-    });
-
-  } catch (e) {
-    container.innerHTML = `<p style="text-align:center;">⚠️ 无法获取天气信息。</p >`;
-  }
-}
-
-function renderAIAssistantCard() {
-  const container = document.getElementById("aiAdvice");
-  const card = document.createElement("div");
-  card.className = "rss-card";
-  card.style = `
-    background: #ede7f6;
-    border-left: 6px solid #673ab7;
-    padding: 1.2rem;
-    margin-bottom: 1.2rem;
-    border-radius: 10px;
-    color: #333;
-  `;
-
-  const suggestions = [
-    "今天多云转晴，穿搭建议：风衣+围巾，别忘了保暖哦～ 🧣",
-    "预计今晚气温骤降，记得带手套和厚外套 🧤🧥",
-    "阳光明媚！适合约朋友喝一杯户外咖啡 ☕️☀️",
-    "可能有小雨，带把伞在包里更安心 🌂",
-    "今天空气质量良好，适合公园晨跑 🏃‍♀️🌳"
-  ];
-
-  const random = suggestions[Math.floor(Math.random() * suggestions.length)];
-
-  card.innerHTML = `
-    <h3>🧠 Dodobot 的今日建议</h3>
-    <p style="font-size:0.95rem;">${random}</p >
-    <small style="color:#888;">由 TOPO AI 自动生成</small>
-  `;
-
-  container.appendChild(card);
-}
-
-// 执行两个功能
-fetchWeatherRSS();
-renderAIAssistantCard();
+      document.getElementById("weatherBox").innerHTML = weatherHTML;
+    })
+    .catch((err) => {
+      console.error("天气加载
