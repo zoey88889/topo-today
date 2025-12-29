@@ -93,16 +93,45 @@ nav input {
   padding: 2rem 1.5rem;
 }
 
-/* 通用模块区 */
+
+/* 📐 通用模块区 */
 .modules {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  margin: 2rem auto;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 1.5rem auto;
+  max-width: 1024px;
   padding: 0 1rem;
+  align-items: start;
 }
 
+* 📘 导航卡片 */
+.nav-card {
+  background: #ffffff;
+  border-left: 5px solid #64fb85;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: 0.2s ease;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.nav-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.nav-card a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.nav-card a:hover {
+  color: #007aff;
+}
 /* 栏目卡片 Card */
 .card {
   background: #1a1a1a;
@@ -175,15 +204,7 @@ nav input {
   width: 100%;              /* 让卡片填满网格单元 */
   box-sizing: border-box;   /* 避免撑破 */
 }
-/* 通用模块区 */
-.modules {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  margin: 2rem auto;
-  max-width: 1200px;
-  padding: 0 1rem;
-}
+
 
 
 #todayHighlight h3 {
