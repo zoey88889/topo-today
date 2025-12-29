@@ -210,7 +210,7 @@ nav input {
 
 .topo-dashboard h2 {
   font-size: 1.4rem;
-  color: #606ef0;
+  color: #9e9ea0;
   margin-bottom: 1rem;
 }
 
@@ -229,8 +229,8 @@ nav input {
   margin-top: 0;
   color: #c5c1c1;
 }
-#todayHighlight p { 
-  color: #aca9a9;
+#rss-cards p { 
+  color: #383838;
   line-height: 1.5;
 }
 @keyframes pulse {
