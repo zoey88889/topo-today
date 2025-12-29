@@ -12,13 +12,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     /* ===== 今日天气 ===== */
-    const todayRes = await fetch(todayURL);
-    const todayData = await todayRes.json();
+ /* ===== 今日天气 ===== */
+const todayRes = await fetch(todayURL);
 
-    const tempC = Math.round(todayData.main.temp);
-    const tempF = Math.round(tempC * 9 / 5 + 32);
-    const icon = todayData.weather[0].icon;
-    const desc = todayData.weather[0].description;
+if (!todayRes.ok) {
+  throw new Error("Today weather API failed");
+}
+
+const todayData = await todayRes.json();
+
+if (!todayData.main || !todayData.weather) {
+  throw new Error("Weather data structure invalid");
+}
+
+const tempC = Math.round(todayData.main.temp);
+const tempF = Math.round(tempC * 9 / 5 + 32);
+const icon = todayData.weather[0].icon;
+const desc = todayData.weather[0].description;
 
     weatherBox.innerHTML = `
       <div class="weather-card">
