@@ -77,7 +77,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   container.appendChild(card);  aiBox.appendChild(card);
 
-} catch (error) {
-    console.error("Error fetching weather data:", error);
-    weatherBox.innerHTML = `<p>${lang === "zh_cn" ? "无法获取天气数据。" : "Unable to fetch weather data."}</p>`;
-  }
+} 
