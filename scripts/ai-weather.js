@@ -1,79 +1,90 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const city = "New York";
   const lang = navigator.language.startsWith("zh") ? "zh_cn" : "en";
-  const unitSymbol = lang === "zh_cn" ? "°C / °F" : "°F / °C";
-  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz"; // 替换成你自己的 API key
-
-  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
-  const todayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
+  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz";
 
   const weatherBox = document.getElementById("weatherBox");
   const forecastBox = document.getElementById("forecastBox");
   const aiBox = document.getElementById("aiAdvice");
 
+  const todayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
+  const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
+
   try {
+    /* ===== 今日天气 ===== */
     const todayRes = await fetch(todayURL);
     const todayData = await todayRes.json();
 
     const tempC = Math.round(todayData.main.temp);
-    const tempF = Math.round(tempC * 9/5 + 32);
+    const tempF = Math.round(tempC * 9 / 5 + 32);
     const icon = todayData.weather[0].icon;
     const desc = todayData.weather[0].description;
 
-    const weatherHTML = `
+    weatherBox.innerHTML = `
       <div class="weather-card">
         <h3>🌤️ ${lang === "zh_cn" ? "当前天气" : "Today's Weather"} · ${city}</h3>
         < img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}" style="width:60px;">
         <p>${desc} · ${tempC}°C / ${tempF}°F</p >
       </div>
     `;
-    weatherBox.innerHTML = weatherHTML;
 
-    // Forecast（未来 3 天）
-    const forecastRes = await fetch(url);
+    /* ===== 未来 3 天 ===== */
+    const forecastRes = await fetch(forecastURL);
     const forecastData = await forecastRes.json();
-    let forecastHTML = `<h3 style="margin-top:1rem;">🔮 ${lang === "zh_cn" ? "未来天气预报" : "Forecast"}</h3>`;
 
-    const daily = forecastData.list.filter((item, index) => item.dt_txt.includes("12:00:00"));
-    daily.slice(0, 3).forEach((entry) => {
-      const date = new Date(entry.dt * 1000).toLocaleDateString();
-      const temp = Math.round(entry.main.temp);
-      const icon = entry.weather[0].icon;
-      const desc = entry.weather[0].description;
-      forecastHTML += `
-        <div class="rss-card" style="margin-bottom: 0.6rem;">
-          <strong>${date}</strong> · ${desc} · ${temp}°C
-          <img src="https://openweathermap.org/img/wn/${icon}.png" alt="${desc}" style="width:35px; vertical-align:middle;">
-        </div>
-      `;
-    });
+    let forecastHTML = `<h3>🔮 ${lang === "zh_cn" ? "未来 3 天天气" : "3‑Day Forecast"}</h3>`;
+
+    forecastData.list
+      .filter(item => item.dt_txt.includes("12:00:00"))
+      .slice(0, 3)
+      .forEach(item => {
+        const date = new Date(item.dt * 1000).toLocaleDateString();
+        const temp = Math.round(item.main.temp);
+        const icon = item.weather[0].icon;
+        const desc = item.weather[0].description;
+
+        forecastHTML += `
+          <div class="rss-card">
+            <strong>${date}</strong> · ${desc} · ${temp}°C
+            <img src="https://openweathermap.org/img/wn/${icon}.png" style="width:32px; vertical-align:middle;">
+          </div>
+        `;
+      });
+
     forecastBox.innerHTML = forecastHTML;
 
-    // AI 小语录建议
-    const tips = lang === "zh_cn" ? [
-      "🧤 今天风大，别忘了戴围巾和帽子！",
-      "☔️ 可能有小雨，带把伞更安心。",
-      "🌞 阳光正好，出去走走吧！",
-      "❄️ 温度骤降，多穿点衣服～",
-      "🍵 喝杯热茶，暖暖身子。"
-    ] : [
-      "🧤 Windy today, don’t forget your scarf and hat!",
-      "☔️ Chance of rain—take an umbrella!",
-      "🌞 A sunny day is calling you outside.",
-      "❄️ Cold wave incoming—bundle up!",
-      "🍵 A cup of tea makes everything better."
-    ];
-     const random = suggestions[Math.floor(Math.random() * suggestions.length)];
+    /* ===== AI 建议 ===== */
+    const tips = lang === "zh_cn"
+      ? [
+          "🧤 今天风有点大，记得围巾～",
+          "☔️ 可能有小雨，带伞更安心。",
+          "🌞 阳光不错，出去走走吧。",
+          "❄️ 温度偏低，多穿一点。",
+          "🍵 一杯热茶，治愈一天。"
+        ]
+      : [
+          "🧤 Windy today—bring a scarf!",
+          "☔️ Chance of rain—take an umbrella.",
+          "🌞 A sunny walk would be perfect.",
+          "❄️ Cold weather—bundle up!",
+          "🍵 A warm drink heals everything."
+        ];
 
-  // ✅ 在这里添加 log
-  console.log("🐛 AI Suggestions 模块触发了");
-  console.log("当前建议：", random);
+    const random = tips[Math.floor(Math.random() * tips.length)];
 
-  card.innerHTML = `
-    <h3>🧠 Dodobot 的今日建议</h3>
-    <p style="font-size:0.95rem;">${random}</p >
-    <small style="color:#888;">由 TOPO AI 自动生成</small>
-  `;
+    console.log("🐛 AI Suggestions 模块触发了");
+    console.log("当前建议：", random);
 
-  container.appendChild(card);  aiBox.appendChild(card);
-} 
+    aiBox.innerHTML = `
+      <div class="weather-card">
+        <h3>🤖 Dodobot ${lang === "zh_cn" ? "今日建议" : "Daily Tip"}</h3>
+        <p>${random}</p >
+        <small>TOPO AI 自动生成</small>
+      </div>
+    `;
+
+  } catch (error) {
+    console.error("❌ 天气模块错误", error);
+    weatherBox.innerHTML = `<p>⚠️ ${lang === "zh_cn" ? "天气加载失败" : "Failed to load weather data"}</p >`;
+  }
+});
