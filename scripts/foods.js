@@ -1,41 +1,62 @@
+// 🌿 food.js — 自动抓取美食 RSS 并渲染
 async function fetchFoodRSS() {
   const feedUrls = [
-    "https://www.allrecipes.com/feed/",     // 🍲 西式菜谱
-    "https://rss.nytimes.com/services/xml/rss/nyt/DiningandWine.xml", // 🍷 NYT 美食专栏
-    "https://rsshub.app/douguo/recipe/热门"  // 🍜 豆果热门（RSSHub代理）
+    {
+      name: "CNN Food",
+      url: "https://rss.cnn.com/rss/edition_cnnfood.rss"
+    },
+    {
+      name: "Bon Appétit",
+      url: "https://www.bonappetit.com/feed/rss"
+    },
+    {
+      name: "Eater",
+      url: "https://www.eater.com/rss/index.xml"
+    },
+    {
+      name: "NYTimes Cooking",
+      url: "https://rss.nytimes.com/services/xml/rss/nyt/Cooking.xml"
+    }
   ];
 
   const container = document.getElementById("foodContainer");
-  container.innerHTML = `<p style="text-align:center;">🥘 正在加载美食灵感...</p >`;
+  container.innerHTML = `<p style="text-align:center;">🍽️ 正在获取全球美食灵感...</p >`;
 
-  const parser = (url) =>
+  const parser = url =>
     `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
 
   try {
     const cards = [];
 
-    for (const url of feedUrls) {
-      const res = await fetch(parser(url));
+    for (const feed of feedUrls) {
+      const res = await fetch(parser(feed.url));
       const data = await res.json();
       const items = data.items || [];
 
-      items.slice(0, 2).forEach((item) => {
-        const card = `
+      items.slice(0, 3).forEach(item => {
+        const title = item.title || "无标题";
+        const link = item.link || "#";
+        const pubDate = item.pubDate
+          ? new Date(item.pubDate).toLocaleDateString()
+          : "";
+        const rawDesc = item.description || "";
+        const descText = rawDesc.replace(/<[^>]+>/g, "").slice(0, 120);
+
+        cards.push(`
           <div class="rss-card">
-            <h3>🍽️ ${item.title}</h3>
-            <p>${item.description?.slice(0, 100) || "美味推荐，无需多言。"}</p >
-            <a href="${item.link}" target="_blank">TOPO摘要 NY TIMES🔗 查看原文</a >
-            <small>📅 ${new Date(item.pubDate).toLocaleDateString()}</small>
+            <h3>🍽️ ${title}</h3>
+            <p>🧠 TOPO 摘要（${feed.name}）：${descText}…</p >
+            <a href="${link}" target="_blank">🔗 查看原文 — ${feed.name}</a >
+            <small>📅 更新于：${pubDate}</small>
           </div>
-        `;
-        cards.push(card);
+        `);
       });
     }
 
     container.innerHTML = cards.join("");
   } catch (err) {
-    console.error("🍱 食谱加载失败", err);
-    container.innerHTML = `<p style="text-align:center;">⚠️ 美食推荐加载失败，请稍后重试。</p >`;
+    console.error("🍱 美食 RSS 加载失败", err);
+    container.innerHTML = `<p style="text-align:center;">⚠️ 美食频道加载失败，请稍后重试。</p >`;
   }
 }
 
