@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     weatherBox.innerHTML = `
       <div class="weather-card">
         <h3>🌤️ ${lang === "zh_cn" ? "当前天气" : "Today's Weather"} · ${city}</h3>
-        < img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}" style="width:60px;">
+        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}" style="width:60px;">
         <p>${desc} · ${tempC}°C / ${tempF}°F</p >
       </div>
     `;
