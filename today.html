@@ -249,18 +249,19 @@
     </section>
   <!-- 📎 页脚 -->
   <div id="footer"></div>
-<section class="modules">
-  <h2>☀️ 天气与建议</h2>
+<div id="weatherMiniCard">
+  <div class="weather-card-mini" onclick="toggleWeatherBox()">
+    🌤️ 纽约：7°C / 45°F
+    <br>
+    🤖 Dodobot：风大围巾～
+  </div>
+</div>
 
-  <!-- 今日天气 -->
-  <div class="mini-card" id="weatherBox"></div>
-
-  <!-- 未来 3 天 -->
-  <div class="mini-card" id="forecastBox"></div>
-
-  <!-- AI 提示语 -->
-  <div class="mini-card" id="aiAdvice"></div>
-</section>
+<div id="fullWeatherBox" style="display:none;">
+  <div id="weatherBox"></div>
+  <div id="forecastBox"></div>
+  <div id="aiAdvice"></div>
+</div>
 
 <script src="scripts/ai-weather.js"></script>
   
@@ -276,5 +277,11 @@
         document.getElementById("footer").innerHTML = html;
       });
   </script>
+  <script>
+function toggleWeatherBox() {
+  const fullBox = document.getElementById("fullWeatherBox");
+  fullBox.style.display = (fullBox.style.display === "none") ? "block" : "none";
+}
+</script>
 </body>
 </html>

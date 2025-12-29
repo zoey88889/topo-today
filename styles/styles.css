@@ -223,6 +223,29 @@ nav input {
   from { transform: scale(1); }
   to { transform: scale(1.1); }
 }
+#weatherMiniCard {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+}
+
+.weather-card-mini {
+  background: #ffffffcc;
+  color: #333;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.weather-card-mini:hover {
+  transform: scale(1.02);
+  background: #f0f8ff;
+}
 /* 页脚 */
 footer.footer {
   text-align: center;
