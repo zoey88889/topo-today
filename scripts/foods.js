@@ -24,7 +24,7 @@ async function fetchFoodRSS() {
           <div class="rss-card">
             <h3>🍽️ ${item.title}</h3>
             <p>${item.description?.slice(0, 100) || "美味推荐，无需多言。"}</p >
-            <a href="${item.link}" target="_blank">🔗 查看原文</a >
+            <a href="${item.link}" target="_blank">TOPO摘要 NY TIMES🔗 查看原文</a >
             <small>📅 ${new Date(item.pubDate).toLocaleDateString()}</small>
           </div>
         `;
