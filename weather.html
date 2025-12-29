@@ -80,10 +80,35 @@
 <div id="weatherMiniToggle" onclick="toggleWeatherBox()">
   ☀️ TOPO 天气助手
 </div>
+<header class="hero">
+  <h1>📡 TOPO 今日助手</h1>
+  <p>天气提醒 · 穿搭建议 · AI 语录 · 小贴士</p >
+</header>
 
+<section class="modules">
+  <div class="card" style="background:#fff9db; border-left:6px solid #ffc107;">
+    <h3>🌤️ 今日天气</h3>
+    <p>纽约今日气温 3°C ~ 7°C，风大，建议保暖出行。</p >
+  </div>
+
+  <div class="card" style="background:#ede7f6; border-left:6px solid #673ab7;">
+    <h3>🧥 穿搭建议</h3>
+    <p>推荐：羽绒外套 + 围巾，避免长时间户外停留。</p >
+  </div>
+
+  <div class="card" style="background:#e3f2fd; border-left:6px solid #2196f3;">
+    <h3>🤖 Dodobot 今日建议</h3>
+    <p>“今天你不需要完美，只需要勇敢出门。”</p >
+  </div>
+
+  <div class="card" style="background:#fce4ec; border-left:6px solid #ec407a;">
+    <h3>📍 小提醒</h3>
+    <p>地铁 7 号线预计早高峰略有延迟，建议提前 10 分钟出门。</p >
+  </div>
+</section>
 <!-- 🌤️ 全部天气展示块 -->
-<section class="modules" id="fullWeatherBox" style="display: none;">
-  <h2>☀️ 天气与建议</h2>
+<section class="modules">
+  <h2>📡 实时天气模块</h2>
   <div class="mini-card" id="weatherBox"></div>
   <div class="mini-card" id="forecastBox"></div>
   <div class="mini-card" id="aiAdvice"></div>

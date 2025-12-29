@@ -15,8 +15,8 @@
   <span class="floating-text">心灵片刻</span>
 </a >
 
-<a href="styleboard.html" class="floating-btn" style="bottom: 240px; background: #f5dd56;">
-  🧣
+<a href="weather.html" class="floating-btn" style="bottom: 240px; background: #f5dd56;">
+  🌤️ 
   <span class="floating-text">穿搭精选</span>
 </a >
 
@@ -75,21 +75,7 @@
   <span class="floating-text">华人焦点</span>
 </a >
 
- <div id="weatherMiniCard">
-  <div class="weather-card-mini" onclick="toggleWeatherBox()">
-    🌤️ 纽约：7°C / 45°F
-    <br>
-    🤖 Dodobot：风大围巾～
-  </div>
-</div>
 
-<div id="fullWeatherBox" style="display:none;">
-  <div id="weatherBox"></div>
-  <div id="forecastBox"></div>
-  <div id="aiAdvice"></div>
-</div>
-
-<script src="scripts/ai-weather.js"></script>
 
 
 
@@ -159,7 +145,21 @@
     </section>
   <!-- 📎 页脚 -->
   <div id="footer"></div>
+ <div id="weatherMiniCard">
+  <div class="weather-card-mini" onclick="toggleWeatherBox()">
+    🌤️ 纽约：7°C / 45°F
+    <br>
+    🤖 Dodobot：风大围巾～
+  </div>
+</div>
 
+<div id="fullWeatherBox" style="display:none;">
+  <div id="weatherBox"></div>
+  <div id="forecastBox"></div>
+  <div id="aiAdvice"></div>
+</div>
+
+<script src="scripts/ai-weather.js"></script>
   <!-- 🔧 Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="scripts/supabase.js"></script>
