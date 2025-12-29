@@ -230,9 +230,18 @@ nav input {
   color: #c5c1c1;
 }
 #rss-cards p { 
-  color: #383838;
+  color: #646363;
   line-height: 1.5;
 }
+#rss-card a {
+  color: #4e4f4f;
+  text-decoration: none;
+  font-weight: bold;
+}
+.rss-card a:hover {
+  text-decoration: underline;
+}
+
 @keyframes pulse {
   from { transform: scale(1); }
   to { transform: scale(1.1); }
