@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const city = "New York";
   const lang = navigator.language.startsWith("zh") ? "zh_cn" : "en";
   const unitSymbol = lang === "zh_cn" ? "°C / °F" : "°F / °C";
-  const apiKey = "your_openweathermap_api_key"; // 替换成你自己的 API key
+  const apiKey = "mbj1ikgixnoynk0wmg2ufpbcuc2vkfzhzxjqrccz"; // 替换成你自己的 API key
 
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
   const todayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
@@ -63,15 +63,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       "❄️ Cold wave incoming—bundle up!",
       "🍵 A cup of tea makes everything better."
     ];
-    const pick = tips[Math.floor(Math.random() * tips.length)];
+     const random = suggestions[Math.floor(Math.random() * suggestions.length)];
 
-    aiBox.innerHTML = `
-      <div class="rss-card" style="background:#e3f2fd;border-left:6px solid #039be5;">
-        <h3>🤖 ${lang === "zh_cn" ? "Dodobot 小建议" : "AI's Tip of the Day"}</h3>
-        <p>${pick}</p >
-      </div>
-    `;
-  } catch (e) {
-    weatherBox.innerHTML = `<p>⚠️ ${lang === "zh_cn" ? "天气信息获取失败" : "Weather load failed"}.</p >`;
-  }
+  // ✅ 在这里添加 log
+  console.log("🐛 AI Suggestions 模块触发了");
+  console.log("当前建议：", random);
+
+  card.innerHTML = `
+    <h3>🧠 Dodobot 的今日建议</h3>
+    <p style="font-size:0.95rem;">${random}</p >
+    <small style="color:#888;">由 TOPO AI 自动生成</small>
+  `;
+
+  container.appendChild(card);
+}
 });
