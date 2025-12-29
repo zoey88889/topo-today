@@ -168,7 +168,7 @@ nav input {
 /* RSS 区块渲染 */
 #todayHighlight {
   background: #060606;
-  border-left: 6px solid #5c5b5b;
+  border-left: 6px solid #0d0d0d;
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
