@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       forecastHTML += `
         <div class="rss-card" style="margin-bottom: 0.6rem;">
           <strong>${date}</strong> · ${desc} · ${temp}°C
-          < img src="https://openweathermap.org/img/wn/${icon}.png" alt="${desc}" style="width:35px; vertical-align:middle;">
+          <img src="https://openweathermap.org/img/wn/${icon}.png" alt="${desc}" style="width:35px; vertical-align:middle;">
         </div>
       `;
     });
@@ -76,5 +76,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   `;
 
   container.appendChild(card);  aiBox.appendChild(card);
-
 } 
