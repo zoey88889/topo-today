@@ -64,6 +64,23 @@
       <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
     </div>
     <div id="welcome" style="text-align: center; margin-top: 1rem;"></div>
+    <div id="weatherMiniCard">
+  <div class="weather-card-mini">Loading...</div>
+</div>
+
+<div id="fullWeatherBox" style="display:none;">
+  <div id="weatherBox"></div>
+  <div id="forecastBox"></div>
+  <div id="aiAdvice"></div>
+</div>
+
+<script>
+function toggleWeatherBox() {
+  const box = document.getElementById("fullWeatherBox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+</script>
+<script src="scripts/ai-weather.js"></script>
   </header>
 
  
@@ -279,22 +296,8 @@
     </section>
   <!-- 📎 页脚 -->
   <div id="footer"></div>
-<div id="weatherMiniCard">
-  <div class="weather-card-mini" onclick="toggleWeatherBox()">
-    🌤️ 纽约：7°C / 45°F
-    <br>
-    🤖 Dodobot：风大围巾～
-  </div>
-</div>
 
-<div id="fullWeatherBox" style="display:none;">
-  <div id="weatherBox"></div>
-  <div id="forecastBox"></div>
-  <div id="aiAdvice"></div>
-</div>
-
-<script src="scripts/ai-weather.js"></script>
-  
+】
 
   <!-- 🔧 Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -314,4 +317,5 @@ function toggleWeatherBox() {
 }
 </script>
 </body>
+
 </html>

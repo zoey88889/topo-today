@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const city = "New York";
   const lang = navigator.language.startsWith("zh") ? "zh_cn" : "en";
-  const apiKey = "73e687d19d94d3b1ccee01aada40aeb4";
+  const apiKey = "你的API_KEY"; // ✅ 替换成你的 API Key
 
   const weatherBox = document.getElementById("weatherBox");
   const forecastBox = document.getElementById("forecastBox");
@@ -11,24 +11,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
 
   try {
-    /* ===== 今日天气 ===== */
- /* ===== 今日天气 ===== */
-const todayRes = await fetch(todayURL);
+    // 📍 获取今日天气
+    const todayRes = await fetch(todayURL);
+    if (!todayRes.ok) throw new Error("Today weather API failed");
 
-if (!todayRes.ok) {
-  throw new Error("Today weather API failed");
-}
+    const todayData = await todayRes.json();
+    if (!todayData.main || !todayData.weather) throw new Error("Weather data invalid");
 
-const todayData = await todayRes.json();
-
-if (!todayData.main || !todayData.weather) {
-  throw new Error("Weather data structure invalid");
-}
-
-const tempC = Math.round(todayData.main.temp);
-const tempF = Math.round(tempC * 9 / 5 + 32);
-const icon = todayData.weather[0].icon;
-const desc = todayData.weather[0].description;
+    const tempC = Math.round(todayData.main.temp);
+    const tempF = Math.round(tempC * 9 / 5 + 32);
+    const icon = todayData.weather[0].icon;
+    const desc = todayData.weather[0].description;
 
     weatherBox.innerHTML = `
       <div class="weather-card">
@@ -38,12 +31,11 @@ const desc = todayData.weather[0].description;
       </div>
     `;
 
-    /* ===== 未来 3 天 ===== */
+    // 📍 获取未来天气
     const forecastRes = await fetch(forecastURL);
     const forecastData = await forecastRes.json();
 
     let forecastHTML = `<h3>🔮 ${lang === "zh_cn" ? "未来 3 天天气" : "3‑Day Forecast"}</h3>`;
-
     forecastData.list
       .filter(item => item.dt_txt.includes("12:00:00"))
       .slice(0, 3)
@@ -63,30 +55,24 @@ const desc = todayData.weather[0].description;
 
     forecastBox.innerHTML = forecastHTML;
 
-    /* ===== AI 建议 ===== */
-const tips = lang === "zh_cn"
-  ? [
-      "🧤 今天风有点大，记得围巾～",
-      "☔️ 可能有小雨，带伞更安心。",
-      "🌞 阳光不错，出去走走吧。",
-      "❄️ 温度偏低，多穿一点。",
-      "🍵 一杯热茶，治愈一天。"
-    ]
-  : [
-      "🧤 Windy today—bring a scarf!",
-      "☔️ Chance of rain—take an umbrella.",
-      "🌞 A sunny walk would be perfect.",
-      "❄️ Cold weather—bundle up!",
-      "🍵 A warm drink heals everything."
-    ];
+    // 🎯 AI 提示建议
+    const tips = lang === "zh_cn"
+      ? [
+          "🧤 今天风有点大，记得围巾～",
+          "☔️ 可能有小雨，带伞更安心。",
+          "🌞 阳光不错，出去走走吧。",
+          "❄️ 温度偏低，多穿一点。",
+          "🍵 一杯热茶，治愈一天。"
+        ]
+      : [
+          "🧤 Windy today—bring a scarf!",
+          "☔️ Chance of rain—take an umbrella.",
+          "🌞 A sunny walk would be perfect.",
+          "❄️ Cold weather—bundle up!",
+          "🍵 A warm drink heals everything."
+        ];
 
-const random = tips[Math.floor(Math.random() * tips.length)];
-
-
-
-
-    console.log("🐛 AI Suggestions 模块触发了");
-    console.log("当前建议：", random);
+    const random = tips[Math.floor(Math.random() * tips.length)];
 
     aiBox.innerHTML = `
       <div class="weather-card">
@@ -96,21 +82,21 @@ const random = tips[Math.floor(Math.random() * tips.length)];
       </div>
     `;
 
+    // 🧊 渲染左上角 mini weather 卡片
+    const miniCard = document.getElementById("weatherMiniCard");
+    if (miniCard) {
+      miniCard.innerHTML = `
+        <div class="weather-card-mini" onclick="toggleWeatherBox()">
+          🌤️ ${city}：${tempC}°C / ${tempF}°F<br>
+          🤖 Dodobot：${random}
+        </div>
+      `;
+    }
+
   } catch (error) {
     console.error("❌ 天气模块错误", error);
-    weatherBox.innerHTML = `<p>⚠️ ${lang === "zh_cn" ? "天气加载失败" : "Failed to load weather data"}</p >`;
+    if (weatherBox) {
+      weatherBox.innerHTML = `<p>⚠️ ${lang === "zh_cn" ? "天气加载失败" : "Failed to load weather data"}</p >`;
+    }
   }
 });
-    // ✅ 🔥 把这行放在这！调用 mini 卡片渲染：
-renderWeatherMini(tempC, tempF, desc, random);
-
-// 🧊 4️⃣ 定义 mini 卡片渲染函数（放这里！）
-function renderWeatherMini(tempC, tempF, desc, aiTip) {
-  const mini = document.getElementById("weatherMiniCard");
-  mini.innerHTML = `
-    <div class="weather-card-mini" onclick="toggleWeatherBox()">
-      🌤️ 纽约：${tempC}°C / ${tempF}°F<br>
-      🤖 Dodobot：${aiTip}
-    </div>
-  `;
-}
