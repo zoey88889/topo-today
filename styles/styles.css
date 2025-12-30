@@ -93,8 +93,6 @@ nav input {
   padding: 2rem 1.5rem;
 }
 
-
-/* 📐 通用模块区 */
 /* 🧭 通用模块网格优化 */
 .modules {
   display: grid;
@@ -209,15 +207,11 @@ nav input {
 }
 
 
-
 #todayHighlight h3 {
   margin-top: 0;
   color: #bc0505;
 }
-#todayHighlight p { 
-  color: #9f9d9d;
-  line-height: 1.5;
-}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
