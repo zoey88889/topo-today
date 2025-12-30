@@ -11,7 +11,7 @@ body {
 /* 顶部 Hero 区域 */
 header.hero {
   background: linear-gradient(to right, #111, #222);
-  color: #4f4d4d;
+  color: #dcdada;
   text-align: center;
   padding: 2rem 1rem;
 }
@@ -131,7 +131,7 @@ nav input {
 }
 
 .nav-card a:hover {
-  color: #007aff;
+  color: #3f3f3f;
 }
 /* 栏目卡片 Card */
 .card {
