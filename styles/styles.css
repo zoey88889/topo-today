@@ -224,12 +224,6 @@ nav input {
 }
 
 
-.topo-dashboard h2 {
-  font-size: 1.4rem;
-  color: #9e9ea0;
-  margin-bottom: 1rem;
-}
-
 
 .floating-btn:hover {
   animation: pulse 0.6s infinite alternate;
