@@ -35,6 +35,5 @@ async function fetchHealthRSS(rssUrl, containerId, sourceLabel) {
 }
 
 // 🧪 初始化健康资讯来源
-fetchHealthRSS("https://www.healthline.com/rss", "healthlineBox", "Healthline");
-fetchHealthRSS("https://www.mayoclinic.org/rss/rss-news", "mayoBox", "Mayo Clinic");
+
 fetchHealthRSS("https://rss.nytimes.com/services/xml/rss/nyt/Health.xml", "nytBox", "NYT Health");
