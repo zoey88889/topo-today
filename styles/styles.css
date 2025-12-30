@@ -211,16 +211,16 @@ nav input {
 
 .rss-card h3 {
   margin-top: 0;
-  color: #eff2f2;
+  color: #270501;
   font-size: 1.1rem;
 }
 .rss-card p {
   line-height: 1.5;
   font-size: 0.95rem;
-  color: #c1bfbf;
+  color: #757474;
 }
 .rss-card small {
-  color: #f3f1f1;
+  color: #474646;
   font-size: 0.75rem;
   display: block;
   margin-top: 0.5rem;

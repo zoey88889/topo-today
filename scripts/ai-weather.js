@@ -63,6 +63,20 @@ const desc = todayData.weather[0].description;
 
     forecastBox.innerHTML = forecastHTML;
 
+    // ✅ 🔥 把这行放在这！调用 mini 卡片渲染：
+renderWeatherMini(tempC, tempF, desc, random);
+
+// 🧊 4️⃣ 定义 mini 卡片渲染函数（放这里！）
+function renderWeatherMini(tempC, tempF, desc, aiTip) {
+  const mini = document.getElementById("weatherMiniCard");
+  mini.innerHTML = `
+    <div class="weather-card-mini" onclick="toggleWeatherBox()">
+      🌤️ 纽约：${tempC}°C / ${tempF}°F<br>
+      🤖 Dodobot：${aiTip}
+    </div>
+  `;
+}
+
     /* ===== AI 建议 ===== */
     const tips = lang === "zh_cn"
       ? [

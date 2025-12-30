@@ -153,21 +153,20 @@
     </section>
   <!-- 📎 页脚 -->
   <div id="footer"></div>
- <div id="weatherMiniCard">
+<!-- 小卡片：浮动简版 -->
+<div id="weatherMiniCard">
   <div class="weather-card-mini" onclick="toggleWeatherBox()">
-    🌤️ 纽约今日气温
-    <br>
-    🤖 Dodobot：风大围巾～
+    ☀️ 加载中...<br>🤖 TOPO 加载中...
   </div>
 </div>
 
+<!-- 展开卡片（默认隐藏） -->
 <div id="fullWeatherBox" style="display:none;">
-  <div id="weatherBox"></div>
-  <div id="forecastBox"></div>
-  <div id="aiAdvice"></div>
+  <div id="weatherBox" class="mini-card"></div>
+  <div id="forecastBox" class="mini-card"></div>
+  <div id="aiAdvice" class="mini-card"></div>
 </div>
 
-<script src="scripts/ai-weather.js"></script>
   <!-- 🔧 Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="scripts/supabase.js"></script>
@@ -186,4 +185,14 @@ function toggleWeatherBox() {
 }
 </script>
 </body>
+<!-- 功能脚本 -->
+<script>
+  function toggleWeatherBox() {
+    const box = document.getElementById("fullWeatherBox");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+  }
+</script>
+
+<!-- 天气数据抓取脚本 -->
+<script src="scripts/ai-weather.js"></script>
 </html>
