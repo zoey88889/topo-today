@@ -172,19 +172,21 @@ nav input {
 .floating-btn {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  left: 20px; /* 👈 从右边改成左边 */
   background: #ff66a1;
   color: white;
-  font-size: 1.5rem;
-  padding: 0.9rem 1.1rem;
+  font-size: 1.1rem; /* 👈 缩小文字大小 */
+  padding: 0.6rem 0.75rem; /* 👈 缩小按钮体积 */
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   text-decoration: none;
   z-index: 999;
+  transition: all 0.3s ease;
 }
+
 .floating-btn:hover {
   background: #ff85b6;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .floating-text {
   display: block;
