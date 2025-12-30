@@ -220,12 +220,11 @@ nav input {
   color: #dfdede;
 }
 .rss-card small {
-  color: #9e9d9d;
-  font-size: 0.75rem;
-  display: block;
+  color: #023051; /* 蓝色 or 改成你喜欢的颜色 */
+  font-size: 0.8rem;
   margin-top: 0.5rem;
+  display: block;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
