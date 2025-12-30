@@ -20,11 +20,15 @@
       text-align: center;
       padding: 2rem;
     }
-    .modules {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+   .modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适配列宽 */
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
  
     .rss-card {
       background: #e8f5e9;
@@ -72,12 +76,10 @@
 
   <!-- 🌿 健康 RSS 区 -->
 
-  <!-- NYT Health -->
-   <section class="modules">
-  <h2>🩺 TOPO 健康频道</h2>
-
+<section class="modules">
   <div id="nytBox"></div>
   <div id="peopleHealth"></div>
+</section>
 
   <section id="healthRss" class="rss-card">
     <h3>🔗 健康资讯源</h3>
