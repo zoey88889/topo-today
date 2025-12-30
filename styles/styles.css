@@ -11,7 +11,7 @@ body {
 /* 顶部 Hero 区域 */
 header.hero {
   background: linear-gradient(to right, #111, #222);
-  color: #fff;
+  color: #090909;
   text-align: center;
   padding: 2rem 1rem;
 }
@@ -66,7 +66,7 @@ nav input {
 }
 .rss-teaser {
   background: #222;
-  color: #050404;
+  color: #595757;
   padding: 2rem 1rem;
   text-align: center;
 }
@@ -224,7 +224,7 @@ nav input {
 }
 .rss-card {
   background: #191919;
-  border-left: 6px solid #d8d3d2;
+  border-left: 6px solid #0b0b0b;
   padding: 1.2rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
