@@ -9,20 +9,7 @@ body {
 }
 
 /* 顶部 Hero 区域 */
-header.hero {
-  background: linear-gradient(to right, #111, #222);
-  color: #090909;
-  text-align: center;
-  padding: 2rem 1rem;
-}
-header.hero h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-header.hero p {
-  font-size: 1rem;
-  opacity: 0.8;
-}
+
 
 /* 登录/登出区域 */
 .auth-links {
@@ -132,7 +119,19 @@ nav input {
   color: #007aff;
 }
 /* 栏目卡片 Card */
+.card {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease;
+  color: #080808;
+}
 
+.card:hover {
+  transform: translateY(-5px);
+  background: #222;
+}
 .card a {
   color: #80c0ff;
   text-decoration: none;
