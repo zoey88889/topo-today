@@ -7,8 +7,8 @@ async function fetchGameRSS(rssUrl, containerId, sourceLabel) {
   try {
     const res = await fetch(api);
     const data = await res.json();
-
     const items = data.items.slice(0, 3);
+
     if (!items.length) {
       container.innerHTML = `<p style="text-align:center; color:#888;">⚠️ 暂无 ${sourceLabel} 内容</p >`;
       return;
@@ -35,3 +35,7 @@ async function fetchGameRSS(rssUrl, containerId, sourceLabel) {
 
 // 📡 初始化加载游戏源
 fetchGameRSS("https://www.gamespot.com/feeds/news/", "gamespotBox", "Gamespot");
+fetchGameRSS("https://www.polygon.com/rss/index.xml", "polygonBox", "Polygon");
+fetchGameRSS("https://www.gamesradar.com/rss/", "gamesradarBox", "GamesRadar");
+fetchGameRSS("https://www.rockpapershotgun.com/feed", "rpsBox", "RockPaperShotgun");
+fetchGameRSS("https://kotaku.com/rss", "kotakuBox", "Kotaku");

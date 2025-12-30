@@ -57,25 +57,42 @@
       color: #666;
       margin-top: 0.4rem;
     }
+    /* 🎯 网格模块 */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.2rem;
+  align-items: start;
+}
   </style>
 </head>
-
-<body>
   <header class="hero">
-    <h1>🎮 TOPO 游戏频道</h1>
-    <p>最新游戏资讯 · 玩家攻略 · AI 摘要</p >
+    <h1>🎲 TOPO 游戏频道</h1>
+    <p>聚焦全球游戏趋势 · 玩家不容错过的资讯</p >
   </header>
 
   <section class="modules">
+    <h2>🎮 最新资讯精选</h2>
 
     <div id="gamespotBox"></div>
- 
+    <div id="polygonBox"></div>
+    <div id="gamesradarBox"></div>
+    <div id="rpsBox"></div>
+    <div id="kotakuBox"></div>
   </section>
 
   <script src="scripts/games.js"></script>
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
 
-  <footer class="footer">
-    <p>📘 TOPO Game Feed — Powered by AI 摘要</p >
-  </footer>
 </body>
 </html>
