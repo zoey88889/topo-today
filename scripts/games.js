@@ -34,6 +34,4 @@ async function fetchGameRSS(rssUrl, containerId, sourceLabel) {
 }
 
 // 📡 初始化加载游戏源
-fetchGameRSS("https://www.ign.com/rss", "ignBox", "IGN");
 fetchGameRSS("https://www.gamespot.com/feeds/news/", "gamespotBox", "Gamespot");
-fetchGameRSS("https://www.gamelook.com.cn/feed", "gamechinaBox", "游戏陀螺");
