@@ -63,38 +63,27 @@ const desc = todayData.weather[0].description;
 
     forecastBox.innerHTML = forecastHTML;
 
-    // ✅ 🔥 把这行放在这！调用 mini 卡片渲染：
-renderWeatherMini(tempC, tempF, desc, random);
-
-// 🧊 4️⃣ 定义 mini 卡片渲染函数（放这里！）
-function renderWeatherMini(tempC, tempF, desc, aiTip) {
-  const mini = document.getElementById("weatherMiniCard");
-  mini.innerHTML = `
-    <div class="weather-card-mini" onclick="toggleWeatherBox()">
-      🌤️ 纽约：${tempC}°C / ${tempF}°F<br>
-      🤖 Dodobot：${aiTip}
-    </div>
-  `;
-}
-
     /* ===== AI 建议 ===== */
-    const tips = lang === "zh_cn"
-      ? [
-          "🧤 今天风有点大，记得围巾～",
-          "☔️ 可能有小雨，带伞更安心。",
-          "🌞 阳光不错，出去走走吧。",
-          "❄️ 温度偏低，多穿一点。",
-          "🍵 一杯热茶，治愈一天。"
-        ]
-      : [
-          "🧤 Windy today—bring a scarf!",
-          "☔️ Chance of rain—take an umbrella.",
-          "🌞 A sunny walk would be perfect.",
-          "❄️ Cold weather—bundle up!",
-          "🍵 A warm drink heals everything."
-        ];
+const tips = lang === "zh_cn"
+  ? [
+      "🧤 今天风有点大，记得围巾～",
+      "☔️ 可能有小雨，带伞更安心。",
+      "🌞 阳光不错，出去走走吧。",
+      "❄️ 温度偏低，多穿一点。",
+      "🍵 一杯热茶，治愈一天。"
+    ]
+  : [
+      "🧤 Windy today—bring a scarf!",
+      "☔️ Chance of rain—take an umbrella.",
+      "🌞 A sunny walk would be perfect.",
+      "❄️ Cold weather—bundle up!",
+      "🍵 A warm drink heals everything."
+    ];
 
-    const random = tips[Math.floor(Math.random() * tips.length)];
+const random = tips[Math.floor(Math.random() * tips.length)];
+
+
+
 
     console.log("🐛 AI Suggestions 模块触发了");
     console.log("当前建议：", random);
@@ -112,3 +101,16 @@ function renderWeatherMini(tempC, tempF, desc, aiTip) {
     weatherBox.innerHTML = `<p>⚠️ ${lang === "zh_cn" ? "天气加载失败" : "Failed to load weather data"}</p >`;
   }
 });
+    // ✅ 🔥 把这行放在这！调用 mini 卡片渲染：
+renderWeatherMini(tempC, tempF, desc, random);
+
+// 🧊 4️⃣ 定义 mini 卡片渲染函数（放这里！）
+function renderWeatherMini(tempC, tempF, desc, aiTip) {
+  const mini = document.getElementById("weatherMiniCard");
+  mini.innerHTML = `
+    <div class="weather-card-mini" onclick="toggleWeatherBox()">
+      🌤️ 纽约：${tempC}°C / ${tempF}°F<br>
+      🤖 Dodobot：${aiTip}
+    </div>
+  `;
+}
