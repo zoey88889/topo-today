@@ -19,10 +19,14 @@
       padding: 2rem 1rem;
     }
     .modules {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适配列宽 */
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
    .rss-card {
   background: #fcfcfc;
   border-left: 6px solid #38143d;
