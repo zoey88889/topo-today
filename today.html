@@ -7,12 +7,52 @@
   <link rel="stylesheet" href="styles/styles.css" />
     <style>
 
-  .rss-card small {
+  <style>
+    body {
+      background: #f8f5ff;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #151515;
+      color: rgb(250, 247, 247);
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    .TODAY-container {
+      max-width: 1080px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .RSS-card {
+      background: #212121;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .rss-card a {
+  color: #4e4f50; /* 蓝色 or 改成你喜欢的颜色 */
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
   display: block;
-  color: #858585;
-  font-size: 0.78rem;
-  margin-top: 0.4rem;
 }
+    .RSS-card:hover {
+      transform: translateY(-4px);
+    }
+    .RSS-card img {
+      width: 100%;
+      display: block;
+    }
+     .RSS-card .caption {
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
   </style>
 </head>
 
