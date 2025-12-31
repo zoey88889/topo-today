@@ -36,4 +36,3 @@ async function fetchStockRSS(rssUrl, containerId, sourceLabel) {
 // ⏬ 初始化股市来源（3个）
 fetchStockRSS("https://www.marketwatch.com/rss/topstories", "marketwatchBox", "MarketWatch");
 fetchStockRSS("https://www.cnbc.com/id/100003114/device/rss/rss.html", "cnbcBox", "CNBC Markets");
-fetchStockRSS("https://www.investopedia.com/feedbuilder/feed/getfeed/?feedName=stock-market-news", "investopediaBox", "Investopedia");
