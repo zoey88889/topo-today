@@ -23,7 +23,7 @@ async function fetchCurrencyRates(rssUrl, containerId, sourceLabel) {
       div.innerHTML = `
         <h3>💱 ${item.title}</h3>
         <p>${item.description.replace(/<[^>]+>/g, "").slice(0, 120)}...</p >
-        <a href=" " target="_blank">🔗 来源：${sourceLabel}</a >
+        <a href="" target="_blank">🔗 来源：${sourceLabel}</a >
         <small>📅 ${date}</small>
       `;
 

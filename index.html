@@ -126,6 +126,7 @@
         <a class="card" href="health.html" style="background:#d2faef; border-left:4px solid #49f67d;">💚健康养生</a >
         <a class="card" href="chinese.html" style="background:#fed3ce; border-left:4px solid #fc5d2d;">🧧 华人资讯</a >
         <a class="card" href="art.html" style="background:#fed3ce; border-left:4px solid #0be9b5;">🖼️探索艺术</a >
+        <a class="card" href="sports.html" style="background:#f9efe4; border-left:4px solid #0c69cd;"> 运动探索</a >
         <a class="card" href="eventnews.html" style="background:#f9efe4; border-left:4px solid #9c27b0;">🎉 本地活动</a >
       </div>
     </section>
@@ -176,7 +177,9 @@
   <div id="aiAdvice"></div>
 </div>
 
-<script src="scripts/ai-weather.js"></script>
+<script>
+  window.OPENWEATHER_API_KEY = "{{OPENWEATHER_API_KEY}}";
+</script>
 
 <!-- 🤖 Dodobot Widget 按钮（右下角固定）-->
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
@@ -185,7 +188,15 @@
     onclick="toggleDodobot()" />
 </div>
 
-<!-- 💬 Chatbot 展开区块（初始隐藏）-->
+
+<!-- 🤖 Dodobot Widget 按钮（右下角固定） -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+  <img src="images/dodobot.gif" alt="Dodobot" width="80"
+    style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); cursor: pointer;"
+    onclick="toggleDodobot()" />
+</div>
+
+<!-- 💬 Chatbot 展开区块 -->
 <div id="dodobot-widget" style="display: none; position: fixed; bottom: 110px; right: 20px; width: 300px; background: #fffafc; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); z-index: 9999; padding: 1rem;">
 
   <div id="dodobot-avatar" style="text-align: center;">
@@ -195,15 +206,13 @@
     <small style="color: #888;">🧃 你想问 TOPO 的任何资讯，我都能帮忙！</small>
   </div>
 
-  <!-- 📝 输入框 & 回应区 -->
-  <div style="margin-top: 1rem;">
-    <div id="chat-log" style="height: 180px; overflow-y: auto; font-size: 0.9rem; line-height: 1.4; padding: 0.5rem; background: #fff; border: 1px solid #eee; border-radius: 8px;"></div>
-    <input id="chat-input" type="text" placeholder="请输入你的问题..." 
-           style="margin-top: 0.5rem; width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;" 
-           onkeydown="if(event.key==='Enter'){sendMessage()}" />
+  <div class="chat-row" style="margin-top: 1rem; display: flex; gap: 8px;">
+    <input id="inputBox" placeholder="输入你的问题..." style="flex: 1; padding: 6px 8px; border-radius: 6px; border: 1px solid #ccc;" />
+    <button id="sendBtn" style="padding: 6px 12px; border: none; background: #ff66a1; color: white; border-radius: 6px;">发送</button>
   </div>
-</div>
 
+  <div id="messages" style="max-height: 150px; overflow-y: auto; margin-top: 1rem; font-size: 0.9rem;"></div>
+</div>
 
   <!-- 🔧 Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -233,7 +242,14 @@ function toggleWeatherBox() {
 </script>
 <!-- ✅ 所有 HTML 结构都写完之后再加载脚本 -->
 
+
 <script src="scripts/responses_extra.js"></script>
 <script src="scripts/chatbot.js"></script>
+<script>
+  function toggleDodobot() {
+    const widget = document.getElementById("dodobot-widget");
+    widget.style.display = widget.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>

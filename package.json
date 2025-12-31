@@ -1,0 +1,25 @@
+{
+  "name": "topo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "art.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoey88889/topo-today.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zoey88889/topo-today/issues"
+  },
+  "homepage": "https://github.com/zoey88889/topo-today#readme",
+  "dependencies": {
+    "vite": "^7.3.0"
+  }
+}

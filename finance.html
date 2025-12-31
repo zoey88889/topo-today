@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/styles.css" />
 
-</head>
-<body>
-
   <style>
     body { background: #f3f4f6; font-family: Arial, sans-serif; margin: 0; padding: 0; }
     .rss-card {
@@ -56,24 +53,33 @@
     <h2>📡 财经频道实时摘要</h2>
 
     <!-- 🏦 股票 -->
-    <section class="modules">
-      <h3>📈 股市快讯</h3>
-      <div id="stockBox"></div>
-    </section>
+<section class="modules">
+  <h2>📈 TOPO 股市频道</h2>
+  <div id="stockBox"></div>
+  <div id="marketwatchBox"></div>
+  <div id="cnbcBox"></div>
+</section>
 
-    <!-- 💱 加密货币 -->
-    <section class="modules">
-      <h3>💸 加密货币快讯</h3>
-      <div id="cryptoBox"></div>
-    </section>
+<section class="modules">
+  <h2>💸 TOPO 加密货币频道</h2>
+  <div id="cryptoBox"></div>
+  <div id="coindeskBox"></div>
+  <div id="cointelegraphBox"></div>
+  <div id="cryptoslateBox"></div>
+</section>
 
-    <!-- 💱 外汇市场 -->
-    <section class="modules">
-      <h3>💱 汇率 & 货币动态</h3>
-      <div id="investingBox"></div>
-      <div id="fxstreetBox"></div>
-    </section>
-  </section>
+
+
+
+ <section class="modules">
+  <h2>💱 实时汇率：美元对人民币</h2>
+  <div id="exchangeRateBox" class="rss-card">
+    <p>汇率加载中…</p >
+  </div>
+</section>
+
+<!-- 引入自动汇率脚本 -->
+<script src="scripts/currency-auto.js"></script>
   <!-- 📘 理财基础系列：101～111 主题课程 -->
   <section class="modules">
     <h2>📘 理财基础系列</h2>
@@ -94,7 +100,8 @@
  
   <script src="scripts/stock.js"></script>
   <script src="scripts/crypto.js"></script>
-   <script src="scripts/currency.js"></script>
+
+
   <script>
     fetch("/components/footer.html")
       .then(res => res.text())
@@ -102,6 +109,11 @@
         document.getElementById("footer").innerHTML = html;
       });
   </script>
+  <script>
+  const EXCHANGE_RATE_KEY = 'your-api-key-here'; // ✅ 临时用法：直接从 Netlify UI 中复制
+</script>
+
+<script src="scripts/currency-auto.js"></script>
 </body>
 
 </html>
