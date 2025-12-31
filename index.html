@@ -8,24 +8,35 @@
 </head>
 
 <body>
+  <!-- 🤖 TOPO Chatbot Widget -->
+<div id="chatbotWidget" class="chatbot-box">
+  <div class="chatbot-header">🤖 TOPO AI 小助手</div>
+  <div id="chatlog" class="chatbot-log">
+    <div class="chatbot-msg bot">你好呀！我是 TOPO 的 AI 小助手，有什么问题我可以帮你吗？</div>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="输入你的问题..." />
+    <button onclick="sendMessage()">发送</button>
+  </div>
+</div>
 
 <!-- index.html 中 -->
-<a href="meditation.html" class="floating-btn" style="bottom: 300px; background: #a5d6a7;">
+<a href="meditation.html" class="floating-btn" style="bottom: 60px; background: #a5d6a7;">
   🧘
   <span class="floating-text">心灵片刻</span>
 </a >
 
-<a href="weather.html" class="floating-btn" style="bottom: 240px; background: #f5dd56;">
+<a href="weather.html" class="floating-btn" style="bottom: 40px; background: #f5dd56;">
   🌤️ 
   <span class="floating-text">天气频道</span>
 </a >
 
-<a href="beauty1.html" class="floating-btn" style="bottom: 180px; background: #f48fb1;">
+<a href="beauty1.html" class="floating-btn" style="bottom: 80px; background: #f48fb1;">
   💄
   <span class="floating-text">美妆精选</span>
 </a >
 
-<a href="fashion.html" class="floating-btn" style="bottom: 120px; background: #81d4fa;">
+<a href="fashion.html" class="floating-btn" style="bottom: 60px; background: #81d4fa;">
   👗
   <span class="floating-text">时尚灵感</span>
 </a >
@@ -83,7 +94,7 @@
 <section class="rss-teaser">
   <div class="teaser-box">
     <h3>📡 RSS 内容引擎现已接入：</h3>
-    <p>💼 财经 / 💻 科技 /  🎬 娱乐 / 🧧 华人资讯 / 🌤️ 天气 / 🌃 天文 / 🍣 美食 /🔬 科学 /🌍 国际 </p >
+    <p>💼 财经 / 💻 科技 /  🎬 娱乐 / 🧧 华人资讯 / 📈金融 / 🌃 天文 / 🍣 美食 /🔬 科学 /🌍 国际 /🎨 艺术/</p >
     <p>→ 自动抓取全球权威媒体，包括 <strong>BBC、星岛、MarketWatch</strong> 等</p >
     <p>🛰️ 后续将整合 <strong>Eventbrite、本地活动</strong> 与 <strong>AI 自动摘要</strong> 功能</p >
   </div>
@@ -107,16 +118,14 @@
         <a class="card" href="business.html" style="background:#e3f2fd; border-left:4px solid #2196f3;">💼 财经商业</a >
         <a class="card" href="tech.html" style="background:#ede7f6; border-left:4px solid #673ab7;">💻 科技趋势</a >
         <a class="card" href="science.html" style="background:#d7f9e5; border-left:4px solid #4f3cf9;">🔬 科学洞察</a >
-          
+        <a class="card" href="finance.html" style="background:#fed3ce; border-left:4px solid #2203d2;">📈 金融资讯</a > 
         <a class="card" href="entertainment.html" style="background:#fce4ec; border-left:4px solid #ec407a;">🎬 娱乐文化</a >
         <a class="card" href="global.html" style="background:#fffde7; border-left:4px solid #fbc02d;">🌍 国际大事</a >
-        
-        
-       
         <a class="card" href="astro.html" style="background:#edccf8; border-left:4px solid #aaf57c;">🌌 天文频道</a >
         <a class="card" href="foods.html" style="background:#f5d6fa; border-left:4px solid #fd8ff4;"> 🍣 美食烹饪</a >
         <a class="card" href="health.html" style="background:#d2faef; border-left:4px solid #49f67d;">💚健康养生</a >
         <a class="card" href="chinese.html" style="background:#fed3ce; border-left:4px solid #fc5d2d;">🧧 华人资讯</a >
+        <a class="card" href="art.html" style="background:#fed3ce; border-left:4px solid #0be9b5;">🖼️探索艺术</a >
         <a class="card" href="eventnews.html" style="background:#f9efe4; border-left:4px solid #9c27b0;">🎉 本地活动</a >
       </div>
     </section>
@@ -168,6 +177,34 @@
 </div>
 
 <script src="scripts/ai-weather.js"></script>
+
+<!-- 🤖 Dodobot Widget 按钮（右下角固定）-->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+  <img src="images/dodobot.gif" alt="Dodobot" width="80"
+    style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); cursor: pointer;"
+    onclick="toggleDodobot()" />
+</div>
+
+<!-- 💬 Chatbot 展开区块（初始隐藏）-->
+<div id="dodobot-widget" style="display: none; position: fixed; bottom: 110px; right: 20px; width: 300px; background: #fffafc; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); z-index: 9999; padding: 1rem;">
+
+  <div id="dodobot-avatar" style="text-align: center;">
+    <img src="images/dodobot.gif" alt="Dodobot" width="60"
+      style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); margin-bottom: 0.5rem;" />
+    <strong style="display:block; font-size: 1rem;">Hi，我是 Dodobot 弟弟</strong>
+    <small style="color: #888;">🧃 你想问 TOPO 的任何资讯，我都能帮忙！</small>
+  </div>
+
+  <!-- 📝 输入框 & 回应区 -->
+  <div style="margin-top: 1rem;">
+    <div id="chat-log" style="height: 180px; overflow-y: auto; font-size: 0.9rem; line-height: 1.4; padding: 0.5rem; background: #fff; border: 1px solid #eee; border-radius: 8px;"></div>
+    <input id="chat-input" type="text" placeholder="请输入你的问题..." 
+           style="margin-top: 0.5rem; width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;" 
+           onkeydown="if(event.key==='Enter'){sendMessage()}" />
+  </div>
+</div>
+
+
   <!-- 🔧 Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="scripts/supabase.js"></script>
@@ -184,6 +221,17 @@ function toggleWeatherBox() {
   const fullBox = document.getElementById("fullWeatherBox");
   fullBox.style.display = (fullBox.style.display === "none") ? "block" : "none";
 }
+</script>
+<!-- ✅ Chatbot 语料库 + 主逻辑 -->
+<script src="scripts/responses_extra.js"></script>
+<script src="scripts/chatbot.js"></script>
+
+<!-- ✅ 控制显示/隐藏逻辑 -->
+<script>
+  function toggleDodobot() {
+    const widget = document.getElementById("dodobot-widget");
+    widget.style.display = widget.style.display === "none" ? "block" : "none";
+  }
 </script>
 </body>
 </html>
