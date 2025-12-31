@@ -5,35 +5,102 @@
   <title>💼 TOPO FINANCE 财经频道｜分享真实、中立、易懂的财经知识</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/styles.css" />
-  <style>
+ <style>
+  body {
+    background: #f3f4f6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* 网格仅用于理财导航卡片 */
-    .grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
-      box-sizing: border-box;
-    }
+  header {
+    background: #003366;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
 
+  h2 {
+    color: #003366;
+  }
 
-    details summary {
-      font-weight: bold;
-      font-size: 1.1rem;
-      cursor: pointer;
-      padding: 0.8rem 1rem;
-      background: #f0f6ff;
-      border: 1px solid #dbeafe;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
+  .modules.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
 
-    section {
-      margin: 2rem auto;
-      max-width: 1200px;
-      padding: 0 1rem;
-    }
+  .nav-card {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+  }
 
+  .nav-card a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .nav-card:hover {
+    background: #f0f8ff;
+    transform: translateY(-2px);
+  }
+
+  .rss-card {
+    background: #ffffff;
+    border-left: 6px solid #2196f3;
+    margin: 1rem auto;
+    padding: 1.2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+
+  .rss-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #003366;
+    font-size: 1.1rem;
+  }
+
+  .rss-card p {
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .rss-card a {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+  .rss-card small {
+    display: block;
+    color: #aaa;
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  details summary {
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    background: #f0f6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 8px;
+    margin: 2rem auto 1rem;
+    max-width: 800px;
+  }
+
+  details div {
+    padding: 1rem 2rem;
+  }
 </style>
 </head>
 <body>
