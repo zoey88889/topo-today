@@ -222,9 +222,7 @@ function toggleWeatherBox() {
   fullBox.style.display = (fullBox.style.display === "none") ? "block" : "none";
 }
 </script>
-<!-- ✅ Chatbot 语料库 + 主逻辑 -->
-<script src="scripts/responses_extra.js"></script>
-<script src="scripts/chatbot.js"></script>
+
 
 <!-- ✅ 控制显示/隐藏逻辑 -->
 <script>
@@ -233,5 +231,9 @@ function toggleWeatherBox() {
     widget.style.display = widget.style.display === "none" ? "block" : "none";
   }
 </script>
+<!-- ✅ 所有 HTML 结构都写完之后再加载脚本 -->
+
+<script src="scripts/responses_extra.js"></script>
+<script src="scripts/chatbot.js"></script>
 </body>
 </html>
