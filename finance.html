@@ -5,65 +5,15 @@
   <title>💼 TOPO 理财入门 Finance 101</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/styles.css" />
-  <style>
-    body {
-      background: #f4f5f7;
-      color: #333;
-      font-family: "Helvetica Neue", sans-serif;
-      margin: 0;
-      padding: 0;
-    }
 
-    header {
-      background: #003366;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    .content {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 1rem;
-      line-height: 1.8;
-    }
-
-    .content h2 {
-      color: #003366;
-      margin-top: 2rem;
-    }
-  .content h3 {
-      color: #003366;
-      margin-top: 2rem;
-    }
-    .content table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-
-    .content th, .content td {
-      border: 1px solid #ccc;
-      padding: 0.6rem;
-      text-align: center;
-    }
-
-    .rss-card {
-      background: #ffffff;
-      border-left: 6px solid #3f51b5;
-      padding: 1.2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      margin-bottom: 1.5rem;
-    }
-  </style>
 </head>
 <body>
 
 <header>
   <h1>💼 TOPO 理财入门 </h1>
   <p>分享真实、中立、易懂的财经知识</p >
-</header>
+    <section id="rssContainer" class="modules" style="padding: 2rem;"></section>
+
 
 <div class="rss-card">
   <h3>📌 美股期货小幅下挫，华尔街仍盯年度收益</h3>
@@ -81,8 +31,25 @@
   <small>📅 2025/12/31 ｜ 来源：Reuters路透社</small>
 </div>
 
-
-
+  <style>
+    body { background: #f3f4f6; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #2196f3;
+      margin: 1rem auto;
+      padding: 1.2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .rss-card h3 { margin: 0 0 0.5rem 0;  color: #003366;font-size: 1.1rem; }
+    .rss-card p { font-size: 0.9rem; color: #444; }
+    .rss-card a { color: #1a73e8; text-decoration: none; font-size: 0.85rem; }
+    .rss-card small { display: block; color: #aaa; margin-top: 0.3rem; font-size: 0.75rem; }
+    header { background: #003366; color: white; padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
 
 
 <section class="modules">
@@ -120,6 +87,8 @@
   <div id="cointelegraphBox"></div>
   <div id="cryptoslateBox"></div>
 </section>
+
+
 
 <section class="modules">
   <h2>💱 TOPO 货币 · 汇率频道</h2>
