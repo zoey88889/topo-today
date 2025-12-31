@@ -1,0 +1,39 @@
+// 📈 TOPO 股市资讯渲染模块
+
+async function fetchStockRSS(rssUrl, containerId, sourceLabel) {
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+
+    const items = data.items.slice(0, 3);
+    if (!items.length) {
+      container.innerHTML = `<p style="text-align:center; color:#888;">⚠️ 暂无 ${sourceLabel} 内容</p >`;
+      return;
+    }
+
+    items.forEach(item => {
+      const date = new Date(item.pubDate).toLocaleDateString();
+      const div = document.createElement("div");
+      div.className = "rss-card";
+      div.innerHTML = `
+        <h3>📈 ${item.title}</h3>
+        <p>${item.description.replace(/<[^>]*>/g, "").slice(0, 120)}...</p >
+        <a href="${item.link}" target="_blank">🔗 查看原文</a >
+        <small>📘 TOPO 摘要｜${sourceLabel} · ${date}</small>
+      `;
+      container.appendChild(div);
+    });
+  } catch (err) {
+    console.error(`Stock RSS 加载失败 - ${sourceLabel}`, err);
+    container.innerHTML = `<p style="text-align:center; color:#d32f2f;">❌ 无法加载 ${sourceLabel} 数据</p >`;
+  }
+}
+
+// ⏬ 初始化股市来源（3个）
+fetchStockRSS("https://www.marketwatch.com/rss/topstories", "marketwatchBox", "MarketWatch");
+fetchStockRSS("https://www.cnbc.com/id/100003114/device/rss/rss.html", "cnbcBox", "CNBC Markets");
+fetchStockRSS("https://www.investopedia.com/feedbuilder/feed/getfeed/?feedName=stock-market-news", "investopediaBox", "Investopedia");

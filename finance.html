@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>💼 TOPO 理财入门 Finance 101</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body {
+      background: #f4f5f7;
+      color: #333;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .content {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 1rem;
+      line-height: 1.8;
+    }
+
+    .content h2 {
+      color: #003366;
+      margin-top: 2rem;
+    }
+
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .content th, .content td {
+      border: 1px solid #ccc;
+      padding: 0.6rem;
+      text-align: center;
+    }
+
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #3f51b5;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💼 TOPO 理财入门 </h1>
+  <p>分享真实、中立、易懂的财经知识</p >
+</header>
+<section class="modules">
+  <h2>📘 理财基础系列</h2>
+
+  <div class="nav-card"><a href="finance-101.html">💰 101｜钱与通胀</a ></div>
+  <div class="nav-card"><a href="finance-102.html">📊 102｜什么是资产配置</a ></div>
+  <div class="nav-card"><a href="finance-103.html">📦 103｜ETF 和基金区别</a ></div>
+  <div class="nav-card"><a href="finance-104.html">💼 104｜投资公司股权</a ></div>
+  <div class="nav-card"><a href="finance-105.html">📈 105｜什么是好公司</a ></div>
+  <div class="nav-card"><a href="finance-106.html">🧺 106｜ETF 是好选择吗</a ></div>
+  <div class="nav-card"><a href="finance-107.html">🗂️ 107｜资产配置策略</a ></div>
+  <div class="nav-card"><a href="finance-108.html">📉 108｜人生现金流图</a ></div>
+  <div class="nav-card"><a href="finance-109.html">📉 109｜退休账户</a ></div>
+</section>
+
+
+<!-- 📈 这里放财经 RSS 渲染卡片 -->
+<section class="content" id="rssFinance">
+  <h2>📡 财经频道实时摘要</h2>
+  <div id="stockBox"></div>
+  <div id="cryptoBox"></div>
+  <!-- 你可以继续加入更多 Box，比如 goldBox、etfBox 等 -->
+</section>
+
+<script src="scripts/stock.js"></script>
+<script src="scripts/crypto.js"></script>
+<!-- 如有更多财经脚本，可继续引入 -->
+
+<!-- 页脚 -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
+</body>
+</html>

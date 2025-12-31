@@ -59,16 +59,8 @@
   <div id="todayHighlight" class="rss-section"></div>
 </section>
  <p style="text-align: left; margin-top: 1rem;">
-  <a href="today.html" style="color:#f90404; text-decoration: underline; font-weight:bold;">🔍 查看更多 TOPO 华人焦点资讯</a >
+  <a href="today.html" style="color:#570307; text-decoration: underline; font-weight:bold;">🔍 查看更多 TOPO 华人焦点资讯</a >
 </p >
-<style>
-      .rss-card h3 {
-  margin-top: 0;
-  color: #a00404;
-  font-size: 1.1rem;
-}
-  </style>
-
 <script>
   fetch("/components/today-snippet.html")
     .then(res => res.text())
@@ -91,7 +83,7 @@
 <section class="rss-teaser">
   <div class="teaser-box">
     <h3>📡 RSS 内容引擎现已接入：</h3>
-    <p>💼 财经 / 💻 科技 /  🎬 娱乐 / 🧧 资讯 / 🌤️ 天气 / 🌃 天文 / 🍣 美食 / 🎮 游戏 / 🔬 科学 /🌍 国际 </p >
+    <p>💼 财经 / 💻 科技 /  🎬 娱乐 / 🧧 华人资讯 / 🌤️ 天气 / 🌃 天文 / 🍣 美食 /🔬 科学 /🌍 国际 </p >
     <p>→ 自动抓取全球权威媒体，包括 <strong>BBC、星岛、MarketWatch</strong> 等</p >
     <p>🛰️ 后续将整合 <strong>Eventbrite、本地活动</strong> 与 <strong>AI 自动摘要</strong> 功能</p >
   </div>
@@ -115,14 +107,16 @@
         <a class="card" href="business.html" style="background:#e3f2fd; border-left:4px solid #2196f3;">💼 财经商业</a >
         <a class="card" href="tech.html" style="background:#ede7f6; border-left:4px solid #673ab7;">💻 科技趋势</a >
         <a class="card" href="science.html" style="background:#d7f9e5; border-left:4px solid #4f3cf9;">🔬 科学洞察</a >
-        <a class="card" href="games.html" style="background:#d7f9e5; border-left:4px solid #f462cd;">🎮 游戏资讯</a >
           
         <a class="card" href="entertainment.html" style="background:#fce4ec; border-left:4px solid #ec407a;">🎬 娱乐文化</a >
         <a class="card" href="global.html" style="background:#fffde7; border-left:4px solid #fbc02d;">🌍 国际大事</a >
+        
+        
+       
         <a class="card" href="astro.html" style="background:#edccf8; border-left:4px solid #aaf57c;">🌌 天文频道</a >
         <a class="card" href="foods.html" style="background:#f5d6fa; border-left:4px solid #fd8ff4;"> 🍣 美食烹饪</a >
         <a class="card" href="health.html" style="background:#d2faef; border-left:4px solid #49f67d;">💚健康养生</a >
-   
+        <a class="card" href="chinese.html" style="background:#fed3ce; border-left:4px solid #fc5d2d;">🧧 华人资讯</a >
         <a class="card" href="eventnews.html" style="background:#f9efe4; border-left:4px solid #9c27b0;">🎉 本地活动</a >
       </div>
     </section>
@@ -133,7 +127,6 @@
     <section class="modules">
       <h2 style="text-align:left;">📂 栏目导航 </h2>
       <div class="category-grid">
-        <a class="card" href="today.html">🧧 华人资讯</a >
         <a class="card" href="food.html">🍜 美食推荐</a >
         <a class="card" href="housing.html">🏠 房源信息</a >
         <a class="card" href="events.html">🎉 本地活动</a >
@@ -160,8 +153,12 @@
     </section>
   <!-- 📎 页脚 -->
   <div id="footer"></div>
-<div id="weatherMiniCard">
-  <div class="weather-card-mini">Loading...</div>
+ <div id="weatherMiniCard">
+  <div class="weather-card-mini" onclick="toggleWeatherBox()">
+    🌤️ 纽约今日气温
+    <br>
+    🤖 Dodobot：风大围巾～
+  </div>
 </div>
 
 <div id="fullWeatherBox" style="display:none;">
@@ -170,14 +167,7 @@
   <div id="aiAdvice"></div>
 </div>
 
-<script>
-function toggleWeatherBox() {
-  const box = document.getElementById("fullWeatherBox");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-}
-</script>
 <script src="scripts/ai-weather.js"></script>
-
   <!-- 🔧 Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="scripts/supabase.js"></script>
@@ -196,5 +186,4 @@ function toggleWeatherBox() {
 }
 </script>
 </body>
-
 </html>
