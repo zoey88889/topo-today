@@ -5,9 +5,23 @@
   <title>免责声明 Disclaimer | TOPO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: sans-serif; line-height: 1.6; background: #f5f5f5; color: #333; padding: 2rem; max-width: 800px; margin: auto; }
-    h1, h2 { color: #990000; }
-    small { color: #888; display: block; margin-bottom: 2rem; }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+      padding: 2rem;
+      max-width: 860px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      color: #b00020;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; margin-top: 2rem; }
+    p, small { font-size: 0.95rem; }
+    small { color: #888; margin-bottom: 2rem; display: block; }
+    hr { margin: 2rem 0; border: none; border-top: 1px solid #ccc; }
   </style>
 </head>
 <body>
@@ -15,45 +29,35 @@
   <small>Last updated: 2025-12-31</small>
 
   <h2>1. 内容来源 / Content Sources</h2>
-  <p>TOPO 平台上的大部分资讯来源于公开可访问的 RSS 信息、第三方媒体与新闻平台。我们并不直接生产或控制这些内容。</p >
-  <p>Most news content presented on TOPO is sourced via public RSS feeds from third-party publishers. We do not control or edit their original content.</p >
+  <p>TOPO 平台上的资讯内容大多来自公开 RSS 源、自媒体、权威新闻平台。我们不直接编辑或干预原始内容。</p >
+  <p>Most content on TOPO is sourced from public RSS feeds or open access publications. We do not modify or control these sources.</p >
 
-  <h2>2. 投资建议声明 / Not Investment Advice</h2>
-  <p>TOPO 提供的信息仅供参考，不构成任何投资建议或金融建议。用户应根据自身情况判断风险。</p >
-  <p>All financial or market-related content is for informational purposes only and does not constitute investment advice.</p >
+  <h2>2. 投资建议声明 / Not Financial Advice</h2>
+  <p>TOPO 提供的信息仅供学习参考，并不构成任何金融或投资建议。请在投资前独立判断。</p >
+  <p>All financial content is for informational purposes only and does not constitute professional investment advice.</p >
 
-  <h2>3. 准确性声明 / Accuracy Notice</h2>
-  <p>我们尽最大努力保持信息准确和更新，但无法保证所有信息均为最新。</p >
-  <p>While we aim to provide accurate summaries and reliable links, we cannot guarantee the completeness or timeliness of all data.</p >
+  <h2>3. 内容版权 / Copyright Statement</h2>
+  <p>所有 RSS 内容版权归原始媒体机构或作者所有。TOPO 仅作为非营利性聚合平台展示内容片段与链接。</p >
+  <p>All RSS content belongs to original publishers. TOPO only provides non-commercial summaries and links back to the original articles.</p >
 
-  <h2>4. 用户行为 / User Responsibility</h2>
-  <p>用户在使用 TOPO 平台时应遵守当地法律法规。我们对用户行为不承担责任。</p >
-  <p>Users are solely responsible for how they use the content on this site and must comply with applicable local laws.</p >
+  <h2>4. 商用许可提醒 / Use & Licensing</h2>
+  <p>如需转载或商业用途，请联系原媒体机构。我们不授权任何第三方以 TOPO 内容做商用再分发。</p >
+  <p>For re-use or commercial redistribution, please consult the original source directly. TOPO does not grant any commercial license.</p >
 
+  <h2>5. 用户行为 / User Responsibility</h2>
+  <p>用户使用本站内容时，应遵守相关法律法规。本站对用户行为不承担责任。</p >
+  <p>Users are fully responsible for how they use the content provided here, and must comply with local laws and ethical guidelines.</p >
 
+  <h2>6. 版权申诉 / Copyright Inquiries</h2>
+  <p>如您为原始内容版权方，对本站展示内容有异议，请联系我们：<br>
+  📧 <strong>Contact Us：zoey88889@gmail.com</strong> or <strong>dodvauniverse@gmail.com</strong></p >
+  <p>我们将积极配合，尊重并及时处理相关要求。</p >
 
-    <p>如有任何疑问，请联系我们：zoey88889@gmail.com 或 dodvauniverse@gmail.com</p >
-  </section>
+  <hr>
 
-  
+  <h3>English Summary</h3>
+  <p>TOPO aggregates publicly available RSS-based content. All copyrights belong to original media outlets. We do not claim ownership or edit original text.</p >
+  <p>For any copyright concern, please contact us. We respect intellectual property and are committed to cooperating promptly.</p >
 
-
-
-
-
-
-
-
-
-
-<div id="footer"></div>
-<script>
-  fetch("/components/footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer").innerHTML = html;
-    });
-</script>
-<script src="post-display.js"></script>
 </body>
 </html>

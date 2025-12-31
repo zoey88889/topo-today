@@ -36,7 +36,8 @@ async function fetchSportsRSS(rssUrl, containerId, sourceLabel) {
 
 // 🔁 初始化调用示例
 fetchSportsRSS(
-  "https://www.espn.com/espn/rss/news",  // 你可以换成 Fox Sports、NYTimes Sports 等
+  "https://www.espn.com/espn/rss/news",  
+  "https://www.nytimes.com/nytimes/rss/news",  // 你可以换成 Fox Sports、NYTimes Sports 等
   "sportsBox",
   "ESPN 体育"
 );
