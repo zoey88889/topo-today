@@ -29,24 +29,7 @@
 
 
 
-  <!-- 🧾 今日财经简报：手动编辑的热点快讯 -->
-  <section class="modules" style="margin-top: 1rem;">
-    <h2>🧾 TOPO 财经简报</h2>
 
-    <div class="rss-card">
-      <h3>📌 美股期货小幅下挫，华尔街仍盯年度收益</h3>
-      <p>🤖 TOPO 摘要：2025年最后交易日，美股期货小幅回落。全年表现强劲，AI 板块功不可没。</p >
-      <a href="https://www.reuters.com/business/us-stock-futures-inch-down-thin-trading-wall-street-eyes-yearly-gains-2025-12-31/" target="_blank">🔗 来源：Reuters</a >
-      <small>📅 2025/12/31 ｜ 来源：Reuters 路透社</small>
-    </div>
-
-    <div class="rss-card">
-      <h3>📈 欧股有望创下自2021年以来最好表现</h3>
-      <p>🤖 TOPO 摘要：STOXX 600 指数年终收高，多个国家股市同步上涨，市场押注2026年继续降息。</p >
-      <a href="https://www.reuters.com/markets/europe/european-shares-set-best-year-since-2021-2025-12-31/" target="_blank">🔗 来源：Reuters</a >
-      <small>📅 2025/12/31 ｜ 来源：Reuters 路透社</small>
-    </div>
-  </section>
 <!-- 📈 这里放财经 RSS 渲染卡片 -->
   <!-- 📡 自动化财经频道：RSS 联动实时新闻 -->
   <section class="content" id="rssFinance" style="margin-top: 2rem;">
@@ -96,12 +79,30 @@
     <div class="nav-card"><a href="finance-111.html">🏛️ 111｜什么是“好公司”？</a ></div>
   </section>
 
+    <!-- 🧾 今日财经简报：手动编辑的热点快讯 -->
+  <section class="modules" style="margin-top: 1rem;">
+    <h2>🧾 TOPO 财经简报</h2>
+
+    <div class="rss-card">
+      <h3>📌 美股期货小幅下挫，华尔街仍盯年度收益</h3>
+      <p>🤖 TOPO 摘要：2025年最后交易日，美股期货小幅回落。全年表现强劲，AI 板块功不可没。</p >
+      <a href="https://www.reuters.com/business/us-stock-futures-inch-down-thin-trading-wall-street-eyes-yearly-gains-2025-12-31/" target="_blank">🔗 来源：Reuters</a >
+      <small>📅 2025/12/31 ｜ 来源：Reuters 路透社</small>
+    </div>
+
+    <div class="rss-card">
+      <h3>📈 欧股有望创下自2021年以来最好表现</h3>
+      <p>🤖 TOPO 摘要：STOXX 600 指数年终收高，多个国家股市同步上涨，市场押注2026年继续降息。</p >
+      <a href="https://www.reuters.com/markets/europe/european-shares-set-best-year-since-2021-2025-12-31/" target="_blank">🔗 来源：Reuters</a >
+      <small>📅 2025/12/31 ｜ 来源：Reuters 路透社</small>
+    </div>
+  </section>
   <!-- ✅ JS 加载 -->
  
   <script src="scripts/stock.js"></script>
   <script src="scripts/crypto.js"></script>
 
-
+<script src="scripts/auto-currency.js"></script>
   <script>
     fetch("/components/footer.html")
       .then(res => res.text())
@@ -113,7 +114,7 @@
   const EXCHANGE_RATE_KEY = 'your-api-key-here'; // ✅ 临时用法：直接从 Netlify UI 中复制
 </script>
 
-<script src="scripts/currency-auto.js"></script>
+
 </body>
 
 </html>
