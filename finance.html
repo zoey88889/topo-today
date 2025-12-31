@@ -5,6 +5,92 @@
   <title>💼 TOPO FINANCE 财经频道｜分享真实、中立、易懂的财经知识</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+
+    /* 网格仅用于理财导航卡片 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .nav-card {
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .nav-card a {
+      color: #003366;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-card:hover {
+      background: #f0f8ff;
+      transform: translateY(-2px);
+    }
+
+    /* RSS 卡片为 block 垂直排列 */
+    .rss-card {
+      background: #fff;
+      border-left: 6px solid #2196f3;
+      margin: 1rem auto;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .rss-card h3 {
+      margin: 0 0 0.5rem 0;
+      color: #003366;
+      font-size: 1.1rem;
+    }
+
+    .rss-card p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .rss-card a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .rss-card small {
+      display: block;
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+    }
+
+    details summary {
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.8rem 1rem;
+      background: #f0f6ff;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    section {
+      margin: 2rem auto;
+      max-width: 1200px;
+      padding: 0 1rem;
+    }
+  </style>
+</head>
+
+</style>
 </head>
 <body>
 
@@ -14,7 +100,7 @@
 </header>
 
 <!-- 📘 理财基础系列：101～111 主题课程 -->
-<section class="modules" style="margin-top: 2rem;">
+<section class="modules cards" style="margin-top: 2rem;">
   <h2>📘 理财基础系列</h2>
   <div class="nav-card"><a href="finance-101.html">💰 101｜钱与通胀</a ></div>
   <div class="nav-card"><a href="finance-102.html">📊 102｜资产配置</a ></div>
@@ -33,28 +119,25 @@
 <section class="modules">
   <h2>📡 财经频道实时摘要</h2>
 
-  <details>
-    <summary>📈 股市频道</summary>
-    <div id="stockBox"></div>
-    <div id="marketwatchBox"></div>
-    <div id="cnbcBox"></div>
-  </details>
 
-  <details>
-    <summary>💸 加密货币频道</summary>
-    <div id="cryptoBox"></div>
-    <div id="coindeskBox"></div>
-    <div id="cointelegraphBox"></div>
-    <div id="cryptoslateBox"></div>
-  </details>
 
-  <details>
-    <summary>💱 汇率频道</summary>
-    <div id="exchangeRateBox" class="rss-card">
-      <p>汇率加载中…</p >
-    </div>
-  </details>
+<section class="modules">
+  <h2>📈 TOPO 股市频道</h2>
+  <div id="stockBox"></div>
+<div id="marketwatchBox"></div>
+<div id="cnbcBox"></div>
+ 
 </section>
+
+<section class="modules">
+  <h2>💸 TOPO 加密货币频道</h2>
+ 
+<div id="cryptoBox"></div>
+<div id="coindeskBox"></div>
+<div id="cointelegraphBox"></div>
+<div id="cryptoslateBox"></div>
+</section>
+
 
 <!-- 🧾 财经精华简报区 -->
 <section class="modules" style="margin-top: 2rem;">
@@ -74,11 +157,17 @@
     <small>📅 2025/12/31 ｜ 来源：Reuters 路透社</small>
   </div>
 </section>
-
+  <details>
+    <summary>💱 汇率频道</summary>
+    <div id="exchangeRateBox" class="rss-card">
+      <p>汇率加载中…</p >
+    </div>
+  </details>
+</section>
 <!-- ✅ 脚本加载 -->
-<script type="module" src="/scripts/stock.js"></script>
-<script type="module" src="/scripts/crypto.js"></script>
-<script type="module" src="/scripts/auto-currency.js"></script>
+<script src="/scripts/stock.js"></script>
+<script src="/scripts/crypto.js"></script>
+<script type="module" src="scripts/auto-currency.js"></script>
 
 <!-- 页脚加载 -->
 <div id="footer"></div>

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const city = "New York";
   const lang = navigator.language.startsWith("zh") ? "zh_cn" : "en";
-    const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
+  const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
   const weatherBox = document.getElementById("weatherBox");
   const forecastBox = document.getElementById("forecastBox");
