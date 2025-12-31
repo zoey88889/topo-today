@@ -85,30 +85,36 @@
     </div>
   </details>
   <!-- 📡 财经频道 RSS 自动摘要 -->
-<section class="modules">
+
+
+<!-- 📡 财经频道摘要主块 -->
+<section>
   <h2>📡 财经频道实时摘要</h2>
+</section>
 
-
-
+<!-- ✅ 单独分开的三个模块，使用 modules 样式控制网格布局 -->
 <section class="modules">
   <h2>📈 TOPO 股市频道</h2>
   <div id="stockBox"></div>
-<div id="marketwatchBox"></div>
-<div id="cnbcBox"></div>
- 
+  <div id="marketwatchBox"></div>
+  <div id="cnbcBox"></div>
 </section>
 
 <section class="modules">
   <h2>💸 TOPO 加密货币频道</h2>
- 
-<div id="cryptoBox"></div>
-<div id="coindeskBox"></div>
-<div id="cointelegraphBox"></div>
-<div id="cryptoslateBox"></div>
+  <div id="cryptoBox"></div>
+  <div id="coindeskBox"></div>
+  <div id="cointelegraphBox"></div>
+  <div id="cryptoslateBox"></div>
 </section>
 
-
+<section class="modules">
+  <h2>💱 汇率频道</h2>
+  <div id="exchangeRateBox" class="rss-card">
+    <p>汇率加载中…</p >
+  </div>
 </section>
+
 <!-- ✅ 脚本加载 -->
 <script src="/scripts/stock.js"></script>
 <script src="/scripts/crypto.js"></script>
