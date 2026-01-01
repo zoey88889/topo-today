@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TOPO · 加州站｜洛杉矶 / 圣盖博 华人信息导航</title>
+  <title>TOPO · 加州站｜洛杉矶 / 圣盖博 / 旧金山 华人信息导航</title>
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
@@ -78,16 +78,6 @@
   const params = new URLSearchParams(window.location.search);
   const region = params.get("region") || "Global";
   document.getElementById("regionInput").value = region;
-</script>
-</script>
-// 读取 URL 中的参数
-const urlParams = new URLSearchParams(window.location.search);
-const region = urlParams.get('region') || 'Unknown';
-const category = urlParams.get('type') || 'general';
-
-// 将参数写入隐藏字段
-document.querySelector('input[name="region"]').value = region;
-document.querySelector('input[name="category"]').value = category;
 </script>
 </body>
 </html>

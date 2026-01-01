@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPO · 日本站｜东京 / 大阪 华人资讯平台</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+
+<header class="hero">
+  <h1>📍 东京 / 大阪 华人资讯平台</h1>
+  <p>涵盖房屋租售、美食推荐、求职招聘、教育培训与生活服务</p >
+</header>
+
+<section class="modules">
+  <h2>🌤️ 日本今日天气</h2>
+  <div id="weatherBox"></div>
+</section>
+
+<section class="modules">
+  <h2>🧭 日本生活分类导航</h2>
+  <div class="category-grid">
+    <a class="card" href=" ">👩‍💼 招聘求职</a >
+    <a class="card" href="post.html?region=japan&type=housing">🏠 房屋信息</a >
+    <a class="card" href="post.html?region=japan&type=services">🛠️ 本地服务</a >
+    <a class="card" href="post.html?region=japan&type=market">🛍️ 二手交易</a >
+    <a class="card" href="post.html?region=japan&type=beauty">💇‍♀️ 美发美容</a >
+    <a class="card" href="post.html?region=japan&type=doctor">👨‍⚕️ 医疗健康</a >
+    <a class="card" href="post.html?region=japan&type=education">📚 教育培训</a >
+    <a class="card" href="post.html?region=japan&type=visa">✈️ 留学移民</a >
+    <a class="card" href="post.html?region=japan&type=food">🍜 美食推荐</a >
+  </div>
+</section>
+
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
+<script src="scripts/ai-weather.js"></script>
+
+</body>
+</html>
