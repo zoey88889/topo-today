@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>TOPO 亚特兰大站 Atlanta｜本地生活信息</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+
+<header class="hero" style="background:#003366; color:white;">
+  <h1>🗺️ TOPO 亚特兰大 Atlanta</h1>
+  <p>本地生活资讯 · 招聘 · 房源 · 服务 · 本地活动</p >
+</header>
+
+<!-- ☀️ 天气 -->
+<div id="weatherMiniCard">
+  <div class="weather-card-mini" onclick="toggleWeatherBox()">🌤️ 点击查看今日天气</div>
+</div>
+<div id="fullWeatherBox" style="display:none;">
+  <div id="weatherBox"></div>
+  <div id="forecastBox"></div>
+  <div id="aiAdvice"></div>
+</div>
+
+<!-- ✏️ 发帖表单 -->
+<section class="modules">
+  <h2>📌 发布本地信息</h2>
+  <form id="postForm">
+    <input type="text" id="title" placeholder="标题（如：招聘店员）" required />
+    <textarea id="content" placeholder="内容详情..." required></textarea>
+    <input type="text" id="contact" placeholder="联系方式（如微信/电话）" required />
+    <button type="submit">📬 发布信息</button>
+  </form>
+</section>
+
+<!-- 📋 帖子展示区 -->
+<section class="modules">
+  <h2>🧾 最新本地贴文</h2>
+  <div id="postList">
+    <p>加载中…</p >
+  </div>
+</section>
+
+<!-- 🔙 返回首页按钮 -->
+<a href=" " class="btn-back" style="margin:2rem;">← 返回首页</a >
+
+<!-- 📎 页脚 -->
+<div id="footer"></div>
+
+<!-- 📦 脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="/scripts/supabase.js"></script>
+<script src="/scripts/post-display.js"></script>
+<script src="/scripts/ai-weather.js"></script>
+
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+
+  function toggleWeatherBox() {
+    const box = document.getElementById("fullWeatherBox");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+  }
+</script>
+
+</body>
+</html>
