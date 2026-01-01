@@ -49,5 +49,45 @@
 
 <script src="scripts/ai-weather.js"></script>
 
+  <!-- 默认信息卡片 -->
+  <div class="post">
+    <h3>📢 想上广告？</h3>
+    <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p >
+    <a href="index.html">返回首页</a >
+  </div>
+
+  <!-- 渲染容器 -->
+  <div id="postContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const region = params.get("region") || "Global";
+  document.getElementById("regionInput").value = region;
+</script>
+</script>
+// 读取 URL 中的参数
+const urlParams = new URLSearchParams(window.location.search);
+const region = urlParams.get('region') || 'Unknown';
+const category = urlParams.get('type') || 'general';
+
+// 将参数写入隐藏字段
+document.querySelector('input[name="region"]').value = region;
+document.querySelector('input[name="category"]').value = category;
+</script>
 </body>
 </html>
