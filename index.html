@@ -34,7 +34,6 @@ function toggleExtra() {
 }
 </script>
 <!-- 建议：位置从底部依次往上排列，避免重叠 -->
-
 <a href="california.html" class="floating-btn" style="bottom: 380px; background: #fdd835;">
   🌴
   <span class="floating-text">加州站｜洛杉矶</span>
@@ -188,6 +187,7 @@ function toggleExtra() {
   <div id="aiAdvice"></div>
 </div>
 
+ 
 
 <!-- 🤖 Dodobot Widget 按钮（右下角固定）-->
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
@@ -241,7 +241,6 @@ function toggleWeatherBox() {
 
 </script>
 
-<script src="/scripts/ai-weather.js"></script>
 
 <!-- ✅ 控制显示/隐藏逻辑 -->
 <script>
@@ -269,5 +268,8 @@ function toggleExtra() {
   box.style.display = box.style.display === "none" ? "block" : "none";
 }
 </script>
+
+<script type="module" src="/scripts/ai-weather.js"></script>
+
 </body>
 </html>

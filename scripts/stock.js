@@ -9,7 +9,8 @@ async function fetchStockRSS(rssUrl, containerId, sourceLabel) {
     const res = await fetch(api);
     const data = await res.json();
 
-    const items = data.items.slice(0, 3);
+    const ITEM_LIMIT = 1;
+    const items = data.items.slice(0, ITEM_LIMIT);
     if (!items.length) {
       container.innerHTML = `<p style="text-align:center; color:#888;">⚠️ 暂无 ${sourceLabel} 内容</p >`;
       return;

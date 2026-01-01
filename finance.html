@@ -72,7 +72,12 @@
     font-size: 0.9rem;
     color: #444;
   }
-
+.rss-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
   .rss-card a {
     color: #1a73e8;
     text-decoration: none;
@@ -153,18 +158,22 @@
 
 <!-- ✅ 单独分开的三个模块，使用 modules 样式控制网格布局 -->
 <section class="modules">
-  <h2>📈 TOPO 股市频道</h2>
-  <div id="stockBox"></div>
-  <div id="marketwatchBox"></div>
-  <div id="cnbcBox"></div>
+  <h2>📈 股市频道</h2>
+  <div class="rss-columns">
+    <div id="stockBox"></div>
+    <div id="marketwatchBox"></div>
+    <div id="cnbcBox"></div>
+  </div>
 </section>
 
 <section class="modules">
-  <h2>💸 TOPO 加密货币频道</h2>
-  <div id="cryptoBox"></div>
-  <div id="coindeskBox"></div>
-  <div id="cointelegraphBox"></div>
-  <div id="cryptoslateBox"></div>
+  <h2>💸 加密货币频道</h2>
+  <div class="rss-columns">
+    <div id="cryptoBox"></div>
+    <div id="coindeskBox"></div>
+    <div id="cointelegraphBox"></div>
+    <div id="cryptoslateBox"></div>
+  </div>
 </section>
 
 <section class="modules">
@@ -177,7 +186,8 @@
 <!-- ✅ 脚本加载 -->
 <script src="/scripts/stock.js"></script>
 <script src="/scripts/crypto.js"></script>
-<script type="module" src="scripts/auto-currency.js"></script>
+
+<script type="module" src="assets/auto-currency.js"></script>
 
 <!-- 页脚加载 -->
 <div id="footer"></div>

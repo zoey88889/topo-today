@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const apiKey = import.meta.env.VITE_EXCHANGE_RATE_KEY || "your-backup-key";✅ Netlify 上设置的环境变量
+  const apiKey = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
   const endpoint = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
 
   const box = document.getElementById("exchangeRateBox");
