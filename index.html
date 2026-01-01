@@ -12,6 +12,21 @@
 
 <!-- index.html 中 -->
 <!-- 🛰️ TOPO 城市分站按钮 -->
+ <!-- 🌍 地区选择器按钮 -->
+<a class="floating-btn" style="bottom: 420px; background: #607d8b;" onclick="toggleRegionMenu()">
+  🌍
+  <span class="floating-text">地区选择</span>
+</a >
+
+<!-- 🌍 城市列表（默认隐藏）-->
+<div id="regionMenu" style="display:none; position: fixed; bottom: 480px; right: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); padding: 0.5rem; z-index:999;">
+  <a href="california.html" class="floating-btn" style="margin: 0.25rem;">🌴 加州</a >
+  <a href="florida.html" class="floating-btn" style="margin: 0.25rem;">🏖️ 佛罗里达</a >
+  <a href="atlanta.html" class="floating-btn" style="margin: 0.25rem;">⛲️ 亚特兰大</a >
+  <a href="vancouver.html" class="floating-btn" style="margin: 0.25rem;">🇨🇦 温哥华</a >
+  <a href="japan.html" class="floating-btn" style="margin: 0.25rem;">🇯🇵 日本</a >
+  <a href="paris.html" class="floating-btn" style="margin: 0.25rem;">🇫🇷 巴黎</a >
+</div>
 <!-- 建议：位置从底部依次往上排列，避免重叠 -->
 
 <a href="california.html" class="floating-btn" style="bottom: 380px; background: #fdd835;">
@@ -19,40 +34,13 @@
   <span class="floating-text">加州站｜洛杉矶</span>
 </a >
 
-
-<a href="florida.html" class="floating-btn" style="bottom: 300px; background: #4dd0e1;">
-  🏖️
-  <span class="floating-text">佛罗里达/</span>
-</a >
-
-<a href="atlanta.html" class="floating-btn" style="bottom: 180px; background: #aed581;">
-  ⛲️
-  <span class="floating-text">亚特兰大</span>
-</a >
-<a href="vancouver.html" class="floating-btn" style="bottom: 220px; background: #f31c9d;">
-  ✈️
-  <span class="floating-text">加拿大站 ｜温哥华</span>
-  </a >
-<a href="japan.html" class="floating-btn" style="bottom: 120px; background: #5cbcf3;">
-  ✈️
-  <span class="floating-text">日本站｜东京</span>
-  </a >
-
-  <a href="paris.html" class="floating-btn" style="bottom: 120px; background: #aa0126;">
-  ✈️
-  <span class="floating-text">法国站｜巴黎</span>
-  </a >
 <!-- 其他模块按钮 -->
 <a href="today.html" class="floating-btn" style="bottom: 300px; background: #f90303;">
   📰
   <span class="floating-text">华人焦点</span>
 </a >
-<a href="japan.html" class="floating-btn" style="bottom: 220px; background: #5c78f3;">
-  🍣
-  <span class="floating-text">日本站｜东京</span>
-</a >
 
-<a href="fashion.html" class="floating-btn" style="bottom: 140px; background: #81d4fa;">
+<a href="fashion.html" class="floating-btn" style="bottom: 240px; background: #81d4fa;">
   👗
   <span class="floating-text">时尚灵感</span>
 </a >
@@ -244,6 +232,12 @@ function toggleWeatherBox() {
   const fullBox = document.getElementById("fullWeatherBox");
   fullBox.style.display = (fullBox.style.display === "none") ? "block" : "none";
 }
+</script>
+<script>
+  function toggleRegionMenu() {
+    const menu = document.getElementById("regionMenu");
+    menu.style.display = (menu.style.display === "none") ? "block" : "none";
+  }
 </script>
 <script src="/scripts/ai-weather.js"></script>
 
