@@ -13,20 +13,26 @@
 <!-- index.html 中 -->
 <!-- 🛰️ TOPO 城市分站按钮 -->
  <!-- 🌍 地区选择器按钮 -->
-<a class="floating-btn" style="bottom: 420px; background: #607d8b;" onclick="toggleRegionMenu()">
-  🌍
-  <span class="floating-text">地区选择</span>
+  <!-- 🔽 可折叠内容按钮 -->
+<div id="extraButtons" style="display: none;">
+  <a href="travel.html" class="floating-btn small">✈️ 旅行推荐</a >
+  <a href="fashion.html" class="floating-btn small">👗 时尚灵感</a >
+  <a href="beauty1.html" class="floating-btn small">💄 美妆精选</a >
+  <a href="meditation.html" class="floating-btn small">🧘 冥想练习</a >
+  <a href="weather.html" class="floating-btn small">🌤️ 天气</a >
+</div>
+
+<!-- 显示/隐藏按钮 -->
+<a class="floating-btn" onclick="toggleExtra()" style="bottom: 80px; background: #888;">
+  🔽<span class="floating-text">更多频道</span>
 </a >
 
-<!-- 🌍 城市列表（默认隐藏）-->
-<div id="regionMenu" style="display:none; position: fixed; bottom: 480px; right: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); padding: 0.5rem; z-index:999;">
-  <a href="california.html" class="floating-btn" style="margin: 0.25rem;">🌴 加州</a >
-  <a href="florida.html" class="floating-btn" style="margin: 0.25rem;">🏖️ 佛罗里达</a >
-  <a href="atlanta.html" class="floating-btn" style="margin: 0.25rem;">⛲️ 亚特兰大</a >
-  <a href="vancouver.html" class="floating-btn" style="margin: 0.25rem;">🇨🇦 温哥华</a >
-  <a href="japan.html" class="floating-btn" style="margin: 0.25rem;">🇯🇵 日本</a >
-  <a href="paris.html" class="floating-btn" style="margin: 0.25rem;">🇫🇷 巴黎</a >
-</div>
+<script>
+function toggleExtra() {
+  const box = document.getElementById("extraButtons");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+</script>
 <!-- 建议：位置从底部依次往上排列，避免重叠 -->
 
 <a href="california.html" class="floating-btn" style="bottom: 380px; background: #fdd835;">
@@ -232,13 +238,9 @@ function toggleWeatherBox() {
   const fullBox = document.getElementById("fullWeatherBox");
   fullBox.style.display = (fullBox.style.display === "none") ? "block" : "none";
 }
+
 </script>
-<script>
-  function toggleRegionMenu() {
-    const menu = document.getElementById("regionMenu");
-    menu.style.display = (menu.style.display === "none") ? "block" : "none";
-  }
-</script>
+
 <script src="/scripts/ai-weather.js"></script>
 
 <!-- ✅ 控制显示/隐藏逻辑 -->
@@ -258,6 +260,14 @@ function toggleWeatherBox() {
     const widget = document.getElementById("dodobot-widget");
     widget.style.display = widget.style.display === "none" ? "block" : "none";
   }
+  
+</script>
+
+<script>
+function toggleExtra() {
+  const box = document.getElementById("extraButtons");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
 </script>
 </body>
 </html>
