@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>🍜 TOPO | 美食推荐</title>
+
+
   <style>
     body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; color: #333; }
     h1 { text-align: center; }
@@ -51,6 +53,7 @@
   <form id="postForm" enctype="multipart/form-data">
     <input type="text" id="title" placeholder="标题..." required />
     <input type="file" id="imageUpload" accept="image/*" multiple />
+    <input type="hidden" name="region" value="California">
     <textarea id="content" rows="4" placeholder="写下推荐内容..." required></textarea>
     <button type="submit">发布</button>
   </form>
@@ -79,6 +82,11 @@
     .then(html => {
       document.getElementById("footer").innerHTML = html;
     });
+</script>
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const region = params.get("region") || "Global";
+  document.getElementById("regionInput").value = region;
 </script>
 </body>
 </html>
