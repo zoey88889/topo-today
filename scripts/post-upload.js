@@ -51,13 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const { error } = await window.supabase
       .from("posts")
       .insert([{
-        title,
-        content,
-        images: imageUrls,
-        author: user.email,
-        category: category
-      }]);
-
+  title,
+  content,
+  images: imageUrls,
+  author: user.email,
+  category,
+  region
+}])
     if (error) {
       alert("❌ 发布失败：" + error.message);
     } else {

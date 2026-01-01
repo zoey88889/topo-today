@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>📬 发布信息｜TOPO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; color: #333; }
+    h1 { text-align: center; }
+    form {
+      margin: 2rem auto;
+      max-width: 600px;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    input, textarea {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📬 发布 TOPO 信息</h1>
+
+  <form id="postForm" enctype="multipart/form-data">
+    <input type="text" id="title" placeholder="请输入标题..." required />
+    <textarea id="content" rows="5" placeholder="请输入内容..." required></textarea>
+    <input type="file" id="imageUpload" accept="image/*" multiple />
+
+    <input type="hidden" id="regionInput" name="region" />
+    <input type="hidden" id="categoryInput" name="category" />
+
+    <button type="submit">发布</button>
+  </form>
+
+  <div id="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>
+  <script src="scripts/topo.init.js"></script>
+  <script src="scripts/post-upload.js"></script>
+
+  <script>
+    // 从 URL 中提取 ?region=xxx&type=xxx
+    const urlParams = new URLSearchParams(window.location.search);
+    const region = urlParams.get('region') || 'global';
+    const category = urlParams.get('type') || 'general';
+
+    // 设置隐藏字段
+    document.getElementById("regionInput").value = region;
+    document.getElementById("categoryInput").value = category;
+  </script>
+
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+</body>
+</html>

@@ -44,7 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 🧭 自动识别页面分类作为 category
     const path = window.location.pathname;
-    const category = path.split("/").pop().replace(".html", "").toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+const region = urlParams.get('region') || 'Global';
+const category = urlParams.get('type') || 'general';
 
     const { error } = await window.supabase
       .from("posts")
@@ -63,5 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       form.reset();
       location.reload(); // 可选
     }
+
   });
 });
