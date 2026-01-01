@@ -30,11 +30,10 @@
       color: #555;
       margin-top: 1.5rem;
     }
-    footer {
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
+    footer { margin-top: 3rem;
+       font-size: 0.85rem; 
+       color: #888; 
+       text-align: center; }
   </style>
 </head>
 <body>
@@ -63,6 +62,13 @@
   <p class="quote">「我们用 AI 的语言，讲述人类的故事。」——TOPO Editorial</p >
 
   <hr />
-
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
 </body>
 </html>
