@@ -45,12 +45,17 @@ async function loadPosts() {
   const region = urlParams.get("region") || "global";
   const category = urlParams.get("type") || "general";
 
-  let query = window.supabase
-    .from("posts")
-    .select("*")
-    .eq("region", region)
-    .eq("category", category)
-    .order("created_at", { ascending: false });
+let query = window.supabase
+  .from("posts")
+  .select("*")
+  .order("created_at", { ascending: false });
+
+if (region) {
+  query = query.eq("region", region);
+}
+if (category) {
+  query = query.eq("category", category);
+}
 
   const { data, error } = await query;
 

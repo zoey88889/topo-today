@@ -1,32 +1,36 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
-const city = params.get("city") || "New York";
-const lang = params.get("lang") || "zh_cn"; // 语言设为中文默认
+  const city = params.get("city") || "New York"; // 默认城市
+  const lang = "zh_cn"; // 可切换为 "en" 等语言
 
   const apiKey = "73e687d19d94d3b1ccee01aada40aeb4";
-  const weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-   const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
+  const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
 
+  const box = document.getElementById("weatherBox");
+  const forecastBox = document.getElementById("forecastBox");
+  const aiBox = document.getElementById("aiSuggestion");
+  const miniCard = document.getElementById("weatherMiniCard");
 
   if (!box) return;
 
   try {
-    const res = await fetch(weatherApi);
+    // 当前天气
+    const res = await fetch(currentUrl);
     const data = await res.json();
-    const temp = data.main.temp;
+    const temp = Math.round(data.main.temp);
     const desc = data.weather[0].description;
 
     box.innerHTML = `
       <div class="rss-card">
-        <h3>🌤️ ${city} 天气</h3>
-        <p>当前温度：<strong>${temp}°C</strong><br>天气：${desc}</p >
+        <h3>🌤️ ${city} 当前天气</h3>
+        <p>温度：<strong>${temp}°C</strong><br>天气状况：${desc}</p >
       </div>
     `;
- // 📍 获取未来天气
-   const box = document.getElementById("weatherBox");
-    const forecastRes = await fetch(forecastURL);
+
+    // 未来 3 天中午天气（12:00）
+    const forecastRes = await fetch(forecastUrl);
     const forecastData = await forecastRes.json();
-  
 
     let forecastHTML = `<h3>🔮 ${lang === "zh_cn" ? "未来 3 天天气" : "3‑Day Forecast"}</h3>`;
     forecastData.list
@@ -34,22 +38,21 @@ const lang = params.get("lang") || "zh_cn"; // 语言设为中文默认
       .slice(0, 3)
       .forEach(item => {
         const date = new Date(item.dt * 1000).toLocaleDateString();
-       const tempC = Math.round(temp);
-       const tempF = Math.round((temp * 9) / 5 + 32);
+        const t = Math.round(item.main.temp);
         const icon = item.weather[0].icon;
-        const desc = item.weather[0].description;
-    forecastHTML += `
+        const d = item.weather[0].description;
+
+        forecastHTML += `
           <div class="rss-card">
-            <strong>${date}</strong> · ${desc} · ${temp}°C
+            <strong>${date}</strong> · ${d} · ${t}°C
             <img src="https://openweathermap.org/img/wn/${icon}.png" style="width:32px; vertical-align:middle;">
           </div>
         `;
       });
 
-    forecastBox.innerHTML = forecastHTML;
+    if (forecastBox) forecastBox.innerHTML = forecastHTML;
 
-    // 🎯 AI 提示建议
-    const forecastBox = document.getElementById("forecastBox"); // ✅ 别忘记加
+    // AI 建议（可优化为结合天气关键词生成）
     const tips = lang === "zh_cn"
       ? [
           "🧤 今天风有点大，记得围巾～",
@@ -65,23 +68,24 @@ const lang = params.get("lang") || "zh_cn"; // 语言设为中文默认
           "❄️ Cold weather—bundle up!",
           "🍵 A warm drink heals everything."
         ];
-
     const random = tips[Math.floor(Math.random() * tips.length)];
 
-    aiBox.innerHTML = `
-      <div class="weather-card">
-        <h3>🤖 Dodobot ${lang === "zh_cn" ? "今日建议" : "Daily Tip"}</h3>
-        <p>${random}</p >
-        <small>TOPO AI 自动生成</small>
-      </div>
-    `;
+    if (aiBox) {
+      aiBox.innerHTML = `
+        <div class="weather-card">
+          <h3>🤖 Dodobot 今日建议</h3>
+          <p>${random}</p >
+          <small>TOPO AI 自动生成</small>
+        </div>
+      `;
+    }
 
-    // 🧊 渲染左上角 mini weather 卡片
-    const miniCard = document.getElementById("weatherMiniCard");
+    // 迷你天气卡片
     if (miniCard) {
+      const tempF = Math.round(temp * 1.8 + 32);
       miniCard.innerHTML = `
         <div class="weather-card-mini" onclick="toggleWeatherBox()">
-          🌤️ ${city}：${tempC}°C / ${tempF}°F<br>
+          🌤️ ${city}：${temp}°C / ${tempF}°F<br>
           🤖 Dodobot：${random}
         </div>
       `;
