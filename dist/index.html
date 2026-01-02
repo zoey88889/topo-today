@@ -13,8 +13,10 @@
 
 <!-- index.html 中 -->
 <!-- 🛰️ TOPO 城市分站按钮 -->
- <!-- 🌍 地区选择器按钮 -->
-  <!-- 🔽 可折叠内容按钮 -->
+<!-- 🔽 可折叠内容按钮 -->
+<a class="floating-btn" onclick="toggleExtra()" style="bottom: 80px; background: #888;">
+  🔽<span class="floating-text">更多频道</span>
+</a >
 <div id="extraButtons" style="display: none;">
   <a href="travel.html" class="floating-btn small">✈️ 旅行推荐</a >
   <a href="fashion.html" class="floating-btn small">👗 时尚灵感</a >
@@ -24,9 +26,7 @@
 </div>
 
 <!-- 显示/隐藏按钮 -->
-<a class="floating-btn" onclick="toggleExtra()" style="bottom: 80px; background: #888;">
-  🔽<span class="floating-text">更多频道</span>
-</a >
+
 
 <script>
 function toggleExtra() {
@@ -35,18 +35,18 @@ function toggleExtra() {
 }
 </script>
 <!-- 建议：位置从底部依次往上排列，避免重叠 -->
-<a href="california.html" class="floating-btn" style="bottom: 380px; background: #fdd835;">
+<a href="california.html" class="floating-btn" style="bottom: 360px; background: #fdd835;">
   🌴
   <span class="floating-text">加州站｜洛杉矶</span>
 </a >
 
 <!-- 其他模块按钮 -->
-<a href="today.html" class="floating-btn" style="bottom: 300px; background: #f90303;">
+<a href="today.html" class="floating-btn" style="bottom: 200px; background: #f90303;">
   📰
   <span class="floating-text">华人焦点</span>
 </a >
 
-<a href="fashion.html" class="floating-btn" style="bottom: 240px; background: #81d4fa;">
+<a href="fashion.html" class="floating-btn" style="bottom: 140px; background: #81d4fa;">
   👗
   <span class="floating-text">时尚灵感</span>
 </a >
@@ -56,7 +56,7 @@ function toggleExtra() {
   <span class="floating-text">美妆精选</span>
 </a >
 
-<a href="travel.html" class="floating-btn" style="bottom: 220px; background: #5c78f3;">
+<a href="travel.html" class="floating-btn" style="bottom: 260px; background: #5c78f3;">
   ✈️
   <span class="floating-text">旅行推荐</span>
 </a >
@@ -64,6 +64,13 @@ function toggleExtra() {
   <a href="contact.html" class="floating-btn">
     💌<span class="floating-text">联系我们！</span>
   </a >
+
+<script>
+  function toggleRegionMenu() {
+    const menu = document.getElementById("regionMenu");
+    menu.style.display = (menu.style.display === "none") ? "block" : "none";
+  }
+  </script>
 
   <!-- 🌍 页首 -->
   <header class="hero">
