@@ -1,5 +1,6 @@
  
  const responses = {
+"hi": "Hello！很高兴认识你🤖",
 "hi，你好": "Hello！很高兴认识你🤖🫶",
 "what": "What can I help you with today? 🤖",
 "hello": "Hello there! How can I assist you today? 🤖",

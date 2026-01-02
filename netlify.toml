@@ -1,8 +1,0 @@
-[build]
-  publish = "dist"
-  command = "npm run build"
-
-[build.environment]
-  NODE_VERSION = "20"
-VITE_OPEN_WEATHER_API_KEY = "73e687d19d94d3b1ccee01aada40aeb4"
-VITE_EXCHANGE_RATE_API_KEY = "4787ebd9e66d69fca13d7dd7"
