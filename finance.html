@@ -96,6 +96,7 @@
     font-size: 1.1rem;
     cursor: pointer;
     padding: 0.8rem 1rem;
+      color: #010d3e;
     background: #f0f6ff;
     border: 1px solid #dbeafe;
     border-radius: 8px;
@@ -103,9 +104,6 @@
     max-width: 800px;
   }
 
-  details div {
-    padding: 1rem 2rem;
-  }
 </style>
 </head>
 <body>
@@ -150,7 +148,12 @@
     <small>📅 2025/12/31 ｜ 来源：Reuters 路透社</small>
   </div>
 </section>
- 
+ <section class="modules" style="margin-top: 1rem;"></section>
+ <details>💱 汇率频道
+    <div id="exchangeRateBox" class="rss-card">
+      <p>汇率加载中…</p >
+    </div>
+  </details>
   <!-- 📡 财经频道 RSS 自动摘要 -->
 
 
@@ -176,13 +179,7 @@
   </div>
 </section>
 
-<section class="modules">
- <details>
-    <summary>💱 汇率频道</summary>
-    <div id="exchangeRateBox" class="rss-card">
-      <p>汇率加载中…</p >
-    </div>
-  </details>
+
 <!-- ✅ 脚本加载 -->
 <script src="/scripts/stock.js"></script>
 <script src="/scripts/crypto.js"></script>
