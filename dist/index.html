@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPO Today - 华人生活信息平台</title>
+  <script type="module" crossorigin src="/assets/index.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index.css">
+</head>
+
+<body>
+
+
+<!-- index.html 中 -->
+<!-- 🛰️ TOPO 城市分站按钮 -->
+ <!-- 🌍 地区选择器按钮 -->
+  <!-- 🔽 可折叠内容按钮 -->
+<div id="extraButtons" style="display: none;">
+  <a href="travel.html" class="floating-btn small">✈️ 旅行推荐</a >
+  <a href="fashion.html" class="floating-btn small">👗 时尚灵感</a >
+  <a href="beauty1.html" class="floating-btn small">💄 美妆精选</a >
+  <a href="meditation.html" class="floating-btn small">🧘 冥想练习</a >
+  <a href="weather.html" class="floating-btn small">🌤️ 天气</a >
+</div>
+
+<!-- 显示/隐藏按钮 -->
+<a class="floating-btn" onclick="toggleExtra()" style="bottom: 80px; background: #888;">
+  🔽<span class="floating-text">更多频道</span>
+</a >
+
+<script>
+function toggleExtra() {
+  const box = document.getElementById("extraButtons");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+</script>
+<!-- 建议：位置从底部依次往上排列，避免重叠 -->
+<a href="california.html" class="floating-btn" style="bottom: 380px; background: #fdd835;">
+  🌴
+  <span class="floating-text">加州站｜洛杉矶</span>
+</a >
+
+<!-- 其他模块按钮 -->
+<a href="today.html" class="floating-btn" style="bottom: 300px; background: #f90303;">
+  📰
+  <span class="floating-text">华人焦点</span>
+</a >
+
+<a href="fashion.html" class="floating-btn" style="bottom: 240px; background: #81d4fa;">
+  👗
+  <span class="floating-text">时尚灵感</span>
+</a >
+
+<a href="beauty1.html" class="floating-btn" style="bottom: 80px; background: #f48fb1;">
+  💄
+  <span class="floating-text">美妆精选</span>
+</a >
+
+<a href="travel.html" class="floating-btn" style="bottom: 220px; background: #5c78f3;">
+  ✈️
+  <span class="floating-text">旅行推荐</span>
+</a >
+  <!-- 💌 联系我们浮动按钮 -->
+  <a href="contact.html" class="floating-btn">
+    💌<span class="floating-text">联系我们！</span>
+  </a >
+
+  <!-- 🌍 页首 -->
+  <header class="hero">
+    <h1>🌍 TOPO TODAY</h1>
+    <p>AI 驱动的生活资讯宇宙总站</p >
+
+    <!-- 登录区 -->
+    <div class="auth-links" id="authArea">
+      <a href="login.html" id="loginBtn">登录 / 注册</a >
+      <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
+    </div>
+    <div id="welcome" style="text-align: center; margin-top: 1rem;"></div>
+  </header>
+
+
+<!-- 首页 index.html 中 -->
+<section class="modules">
+  <h2>🧧 TOPO 华人焦点</h2>
+  <div id="todayHighlight" class="rss-section"></div>
+</section>
+ <p style="text-align: left; margin-top: 1rem;">
+  <a href="today.html" style="color:#570307; text-decoration: underline; font-weight:bold;">🔍 查看更多 TOPO 华人焦点资讯</a >
+</p >
+<script>
+  fetch("/components/today-snippet.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("todayHighlight").innerHTML = html;
+    });
+</script>
+
+
+
+
+
+
+
+<!-- 📡 RSS 内容引擎提示区 -->
+<section class="rss-teaser">
+  <div class="teaser-box">
+    <h3>📡 RSS 内容引擎现已接入：</h3>
+    <p>💼 财经 / 💻 科技 /  🎬 娱乐 / 🧧 华人资讯 / 📈金融 / 🌃 天文 / 🍣 美食 /🔬 科学 /🌍 国际 /🎨 艺术/</p >
+    <p>→ 自动抓取全球权威媒体，包括 <strong>BBC、星岛、MarketWatch</strong> 等</p >
+    <p>🛰️ 后续将整合 <strong>Eventbrite、本地活动</strong> 与 <strong>AI 自动摘要</strong> 功能</p >
+  </div>
+</section>
+
+      <!-- 📰 新闻 RSS 展示 -->
+    <section class="modules">
+      <h2>📰 今日资讯 · RSS Highlights</h2>
+      <div id="dailyNewsContainer" class="rss-section"></div>
+</section>
+
+
+
+
+    <!-- 🧭 精选频道导航 -->
+    <section class="modules">
+      <h2 style="text-align: left;">🧭 精选频道导航</h2>
+      <div class="category-grid">
+        <a class="card" href="news.html" style="background:#e3f2fd; border-left:4px solid #101010;">🗽纽约焦点</a >
+        <a class="card" href="today.html" style="background:#fed3ce; border-left:4px solid #e64a19;">🧧 即时资讯</a >
+        <a class="card" href="business.html" style="background:#e3f2fd; border-left:4px solid #2196f3;">💼 财经商业</a >
+        <a class="card" href="tech.html" style="background:#ede7f6; border-left:4px solid #673ab7;">💻 科技趋势</a >
+        <a class="card" href="science.html" style="background:#d7f9e5; border-left:4px solid #4f3cf9;">🔬 科学洞察</a >
+        <a class="card" href="finance.html" style="background:#fed3ce; border-left:4px solid #2203d2;">📈 金融资讯</a > 
+        <a class="card" href="entertainment.html" style="background:#fce4ec; border-left:4px solid #ec407a;">🎬 娱乐文化</a >
+        <a class="card" href="global.html" style="background:#fffde7; border-left:4px solid #fbc02d;">🌍 国际大事</a >
+        <a class="card" href="astro.html" style="background:#edccf8; border-left:4px solid #aaf57c;">🌌 天文频道</a >
+        <a class="card" href="foods.html" style="background:#f5d6fa; border-left:4px solid #fd8ff4;"> 🍣 美食烹饪</a >
+        <a class="card" href="health.html" style="background:#d2faef; border-left:4px solid #49f67d;">💚健康养生</a >
+        <a class="card" href="chinese.html" style="background:#fed3ce; border-left:4px solid #fc5d2d;">🧧 华人资讯</a >
+        <a class="card" href="art.html" style="background:#fed3ce; border-left:4px solid #0be9b5;">🖼️探索艺术</a >
+        <a class="card" href="sports.html" style="background:#f9efe4; border-left:4px solid #0c69cd;"> 运动探索</a >
+        <a class="card" href="eventnews.html" style="background:#f9efe4; border-left:4px solid #9c27b0;">🎉 本地活动</a >
+      </div>
+    </section>
+
+
+
+    <!-- 📂 栏目导航 HEF -->
+    <section class="modules">
+      <h2 style="text-align:left;">📂 栏目导航 </h2>
+      <div class="category-grid">
+        <a class="card" href="food.html">🍜 美食推荐</a >
+        <a class="card" href="housing.html">🏠 房源信息</a >
+        <a class="card" href="events.html">🎉 本地活动</a >
+        <a class="card" href="jobs.html">👩‍💼 招聘市场</a >
+        <a class="card" href="services.html">🛠️ 本地服务</a >
+        <a class="card" href="beauty.html">💇‍♀️ 美发美容</a >
+        <a class="card" href="market.html">🛍️ 二手交易</a >
+        <a class="card" href="doctor.html">👨‍⚕️ 医疗健康</a >
+        <a class="card" href="study.html">📚 教育培训</a >
+        <a class="card" href="visa.html">✈️ 留学移民</a >
+      </div>
+    </section>
+</main>
+
+   <!-- 🔎 搜索栏 -->
+  <nav>
+    <input type="text" placeholder="🔍 搜索生活信息 / 店铺 / 服务" />
+  </nav>
+ <main class="container">
+   <!-- 🛰️ 宇宙便利贴 Intro -->
+    <section class="modules">
+      <h2>🛰️ 宇宙便利贴</h2>
+      <p>贴在你生活的每一处角落，为你导航、提醒、启发。</p >
+    </section>
+  <!-- 📎 页脚 -->
+  <div id="footer"></div>
+ <div id="weatherMiniCard">
+  <div class="weather-card-mini" onclick="toggleWeatherBox()">
+    🌤️ 纽约今日气温
+    <br>
+    🤖 Dodobot：风大围巾～
+  </div>
+</div>
+
+<div id="fullWeatherBox" style="display:none;">
+  <div id="weatherBox"></div>
+  <div id="forecastBox"></div>
+  <div id="aiAdvice"></div>
+</div>
+
+ 
+
+<!-- 🤖 Dodobot Widget 按钮（右下角固定）-->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+  <img src="/assets/dodobot.gif" alt="Dodobot" width="80"
+    style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); cursor: pointer;"
+    onclick="toggleDodobot()" />
+</div>
+
+
+<!-- 🤖 Dodobot Widget 按钮（右下角固定） -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+  <img src="/assets/dodobot.gif" alt="Dodobot" width="80"
+    style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); cursor: pointer;"
+    onclick="toggleDodobot()" />
+</div>
+
+<!-- 💬 Chatbot 展开区块 -->
+<div id="dodobot-widget" style="display: none; position: fixed; bottom: 110px; right: 20px; width: 300px; background: #fffafc; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); z-index: 9999; padding: 1rem;">
+
+  <div id="dodobot-avatar" style="text-align: center;">
+    <img src="/assets/dodobot.gif" alt="Dodobot" width="60"
+      style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); margin-bottom: 0.5rem;" />
+    <strong style="display:block; font-size: 1rem;">Hi，我是 Dodobot 弟弟</strong>
+    <small style="color: #888;">🧃 你想问 TOPO 的任何资讯，我都能帮忙！</small>
+  </div>
+
+  <div class="chat-row" style="margin-top: 1rem; display: flex; gap: 8px;">
+    <input id="inputBox" placeholder="输入你的问题..." style="flex: 1; padding: 6px 8px; border-radius: 6px; border: 1px solid #ccc;" />
+    <button id="sendBtn" style="padding: 6px 12px; border: none; background: #ff66a1; color: white; border-radius: 6px;">发送</button>
+  </div>
+
+  <div id="messages" style="max-height: 150px; overflow-y: auto; margin-top: 1rem; font-size: 0.9rem;"></div>
+</div>
+
+  <!-- 🔧 Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>
+  <script src="scripts/topo.init.js"></script>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+<script>
+function toggleWeatherBox() {
+  const fullBox = document.getElementById("fullWeatherBox");
+  fullBox.style.display = (fullBox.style.display === "none") ? "block" : "none";
+}
+
+</script>
+
+
+<!-- ✅ 控制显示/隐藏逻辑 -->
+<script>
+  function toggleDodobot() {
+    const widget = document.getElementById("dodobot-widget");
+    widget.style.display = widget.style.display === "none" ? "block" : "none";
+  }
+</script>
+<!-- ✅ 所有 HTML 结构都写完之后再加载脚本 -->
+
+
+<script src="scripts/responses_extra.js"></script>
+<script src="scripts/chatbot.js"></script>
+<script>
+  function toggleDodobot() {
+    const widget = document.getElementById("dodobot-widget");
+    widget.style.display = widget.style.display === "none" ? "block" : "none";
+  }
+  
+</script>
+
+<script>
+function toggleExtra() {
+  const box = document.getElementById("extraButtons");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+</script>
+
+
+</body>
+</html>
