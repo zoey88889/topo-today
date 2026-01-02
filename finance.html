@@ -181,15 +181,15 @@
 
 
 <!-- ✅ 脚本加载 -->
-<script src="/scripts/stock.js"></script>
-<script src="/scripts/crypto.js"></script>
+<script src="scripts/stock.js"></script>
+<script src="scripts/crypto.js"></script>
 
-<script type="module" src="/scripts/auto-currency.js"></script>
+<script type="module" src="scripts/auto-currency.js"></script>
 
 <!-- 页脚加载 -->
 <div id="footer"></div>
 <script>
-  fetch("/components/footer.html")
+  fetch("components/footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footer").innerHTML = html;

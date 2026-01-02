@@ -92,7 +92,7 @@
   <script src="scripts/games.js"></script>
   <div id="footer"></div>
   <script>
-    fetch("/components/footer.html")
+    fetch("components/footer.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("footer").innerHTML = html;

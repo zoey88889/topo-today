@@ -49,12 +49,12 @@
 
 <!-- 📦 脚本 -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script src="/scripts/supabase.js"></script>
-<script src="/scripts/post-display.js"></script>
-<script src="/scripts/ai-weather.js"></script>
+<script src="scripts/supabase.js"></script>
+<script src="scripts/post-display.js"></script>
+<script src="scripts/ai-weather.js"></script>
 
 <script>
-  fetch("/components/footer.html")
+  fetch("components/footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footer").innerHTML = html;

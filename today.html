@@ -352,7 +352,7 @@ function toggleWeatherBox() {
 </div>
 
 <script>
-  fetch("/components/today-snippet.html")
+  fetch("components/today-snippet.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("todayHighlight").innerHTML = html;
@@ -379,7 +379,7 @@ function toggleWeatherBox() {
   <script src="scripts/supabase.js"></script>
   <script src="scripts/topo.init.js"></script>
   <script>
-    fetch("/components/footer.html")
+    fetch("components/footer.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("footer").innerHTML = html;
