@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TOPO · 加州站｜洛杉矶 / 圣盖博 / 旧金山 华人信息导航</title>
   <link rel="stylesheet" href="styles/styles.css" />
+
+
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; color: #333; }
+    h1 { text-align: center; }
+    form { margin-bottom: 2rem; background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
+    input, textarea { width: 100%; margin: 0.5rem 0; padding: 0.5rem; border: 1px solid #ccc; border-radius: 5px; }
+    button { padding: 0.5rem 1rem; background: #007bff; color: #fff; border: none; border-radius: 5px; }
+    .post { background: #fff; margin-bottom: 1rem; padding: 1rem; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.05);}
+    .post h3 { margin-top: 0; }
+    .delete { float: right; background: #e74c3c; padding: 2px 8px; color: #fff; border: none; border-radius: 4px; cursor: pointer;}
+     
+  </style>
 </head>
 <body>
 
@@ -33,33 +46,26 @@
     <a class="card" href="post.html?region=california&type=food">美食推荐</a >
     <a class="card" href="post.html?region=california&type=beauty">💇‍♀️ 美发美容</a >
   </div>
-</section>
+   <!-- 默认信息卡片 -->
+
 
 <section style="text-align:center; margin: 2rem 0;">
   <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
 </section>
+ 
 
-<div id="footer"></div>
-<script>
-  fetch("components/footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer").innerHTML = html;
-    });
-</script>
-
-<script src="scripts/ai-weather.js"></script>
-
-  <!-- 默认信息卡片 -->
   <div class="post">
     <h3>📢 想上广告？</h3>
+    <p>   这是一个专为洛杉矶、圣盖博等加州华人社区打造的信息导航平台。您可以在这里找到招聘求职、房屋出租、本地服务等各类实用信息。</p >
     <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p >
-    <a href="index.html">返回首页</a >
-  </div>
+</section>
+
+
+
 
   <!-- 渲染容器 -->
   <div id="postContainer"></div>
-
+<script src="scripts/ai-weather.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
 <script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->

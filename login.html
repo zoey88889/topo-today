@@ -48,16 +48,18 @@
 <!-- 登录按钮 -->
 
   <!-- 📧 邮箱 + 密码登录 -->
+
+
+   
     <input type="email" id="email" placeholder="邮箱地址" required />
     <input type="password" id="password" placeholder="密码（至少6位）" required />
-    <button id="loginBtn">📩 注册 / 登录</button>
-
-    <!-- 🔐 Google 登录 -->
+     <!-- 🔐 Google 登录 -->
     <button onclick="loginWithGoogle()">🔐 使用 Google 登录</button>
-
     <!-- ✨ Magic Link 登录 -->
     <button onclick="loginWithMagic()">✨ 魔法链接登录</button>
+ 
 
+    <button id="loginBtn">📩 注册 / 登录</button>
 <!-- Supabase JS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
@@ -73,15 +75,7 @@
 </script>
 
 
-<div id="footer"></div>
-<script>
-  fetch("components/footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer").innerHTML = html;
-    });
-</script>
-</body>
+
 <!-- 登录函数定义 -->
 <script>
   async function loginWithGoogle() {
@@ -116,5 +110,13 @@
       }
     }
 
+</script>
+<div id="footer"></div>
+<script>
+  fetch("components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
 </script>
 </html>
