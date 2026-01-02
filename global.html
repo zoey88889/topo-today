@@ -57,6 +57,26 @@
   <p>全球重大事件速览 · 自动每日更新</p >
 </header>
 
+</div>
+<div class="rss-card">
+  <p><strong>事件摘要：</strong>美国总统表示，如果伊朗继续对抗议民众使用暴力，美国将出手“救援”。</p >
+  <p><strong>我的解读：</strong>地缘政治的老剧本再次上演，外交施压正在升温，后续或将影响能源市场与区域稳定。</p >
+      <small>来源：BBC World News | 2026-01-02</small>
+</div>
+<div class="rss-card">
+  <p><strong>事件摘要：</strong>马杜罗在国家电视上表示愿与美国就毒品问题进行会谈，回应外界批评。</p >
+  <p><strong>我的解读：</strong>一场外交背后的经济博弈，制裁松绑是终极目标。</p >
+      <small>来源：BBC World News | 2026-01-01</small>
+</div>
+<div class="rss-card">
+  <p><strong>事件摘要：</strong>比亚迪首次以年销量在全球电动车市场超越特斯拉。</p >
+  <p><strong>我的解读：</strong>一个时代的转折点。中国智造正在全球新能源版图上开疆拓土，特斯拉必须应对全球价格与技术战。</p >
+    <small>来源：BBC World News | 2026-01-02</small>
+</div>
+<div class="rss-card">
+  <p><strong>事件摘要：</strong>美国原拟对13家意大利面制造商征收高额关税，如今选择撤回。</p >
+  <p><strong>我的解读：</strong>这是对通胀和民意压力的回应，也可能是对欧盟谈判的试探性缓和。</p >
+      <small>来源：BBC World News | 2026-01-02</small>
 <section id="rssContainer" class="modules" style="padding: 2rem;"></section>
 <section style="text-align:center; margin: 2rem 0;">
   <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
@@ -79,7 +99,7 @@ async function fetchGlobalRSS() {
       return;
     }
 
-    items.slice(0, 6).forEach(item => {
+    items.slice(0, 9).forEach(item => {
       const title = item.title || "无标题";
       const desc = item.description || "无描述";
       const link = item.link || "#";
