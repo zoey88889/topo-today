@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const apiKey = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
+  const apiKey = "4787ebd9e66d69fca13d7dd7"; // Replace with your actual API key
   const endpoint = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
 
   const box = document.getElementById("exchangeRateBox");
