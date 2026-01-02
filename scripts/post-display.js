@@ -39,17 +39,21 @@ function renderPosts(posts) {
 }
 
 // ✅ 2. 数据拉取函数
-async function loadPosts(category) {
+// ✅ 改进后的 loadPosts 支持 region 和 category
+async function loadPosts() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const region = urlParams.get("region") || "global";
+  const category = urlParams.get("type") || "general";
+
   let query = window.supabase
     .from("posts")
     .select("*")
+    .eq("region", region)
+    .eq("category", category)
     .order("created_at", { ascending: false });
 
-  if (category) {
-    query = query.eq("category", category);
-  }
-
   const { data, error } = await query;
+
   if (error) {
     console.error("❌ 拉取失败：", error.message);
     return [];

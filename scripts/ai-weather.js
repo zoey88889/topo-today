@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
-  const city = params.get("city") || "New York"; // 默认纽约
+const city = params.get("city") || "New York";
+const lang = params.get("lang") || "zh_cn"; // 语言设为中文默认
 
   const apiKey = "73e687d19d94d3b1ccee01aada40aeb4";
   const weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
    const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
 
-  const box = document.getElementById("weatherBox");
+
   if (!box) return;
 
   try {
@@ -22,8 +23,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     `;
  // 📍 获取未来天气
+   const box = document.getElementById("weatherBox");
     const forecastRes = await fetch(forecastURL);
     const forecastData = await forecastRes.json();
+  
 
     let forecastHTML = `<h3>🔮 ${lang === "zh_cn" ? "未来 3 天天气" : "3‑Day Forecast"}</h3>`;
     forecastData.list
@@ -31,7 +34,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       .slice(0, 3)
       .forEach(item => {
         const date = new Date(item.dt * 1000).toLocaleDateString();
-        const temp = Math.round(item.main.temp);
+       const tempC = Math.round(temp);
+       const tempF = Math.round((temp * 9) / 5 + 32);
         const icon = item.weather[0].icon;
         const desc = item.weather[0].description;
     forecastHTML += `
@@ -45,6 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     forecastBox.innerHTML = forecastHTML;
 
     // 🎯 AI 提示建议
+    const forecastBox = document.getElementById("forecastBox"); // ✅ 别忘记加
     const tips = lang === "zh_cn"
       ? [
           "🧤 今天风有点大，记得围巾～",

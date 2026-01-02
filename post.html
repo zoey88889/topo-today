@@ -59,19 +59,13 @@
   <script src="scripts/post-display.js"></script>
   
   <script>
-    // 从 URL 中提取 ?region=xxx&type=xxx
-    const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get("id");
-    const region = urlParams.get('region') || 'global';
-    const category = urlParams.get('type') || 'general';
+  const urlParams = new URLSearchParams(window.location.search);
+  const region = urlParams.get("region") || "global";
+  const category = urlParams.get("type") || "general";
 
-
-// ✅ 需要根据 postId 加载对应内容
-    // 设置隐藏字段
-    document.getElementById("regionInput").value = region;
-    document.getElementById("categoryInput").value = category;
-  </script>
-
+  document.querySelector('input[name="region"]').value = region;
+  document.querySelector('input[name="category"]').value = category;
+</script>
   <script>
     fetch("components/footer.html")
       .then(res => res.text())
