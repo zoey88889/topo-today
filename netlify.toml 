@@ -1,0 +1,13 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[context.production.environment]
+  NODE_VERSION = "18"
+  VITE_OPEN_WEATHER_API_KEY = "你的 API KEY"
+  VITE_EXCHANGE_RATE_API_KEY = "你的 API KEY"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
