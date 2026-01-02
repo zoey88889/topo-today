@@ -1,0 +1,40 @@
+// 💸 TOPO 加密货币资讯渲染模块
+
+async function fetchCryptoRSS(rssUrl, containerId, sourceLabel) {
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+
+    const ITEM_LIMIT = 1;
+    const items = data.items.slice(0, ITEM_LIMIT);  
+    if (!items.length) {
+      container.innerHTML = `<p style="text-align:center; color:#888;">⚠️ 暂无 ${sourceLabel} 内容</p >`;
+      return;
+    }
+
+    items.forEach(item => {
+      const date = new Date(item.pubDate).toLocaleDateString();
+      const div = document.createElement("div");
+      div.className = "rss-card";
+      div.innerHTML = `
+        <h3>💸 ${item.title}</h3>
+        <p>${item.description.replace(/<[^>]*>/g, "").slice(0, 120)}...</p >
+        <a href="${item.link}" target="_blank">🔗 查看原文</a >
+        <small>📘 TOPO 摘要｜${sourceLabel} · ${date}</small>
+      `;
+      container.appendChild(div);
+    });
+  } catch (err) {
+    console.error(`Crypto RSS 加载失败 - ${sourceLabel}`, err);
+    container.innerHTML = `<p style="text-align:center; color:#d32f2f;">❌ 无法加载 ${sourceLabel} 数据</p >`;
+  }
+}
+
+// 🔗 初始化加密货币资讯来源
+fetchCryptoRSS("https://www.coindesk.com/arc/outboundfeeds/rss/", "coindeskBox", "CoinDesk");
+fetchCryptoRSS("https://cointelegraph.com/rss", "cointelegraphBox", "CoinTelegraph");
+fetchCryptoRSS("https://cryptoslate.com/feed/", "cryptoslateBox", "CryptoSlate");

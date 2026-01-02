@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>TOPO 亚特兰大站 Atlanta｜本地生活信息</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+
+<header class="hero" style="background:#003366; color:white;">
+  <h1>🗺️ TOPO 亚特兰大 Atlanta</h1>
+  <p>本地生活资讯 · 招聘 · 房源 · 服务 · 本地活动</p >
+</header>
+
+<!-- ☀️ 天气 -->
+<div id="weatherMiniCard">
+  <div class="weather-card-mini" onclick="toggleWeatherBox()">🌤️ 点击查看今日天气</div>
+</div>
+<div id="fullWeatherBox" style="display:none;">
+  <div id="weatherBox"></div>
+  <div id="forecastBox"></div>
+  <div id="aiAdvice"></div>
+</div>
+
+
+  <!-- 📂 栏目导航 -->
+  <section class="modules">
+    <h2>📂 频道导航</h2>
+    <div class="category-grid">
+      
+      
+      <a class="card" href="post.html?region=atlanta&type=jobs">💼 招聘信息</a >
+      <a class="card" href="post.html?region=atlanta&type=housing">🏠 房源租售</a >
+      <a class="card" href="post.html?region=atlanta&type=events">🎉 本地活动</a >
+      <a class="card" href="post.html?region=atlanta&type=services">🛠️ 华人服务</a >
+      <a class="card" href="post.html?region=atlanta&type=market">🛍️ 二手交易</a >
+      <a class="card" href="post.html?region=atlanta&type=beauty">💇‍♀️ 美发美容</a >
+      <a class="card" href="post.html?region=atlanta&type=study">🎓 教育资源</a >
+      <a class="card" href="post.html?region=atlanta&type=doctor">👨‍⚕️ 医疗健康</a >
+      <a class="card" href="post.html?region=atlanta&type=food">🍜 美食推荐</a >
+    </div>
+  </section>
+<!-- 🔙 返回首页按钮 -->
+<a href="index.html" class="btn-back" style="margin:2rem;">← 返回首页</a >
+
+<!-- 📎 页脚 -->
+<div id="footer"></div>
+
+<!-- 📦 脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="/scripts/supabase.js"></script>
+<script src="/scripts/post-display.js"></script>
+<script src="/scripts/ai-weather.js"></script>
+
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+
+  function toggleWeatherBox() {
+    const box = document.getElementById("fullWeatherBox");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+  }
+</script>
+
+</body>
+</html>

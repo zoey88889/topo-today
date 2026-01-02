@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>服务条款 Terms of Service | TOPO Today</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; color: #333; padding: 2rem; line-height: 1.6; }
+    section { max-width: 800px; margin: auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    h1, h2 { color: #003366; }
+    footer { margin-top: 3rem; font-size: 0.85rem; color: #888; text-align: center; }
+  </style>
+</head>
+<body>
+  <section>
+    <h1>📜 TOPO Today 服务条款 / Terms of Service</h1>
+    <small>Last updated: 2025-12-31</small>
+
+    <h2>1. 用户义务 / User Responsibilities</h2>
+    <p>用户须遵守法律法规，不得发布违法、虚假或侵犯他人权利的内容。</p >
+    <p>Users must comply with all applicable laws and may not post illegal, misleading, or infringing content.</p >
+
+    <h2>2. 内容管理与删除权利 / Content Moderation</h2>
+    <p>我们保留删除任何违规内容的权利，尤其是对平台秩序造成干扰的行为。</p >
+    <p>We reserve the right to remove any content that violates our policies or disrupts the platform.</p >
+
+    <h2>3. 数据收集与隐私 / Data & Privacy</h2>
+    <p>我们不主动收集用户隐私信息，所有数据收集将依据 <a href="/privacy.html">隐私政策</a > 进行。</p >
+    <p>We do not actively collect personal information. For more, please see our <a href="/privacy.html">Privacy Policy</a >.</p >
+
+    <h2>4. 非商业使用 / Non-Commercial Use</h2>
+    <p>平台所有内容仅限于个人学习、参考和非商业用途。</p >
+    <p>All content on this platform is for personal, non-commercial use only.</p >
+
+    <h2>5. 知识产权 / Intellectual Property</h2>
+    <p>除非特别说明，TOPO 平台内的原创内容归平台或创作者所有。</p >
+    <p>Unless otherwise stated, original content on TOPO is owned by the platform or respective creators.</p >
+
+    <h2>6. 服务中断与变更 / Service Availability</h2>
+    <p>我们可能因技术维护或升级而临时中断部分服务，恕不另行通知。</p >
+    <p>We may suspend services for maintenance or upgrades without prior notice.</p >
+
+    <h2>7. 法律适用 / Governing Law</h2>
+    <p>本条款受适用法律管辖。如有争议，应提交至相关司法机构处理。</p >
+    <p>These terms are governed by applicable laws. Disputes shall be resolved in the appropriate legal venue.</p >
+
+    <h2>8. 免责声明与内容来源 / Disclaimer & Attribution</h2>
+    <p>TOPO 是资讯聚合平台，不对外部 RSS 内容的准确性或完整性负责，用户需自行判断风险。</p >
+    <p>TOPO is an aggregator of publicly available information. We do not guarantee the accuracy of third-party RSS feeds.</p >
+    <p>所有内容归原媒体机构所有，若涉及版权或授权，请参考 <a href="/disclaimer.html" target="_blank">免责声明页面</a >。</p >
+    <p>All content belongs to its original source. For copyright matters, see our <a href="/disclaimer.html" target="_blank">Disclaimer</a >.</p >
+
+    <h2>9. 条款更新 / Updates to Terms</h2>
+    <p>我们可能不时修改本服务条款，更新内容将公布于本页面。</p >
+    <p>We may update these Terms periodically. Updates will be posted on this page.</p >
+
+  <h2>10. TOPO AI 内容说明 / TOPO AI Content Disclaimer</h2>
+
+  <p><strong>Powered by GPT · Curated by TOPO</strong></p >
+
+  <p>
+    本内容由 TOPO AI 解读系统生成，融合开放资讯、数据趋势与公共信息。我们使用 GPT 语言引擎作为工具，并在此基础上加入 TOPO 编辑团队的独立判断与原创分析。
+  </p >
+
+  <ul>
+    <li>我们不直接转载、不引用原文段落</li>
+    <li>所有标题与摘要均为 TOPO 独立撰写</li>
+    <li>如涉及第三方数据，仅作“参考性提示”，建议用户自行查阅原始内容</li>
+  </ul>
+
+  <p style="font-style: italic; margin-top: 1rem;">
+    「我们用 AI 的语言，讲述人类的故事。」——TOPO Editorial
+  </p >
+ <p><strong>📮 联系我们 Contact Us:</strong> zoey88889@gmail.com / dodvauniverse@gmail.com</p >
+  </section>
+
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+</body>
+</html>

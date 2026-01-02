@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎬 娱乐生活频道 | TOPO TODAY</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body {
+      background: #fff0f5;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #ec407a;
+      margin: 1rem auto;
+      padding: 1.2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    }
+    .rss-card h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    .rss-card p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .rss-card a {
+      color: #e91e63;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .rss-card small {
+      display: block;
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+    }
+    header {
+      background: #880e4f;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎬 娱乐生活频道</h1>
+  <p>自动同步明星、影视、八卦、综艺新闻</p >
+</header>
+
+<section id="rssContainer" class="modules" style="padding: 2rem;"></section>
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+<script>
+const rssUrls = [
+  "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml",
+  "https://www.etonline.com/news/rss"
+];
+
+async function fetchEntertainmentRSS() {
+  const container = document.getElementById("rssContainer");
+  container.innerHTML = "<p style='text-align:center;'>📡 TOPO AI 正在同步娱乐新闻中...</p >";
+
+  for (const url of rssUrls) {
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+    try {
+      const res = await fetch(apiUrl);
+      const json = await res.json();
+
+      if (json.items && json.items.length > 0) {
+        container.innerHTML = ""; // 清空加载提示
+        renderRSSItems(json.items);
+        break; // 成功后跳出循环
+      }
+    } catch (err) {
+      console.warn(`⚠️ 抓取失败：${url}`, err);
+    }
+  }
+}
+
+function renderRSSItems(items) {
+  const container = document.getElementById("rssContainer");
+  items.slice(0, 5).forEach(item => {
+    const card = document.createElement("div");
+    card.className = "rss-card";
+    card.style = `
+      background: #fce4ec;
+      border-left: 6px solid #ec407a;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      color: #333;
+    `;
+
+    card.innerHTML = `
+      <h3>🎬 ${item.title}</h3>
+      <p style="font-size:0.9rem;">${item.description}</p >
+      <a href="${item.link}" target="_blank" style="font-size:0.85rem; color:#ec407a;">🔗 查看详情</a >
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+fetchEntertainmentRSS();
+
+</script>
+
+<!-- 页脚 -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💼 商业财经频道 | TOPO TODAY</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+
+  <header>
+  <h1>💼 商业财经频道</h1>
+  <p>自动聚合 Marketwatch、新浪财经、国际机构报告、和其他华文媒体等财经新闻</p >
+    <section id="rssContainer" class="modules" style="padding: 2rem;"></section>
+
+<div class="rss-card">
+  <h3>📌 中国启动发放 2026 年第二批原油进口配额</h3>
+  <p>🤖 TOPO 摘要：据路透社报道，中国商务部已开始向独立炼油厂发放 2026 年第二批政府原油进口配额。知情人士称，至少一家位于中国东部的独立炼油厂已收到约 1100 万吨配额（约每日 22 万桶），占其全年分配总量的约 70%。更多炼油厂预计将在近日收到通知。配额制度旨在规范原油进口，但官方未就原因发表评论。</p >
+  <a href="https://www.reuters.com/business/energy/china-begins-issuing-second-batch-2026-crude-import-quotas-refiners-sources-say-2025-12-31/" target="_blank">🔗 来源：Reuters</a >
+  <small>📅 2025/12/31 ｜ 来源：Reuters</small>
+  
+
+  <h3>📌 美股期货小幅下挫，华尔街仍盯年度收益</h3>
+  <p>🤖 TOPO 摘要：在 2025 年最后一个交易日，受交易量清淡影响，美股三大股指期货小幅回落，但全年表现仍强劲。标普 500、道指和纳指预计将实现连续上涨，主要受到人工智能板块推动。科技股盘前承压，但整体投资者关注未来利率走向与 2026 年市场前景。</p >
+  <a href="https://www.reuters.com/business/us-stock-futures-inch-down-thin-trading-wall-street-eyes-yearly-gains-2025-12-31/" target="_blank">
+    🔗 来源：Reuters
+  </a >
+  <small>📅 2025/12/31 ｜ 来源：Reuters</small>
+
+
+  <h3>📈 长鑫科技拟募资 295 亿元 科创板受理</h3>
+  <p>🤖 TOPO 摘要：中国存储芯片企业长鑫科技计划通过科创板进行 IPO，拟募集约 295 亿元资金，用于先进存储芯片研发和扩产。</p >
+  <a href="https://t.cj.sina.com.cn/example" target="_blank">🔗 来源：新浪财经 · 查看原文</a >
+  <small>📅 2025/12/31</small>
+
+
+  <h3>🌏 印度 GDP 超越日本 成全球第四大经济体</h3>
+  <p>🤖 TOPO 摘要：最新国际机构数据显示印度 GDP 已超过日本，成为全球第四大经济体，这一变化可能重塑全球经济版图。</p >
+  <a href="  https://example.org/global-economy" target="_blank">🔗 来源：国际机构报告</a >
+  <small>📅 2025/12/31</small>
+  
+</div>
+  <style>
+    body { background: #f3f4f6; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #2196f3;
+      margin: 1rem auto;
+      padding: 1.2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .rss-card h3 { margin: 0 0 0.5rem 0;  color: #003366;font-size: 1.1rem; }
+    .rss-card p { font-size: 0.9rem; color: #444; }
+    .rss-card a { color: #1a73e8; text-decoration: none; font-size: 0.85rem; }
+    .rss-card small { display: block; color: #aaa; margin-top: 0.3rem; font-size: 0.75rem; }
+    header { background: #003366; color: white; padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
+
+
+<script>
+async function fetchBusinessRSS() {
+  const rssUrl = "https://feeds.marketwatch.com/marketwatch/topstories/";
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+  try {
+    const res = await fetch(apiUrl);
+    const json = await res.json();
+    const items = json.items || [];
+
+    const container = document.getElementById("rssContainer");
+    container.innerHTML = "";
+
+    if (items.length === 0) {
+      container.innerHTML = `<p style="text-align:center;">📡 暂无商业新闻，请稍后再试。</p >`;
+      return;
+    }
+
+    items.slice(0, 6).forEach(item => {
+      const title = item.title || "暂无标题";
+      const desc = item.description || "暂无摘要";
+      const link = item.link || "#";
+      const pubDate = item.pubDate?.split(" ")[0] || "";
+
+      const card = document.createElement("div");
+      card.className = "rss-card";
+      card.innerHTML = `
+        <h3>💼 ${title}</h3>
+        <p>${desc.slice(0, 90)}...</p >
+        <a href="${link}" target="_blank">🔗 查看原文</a >
+        <small>来源：MarketWatch | ${pubDate}</small>
+      `;
+      container.appendChild(card);
+    });
+  } catch (err) {
+    document.getElementById("rssContainer").innerHTML = `<p style="text-align:center;">⚠️ 获取失败，请检查网络或 API 状态。</p >`;
+    console.error(err);
+  }
+}
+
+fetchBusinessRSS();
+</script>
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+<!-- Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
+</body>
+</html>

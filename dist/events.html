@@ -1,0 +1,85 @@
+
+  <!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>TOPO 🎉 本地活动</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; color: #333; }
+    h1 { text-align: center; }
+    form { margin-bottom: 2rem; background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
+    input, textarea { width: 100%; margin: 0.5rem 0; padding: 0.5rem; border: 1px solid #ccc; border-radius: 5px; }
+    button { padding: 0.5rem 1rem; background: #007bff; color: #fff; border: none; border-radius: 5px; }
+    .post { background: #fff; margin-bottom: 1rem; padding: 1rem; border-radius: 8px; box-shadow: 0 0 6px rgba(0,0,0,0.05);}
+    .post h3 { margin-top: 0; }
+    .delete { float: right; background: #e74c3c; padding: 2px 8px; color: #fff; border: none; border-radius: 4px; cursor: pointer;}
+     
+  </style>
+<link rel="privacy-policy" href="/privacy.html" />
+<!-- 🌐 语言切换 -->
+<div style="position: absolute; top: 1rem; right: 1rem;">
+  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
+    <option value="zh">🌏 中文</option>
+    <option value="en">🇺🇸 english</option>
+    <option value="ko">🇰🇷 한국어</option>
+  </select>
+</div>
+</header>
+<body>
+
+  <!-- 🌐 语言切换 -->
+<div style="position: absolute; top: 1rem; right: 1rem;">
+  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
+    <option value="zh">🌏 中文</option>
+    <option value="en">🇺🇸 english</option>
+    <option value="ko">🇰🇷 한국어</option>
+  </select>
+</div>
+</header>
+
+<body>
+  <h1>TOPO 🎉 本地活动</h1>
+
+  <!-- 登录区 -->
+  <div class="auth-links" id="authArea">
+    <a href="login.html" id="loginBtn">登录 / 注册</a >
+    <a href="#" id="logoutBtn" style="display:none;" onclick="logout()">退出</a >
+  </div>
+
+  <div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
+
+  <!-- 表单区 -->
+  <form id="postForm" enctype="multipart/form-data">
+    <input type="text" id="title" placeholder="标题..." required />
+    <input type="file" id="imageUpload" accept="image/*" multiple />
+    <textarea id="content" rows="4" placeholder="写下推荐内容..." required></textarea>
+    <button type="submit">发布</button>
+  </form>
+
+  <!-- 默认信息卡片 -->
+  <div class="post">
+    <h3>📢 想上广告？</h3>
+    <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p >
+    <a href="index.html">返回首页</a >
+  </div>
+
+  <!-- 渲染容器 -->
+  <div id="postContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>🎨 TOPO 艺术频道 | Art News & Insights</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 样式 -->
+  <style>
+    body {
+      background: #f8f8fa;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #2d2d6b;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0.4rem 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .modules {
+      padding: 1.5rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .rss-card {
+      background: #fff;
+      border-left: 5px solid #a85cf9;
+      margin: 1rem 0;
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .rss-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #2d2d6b;
+    }
+    .rss-card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0.6rem 0;
+    }
+    .rss-card a {
+      color: #5c3adb;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .rss-card small {
+      display: block;
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+    }
+
+    /* Nav 链接 */
+    .nav-card a {
+      display: inline-block;
+      padding: 0.5rem 0.8rem;
+      margin: 0.3rem 0.4rem;
+      border: 1px solid #5c3adb;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #5c3adb;
+      font-size: 0.9rem;
+    }
+    .nav-card a:hover {
+      background: #5c3adb;
+      color: #fff;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- 头部 -->
+<header>
+  <h1>🎨 TOPO 艺术频道</h1>
+  <p>Art News & Insights｜精选全球艺术动态 · MoMA · Artnet · Tate · 美学与展览趋势</p >
+</header>
+
+<!-- 艺术分类导航（可选）-->
+<section class="modules">
+  <h2>✨ 艺术快览频道分类</h2>
+  <div class="nav-card"><a href=" ">MoMA 精选</a ></div>
+  <div class="nav-card"><a href="#artnetBox">Artnet 最新</a ></div>
+  <div class="nav-card"><a href="#tateBox">Tate 博物馆资讯</a ></div>
+  <div class="nav-card"><a href="#exhibitBox">全球展览推荐</a ></div>
+</section>
+
+<!-- MoMA RSS 渲染 -->
+<section class="modules">
+  <h2>🖼️ MoMA 频道</h2>
+  <div id="momaBox"></div>
+</section>
+
+<!-- Artnet RSS 渲染 -->
+<section class="modules">
+  <h2>📰 Artnet 艺术新闻</h2>
+  <div id="artnetBox"></div>
+</section>
+
+<!-- Tate & World Art RSS 渲染 -->
+<section class="modules">
+  <h2>🏛️ Tate & 展览趋势</h2>
+  <div id="tateBox"></div>
+</section>
+
+<!-- 全球展览推荐可视化 -->
+<section class="modules">
+  <h2>🌍 全球展览推荐</h2>
+  <div id="exhibitBox"></div>
+</section>
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+<!-- 脚本：RSS 抓取 -->
+<script src="scripts/art.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>💚 TOPO 健康频道</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+
+  <style>
+    /* 覆盖健康频道卡片样式 */
+ 
+    body {
+      background: #f3f4f6;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #a5d6a7;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+   .modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适配列宽 */
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
+ 
+    .rss-card {
+      background: #e8f5e9;
+      border-left: 6px solid #43a047;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      color: #222;
+    }
+    .rss-card h3 {
+      font-size: 1.1rem;
+        color: #090909;
+      margin-bottom: 0.6rem;
+    }
+    .rss-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #333;
+    }
+    .rss-card a {
+      display: inline-block;
+      margin-top: 0.6rem;
+      color: #2e7d32;
+      font-size: 0.9rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .rss-card a:hover {
+      text-decoration: underline;
+    }
+    .rss-card small {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🏥 频道头 -->
+  <header class="hero">
+    <h1>💚 TOPO 健康频道</h1>
+    <p>全球权威健康资讯每日精选</p >
+  </header>
+
+  <!-- 🌿 健康 RSS 区 -->
+
+<section class="modules">
+  <div id="nytBox"></div>
+  <div id="chinaNewsHealth"></div>
+</section>
+
+  <section id="healthRss" class="rss-card">
+    <h3>🔗 健康资讯源</h3>
+    <p>以下是我们健康频道所抓取的主要资讯源，涵盖全球权威媒体和机构，确保为您提供最新、最可靠的健康信息。</p>
+    <ul>
+      <li><strong>纽约时报健康版 (NYT Health)</strong> - 提供最新的医学研究、健康趋势和专家建议。</li>
+      <li><strong>中国新闻网健康频道</strong> - 报道国内外重大健康新闻和公共卫生事件。</li>
+    </ul>
+    <a href="https://topo.com/health-sources" target="_blank">查看更多健康资讯源</a>
+    <small>注：以上资讯源均经过严格筛选，确保信息的准确性和权威性。</small>
+
+
+  <!-- 🔧 健康抓取脚本 -->
+  <script src="scripts/health.js"></script>
+
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+</body>
+</html>

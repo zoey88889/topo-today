@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>✈️ 旅行探索频道 | TOPO Today</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body {
+      background: #e3f2fd;
+      font-family: "Helvetica Neue", sans-serif;
+    }
+    header {
+      background: #64b5f6;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+  .modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适配列宽 */
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
+
+     .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #0cf8fc;
+      margin: 1rem auto;
+      padding: 1.2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .rss-card h3 {
+      margin-bottom: 0.6rem;
+      color: #1565c0;
+    }
+    .rss-card p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .rss-card a {
+      font-size: 0.85rem;
+      color: #1e88e5;
+      text-decoration: none;
+    }
+    .rss-card small {
+      color: #888;
+      display: block;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>✈️ TOPO Travel · 旅行灵感频道</h1>
+    <p>每日探索世界好去处，推荐最值得打卡的目的地</p >
+  </header>
+
+ <section class="modules"><section class="modules">
+  <h2 style="grid-column: 1 / -1;">🌍 TOPO 旅行精选</h2>
+    <div id="travelContainer" class="rss-section"></div>
+</section>
+
+  <script src="rss/travel.js"></script>
+</body>
+</html>

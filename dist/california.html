@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPO · 加州站｜洛杉矶 / 圣盖博 / 旧金山 华人信息导航</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+
+<header class="hero">
+<!-- 加州页面 -->
+<h1>📍 洛杉矶 / 圣盖博华人资讯</h1>
+</header>
+
+<section class="modules">
+  <h2>🌤️ 加州天气</h2>
+  <div id="weatherBox"></div>
+</section>
+
+<section class="modules">
+  <h2>🧭 加州生活分类导航</h2>
+  <div class="category-grid">
+     
+    <a class="card" href="post.html?region=california&type=jobs">👩‍💼 招聘求职</a >
+    <a class="card" href="post.html?region=california&type=housing">🏠 房屋出租</a >
+    <a class="card" href="post.html?region=california&type=services">🛠️ 本地服务</a >
+    <a class="card" href="post.html?region=california&type=market">🛍️ 二手交易</a >
+    <a class="card" href="post.html?region=california&type=events">🎉 本地活动</a >
+    <a class="card" href="post.html?region=california&type=doctor">👨‍⚕️ 医疗健康</a >
+    <a class="card" href="post.html?region=california&type=study">📚 教育培训</a >
+    <a class="card" href="post.html?region=california&type=visa">✈️ 留学移民</a >
+    <a class="card" href="post.html?region=california&type=food">美食推荐</a >
+    <a class="card" href="post.html?region=california&type=beauty">💇‍♀️ 美发美容</a >
+  </div>
+</section>
+
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
+<script src="scripts/ai-weather.js"></script>
+
+  <!-- 默认信息卡片 -->
+  <div class="post">
+    <h3>📢 想上广告？</h3>
+    <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p >
+    <a href="index.html">返回首页</a >
+  </div>
+
+  <!-- 渲染容器 -->
+  <div id="postContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const region = params.get("region") || "Global";
+  document.getElementById("regionInput").value = region;
+</script>
+</body>
+</html>

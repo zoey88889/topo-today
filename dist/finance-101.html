@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>💼 TOPO 理财入门 Finance 101</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    body {
+      background: #f4f5f7;
+      color: #333;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .content {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 1rem;
+      line-height: 1.8;
+    }
+
+    .content h2 {
+      color: #003366;
+      margin-top: 2rem;
+    }
+
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .content th, .content td {
+      border: 1px solid #ccc;
+      padding: 0.6rem;
+      text-align: center;
+    }
+
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #3f51b5;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💼 TOPO 理财入门 Finance 101</h1>
+  <p>分享真实、中立、易懂的财经知识</p >
+</header>
+
+<section class="content">
+  <h2>💰 钱是什么？What is Money?</h2>
+  <p>钱是交换媒介，是购买力的代表，是国家信用的体现。Money is a medium of exchange backed by trust.</p >
+
+  <h2>🔥 为什么通胀吃掉你的存款？</h2>
+  <p>随着时间推移，¥100 变得不值钱。这就叫通货膨胀（inflation）。</p >
+  <table>
+    <tr><th>年份</th><th>一碗面</th><th>你的钱</th><th>能买几碗</th></tr>
+    <tr><td>2020</td><td>¥10</td><td>¥100</td><td>10</td></tr>
+    <tr><td>2025</td><td>¥15</td><td>¥100</td><td>6.6</td></tr>
+  </table>
+
+  <h2>🧠 如何对抗通胀？How to Beat Inflation</h2>
+  <ul>
+    <li>✅ 投资优质企业的股权（Apple / Tesla 等）</li>
+    <li>✅ 持有房产 / 黄金 / ETF 等资产</li>
+    <li>✅ 投资自己（知识与技能）</li>
+  </ul>
+
+  <h2>✅ 总结 Summary</h2>
+  <p>钱在变轻，知识与股权在变重。选择正确的方式，是为了守护你的未来。</p >
+</section>
+
+<!-- 📈 这里放财经 RSS 渲染卡片 -->
+<section class="content" id="rssFinance">
+  <h2>📡 财经频道实时摘要</h2>
+  <div id="stockBox"></div>
+  <div id="cryptoBox"></div>
+  <!-- 你可以继续加入更多 Box，比如 goldBox、etfBox 等 -->
+</section>
+
+<script src="scripts/stock.js"></script>
+<script src="scripts/crypto.js"></script>
+<!-- 如有更多财经脚本，可继续引入 -->
+  <div class="container" style="text-align: center;">
+    <a href="finance.html" class="btn-back">← 返回 Finance 页面</a >
+  </div>
+
+<!-- 页脚 -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOPO Florida | 佛州生活信息站</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+  <header class="hero">
+    <h1>🌴 TOPO 佛罗里达</h1>
+    <p>覆盖 Miami, Palm Beach 等核心区域的生活信息平台</p >
+  </header>
+
+  <!-- ☀️ 天气模块（调用 openweather 或其他 API，内容在 weatherBox） -->
+  <section class="modules">
+    <h2>🌤️ 今日佛州天气</h2>
+    <div id="weatherBox">天气加载中...</div>
+  </section>
+
+  <!-- 📂 栏目导航 -->
+  <section class="modules">
+    <h2>📂 频道导航</h2>
+    <div class="category-grid">
+      
+      
+      <a class="card" href="post.html?region=florida&type=jobs">💼 招聘信息</a >
+      <a class="card" href="post.html?region=florida&type=housing">🏠 房源租售</a >
+      <a class="card" href="post.html?region=florida&type=events">🎉 本地活动</a >
+      <a class="card" href="post.html?region=florida&type=services">🛠️ 华人服务</a >
+      <a class="card" href="post.html?region=florida&type=market">🛍️ 二手交易</a >
+      <a class="card" href="post.html?region=florida&type=study">🎓 教育资源</a >
+      <a class="card" href="post.html?region=florida&type=doctor">👨‍⚕️ 医疗健康</a >
+      <a class="card" href="post.html?region=florida&type=beauty">💇‍♀️ 美发美容</a >
+      <a class="card" href="post.html?region=florida&type=food">🍜 美食推荐</a >
+      <a class="card" href="post.html?region=florida&type=visa">✈️ 留学移民</a >
+    </div>
+  </section>
+
+  <!-- 📝 发帖入口 -->
+  <section class="modules">
+    <h2>📝 发布你的信息</h2>
+    <p>佛州生活信息一键发布，租房、招聘、活动欢迎投稿。</p >
+    <a href="florida-post.html" class="btn-post">+ 我要发帖</a >
+  </section>
+
+  <!-- 🔙 返回首页 -->
+  <p style="text-align:center; margin-top:2rem;">
+    <a href="index.html" style="text-decoration: underline;">← 返回 TOPO Today 首页</a >
+  </p >
+
+  <!-- 页脚加载 -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+
+  <!-- 天气脚本 -->
+  <script src="scripts/ai-weather.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>天气频道 - TOPO TODAY</title>
+  <style>
+    body {
+      background: #f4f8f4;
+      font-family: "Helvetica Neue", sans-serif;
+    }
+
+    /* 左上角迷你浮动按钮 */
+    #weatherMiniToggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: #fff;
+      border-left: 6px solid #64fb85;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 999;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #weatherMiniToggle:hover {
+      background: #eaffef;
+    }
+
+    .modules {
+      max-width: 960px;
+      margin: 6rem auto 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .mini-card {
+      background: #fff;
+      border-left: 6px solid #64fb85;
+      border-radius: 12px;
+      padding: 1.4rem 1.2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 1.4rem;
+      color: #222;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mini-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    .mini-card p {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+    .mini-card small {
+      color: #999;
+      font-size: 0.8rem;
+    }
+    .mini-card img {
+      vertical-align: middle;
+      width: 42px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🌐 多语言切换 -->
+<div style="position: absolute; top: 1rem; right: 1rem;">
+  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
+    <option value="zh">🌏 中文</option>
+    <option value="en">🇺🇸 English</option>
+    <option value="ko">🇰🇷 한국어</option>
+  </select>
+</div>
+
+
+  ☀️ TOPO 天气助手
+</div>
+<header class="hero">
+  <h1>📡 TOPO 今日助手</h1>
+  <p>天气提醒 · 穿搭建议 · AI 语录 · 小贴士</p >
+</header>
+
+<section class="modules">
+  <div class="card" style="background:#fff9db; border-left:6px solid #ffc107;">
+    <h3>🌤️ 今日天气</h3>
+    <p>纽约今日气温 0°C ~ 7°C，风大，建议保暖出行。</p >
+  </div>
+
+  <div class="card" style="background:#ede7f6; border-left:6px solid #673ab7;">
+    <h3>🧥 穿搭建议</h3>
+    <p>推荐：羽绒外套 + 围巾，避免长时间户外停留。</p >
+  </div>
+
+  <div class="card" style="background:#e3f2fd; border-left:6px solid #2196f3;">
+    <h3>🤖 Dodobot 今日建议</h3>
+    <p>“今天你不需要完美，只需要勇敢出门。”</p >
+  </div>
+
+  <div class="card" style="background:#fce4ec; border-left:6px solid #ec407a;">
+    <h3>📍 小提醒</h3>
+    <p>地铁 7 号线预计早高峰略有延迟，建议提前 10 分钟出门。</p >
+  </div>
+</section>
+<!-- 🌤️ 全部天气展示块 -->
+<section class="modules">
+  <h2>📡 实时天气模块</h2>
+  <div class="mini-card" id="weatherBox"></div>
+  <div class="mini-card" id="forecastBox"></div>
+  <div class="mini-card" id="aiAdvice"></div>
+</section>
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+<!-- 💡 脚本 -->
+<script>
+  function toggleWeatherBox() {
+    const fullBox = document.getElementById("fullWeatherBox");
+    fullBox.style.display = (fullBox.style.display === "none") ? "block" : "none";
+  }
+</script>
+
+
+
+<!-- 页脚 -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+<script type="module" src="scripts/ai-weather.js"></script>
+
+
+</body>
+</html>

@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TOPO Today - 华人生活信息平台</title>
-  <script type="module" crossorigin src="/assets/index.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index.css">
+  <link rel="stylesheet" href="styles/styles.css" />
 </head>
 
 <body>
@@ -199,7 +198,7 @@ function toggleExtra() {
 
 <!-- 🤖 Dodobot Widget 按钮（右下角固定）-->
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
-  <img src="/assets/dodobot.gif" alt="Dodobot" width="80"
+  <img src="images/dodobot.gif" alt="Dodobot" width="80"
     style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); cursor: pointer;"
     onclick="toggleDodobot()" />
 </div>
@@ -207,7 +206,7 @@ function toggleExtra() {
 
 <!-- 🤖 Dodobot Widget 按钮（右下角固定） -->
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
-  <img src="/assets/dodobot.gif" alt="Dodobot" width="80"
+  <img src="images/dodobot.gif" alt="Dodobot" width="80"
     style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); cursor: pointer;"
     onclick="toggleDodobot()" />
 </div>
@@ -216,7 +215,7 @@ function toggleExtra() {
 <div id="dodobot-widget" style="display: none; position: fixed; bottom: 110px; right: 20px; width: 300px; background: #fffafc; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); z-index: 9999; padding: 1rem;">
 
   <div id="dodobot-avatar" style="text-align: center;">
-    <img src="/assets/dodobot.gif" alt="Dodobot" width="60"
+    <img src="images/dodobot.gif" alt="Dodobot" width="60"
       style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); margin-bottom: 0.5rem;" />
     <strong style="display:block; font-size: 1rem;">Hi，我是 Dodobot 弟弟</strong>
     <small style="color: #888;">🧃 你想问 TOPO 的任何资讯，我都能帮忙！</small>
@@ -277,6 +276,7 @@ function toggleExtra() {
 }
 </script>
 
+<script type="module" src="/scripts/ai-weather.js"></script>
 
 </body>
 </html>

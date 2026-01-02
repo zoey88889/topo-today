@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>登录 TOPO Today</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
+<!-- 🌐 语言切换 -->
+<div style="position: absolute; top: 1rem; right: 1rem;">
+  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
+    <option value="zh">🌏 中文</option>
+    <option value="en">🇺🇸 english</option>
+    <option value="ko">🇰🇷 한국어</option>
+  </select>
+</div>
+</header>
+<body>
+
+ <style>
+  .login-btn {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .login-btn:hover {
+    background-color: #222;
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+</style>
+<!-- 登录按钮 -->
+<button onclick="loginWithGoogle()" class="login-btn">用 Google 登录</button>
+
+<!-- Supabase JS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<!-- 初始化 Supabase -->
+<script>
+  window.supabase = window.supabase.createClient(
+    "https://hmbpfxjszahfibfhezft.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtYnBmeGpzemFoZmliZmhlemZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY0MTc3MTYsImV4cCI6MjA4MTk5MzcxNn0.t2RoqGIbRPAD2MYNVEQe6tl_dHQfN6X0NprjMqSeVqk"
+  );
+</script>
+
+
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+</body>
+<!-- 登录函数定义 -->
+<script>
+  async function loginWithGoogle() {
+    const { error } = await window.supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+
+    if (error) {
+      alert("❌ 登录失败：" + error.message);
+      console.error(error);
+    }
+  }
+</script>
+</html>
