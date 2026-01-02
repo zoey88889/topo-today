@@ -1,27 +1,37 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const params = new URLSearchParams(window.location.search);
-  const city = params.get("city") || "New York"; // 默认纽约
-
+  const city = "New York";
+  const lang = navigator.language.startsWith("zh") ? "zh_cn" : "en";
   const apiKey = "73e687d19d94d3b1ccee01aada40aeb4";
-  const weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-   const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
 
-  const box = document.getElementById("weatherBox");
-  if (!box) return;
+  const weatherBox = document.getElementById("weatherBox");
+  const forecastBox = document.getElementById("forecastBox");
+  const aiBox = document.getElementById("aiAdvice");
+
+  const todayURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
+  const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=${lang}`;
 
   try {
-    const res = await fetch(weatherApi);
-    const data = await res.json();
-    const temp = data.main.temp;
-    const desc = data.weather[0].description;
+    // 📍 获取今日天气
+    const todayRes = await fetch(todayURL);
+    if (!todayRes.ok) throw new Error("Today weather API failed");
 
-    box.innerHTML = `
-      <div class="rss-card">
-        <h3>🌤️ ${city} 天气</h3>
-        <p>当前温度：<strong>${temp}°C</strong><br>天气：${desc}</p >
+    const todayData = await todayRes.json();
+    if (!todayData.main || !todayData.weather) throw new Error("Weather data invalid");
+
+    const tempC = Math.round(todayData.main.temp);
+    const tempF = Math.round(tempC * 9 / 5 + 32);
+    const icon = todayData.weather[0].icon;
+    const desc = todayData.weather[0].description;
+
+    weatherBox.innerHTML = `
+      <div class="weather-card">
+        <h3>🌤️ ${lang === "zh_cn" ? "当前天气" : "Today's Weather"} · ${city}</h3>
+        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}" style="width:60px;">
+        <p>${desc} · ${tempC}°C / ${tempF}°F</p >
       </div>
     `;
- // 📍 获取未来天气
+
+    // 📍 获取未来天气
     const forecastRes = await fetch(forecastURL);
     const forecastData = await forecastRes.json();
 
@@ -34,7 +44,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const temp = Math.round(item.main.temp);
         const icon = item.weather[0].icon;
         const desc = item.weather[0].description;
-    forecastHTML += `
+
+        forecastHTML += `
           <div class="rss-card">
             <strong>${date}</strong> · ${desc} · ${temp}°C
             <img src="https://openweathermap.org/img/wn/${icon}.png" style="width:32px; vertical-align:middle;">
@@ -81,8 +92,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
       `;
     }
+
   } catch (error) {
-    console.error("天气加载失败", error);
-    box.innerHTML = `<p style="color:red;">⚠️ 无法加载天气数据</p >`;
+    console.error("❌ 天气模块错误", error);
+    if (weatherBox) {
+      weatherBox.innerHTML = `<p>⚠️ ${lang === "zh_cn" ? "天气加载失败" : "Failed to load weather data"}</p >`;
+    }
   }
 });
