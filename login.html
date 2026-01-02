@@ -3,48 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title>登录 TOPO Today</title>
+<link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    .container {
+      max-width: 400px;
+      margin: 4rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 { text-align: center; margin-bottom: 1rem; }
+    input, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #333;
+    }
+    .msg {
+      text-align: center;
+      color: #555;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+  </style>
 
+<header>
+
+<body>
+  <div class="container">
+    <h2>登录 TOPO Today</h2>
+    <div class="msg" id="msgBox">欢迎回来！请选择登录方式。</div>
+<!-- 登录按钮 -->
+
+  <!-- 📧 邮箱 + 密码登录 -->
+    <input type="email" id="email" placeholder="邮箱地址" required />
+    <input type="password" id="password" placeholder="密码（至少6位）" required />
+    <button id="loginBtn">📩 注册 / 登录</button>
+
+    <!-- 🔐 Google 登录 -->
+    <button onclick="loginWithGoogle()">🔐 使用 Google 登录</button>
+
+    <!-- ✨ Magic Link 登录 -->
+    <button onclick="loginWithMagic()">✨ 魔法链接登录</button>
+
+<!-- Supabase JS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
 <script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
 <script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
 <script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
-<!-- 🌐 语言切换 -->
-<div style="position: absolute; top: 1rem; right: 1rem;">
-  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
-    <option value="zh">🌏 中文</option>
-    <option value="en">🇺🇸 english</option>
-    <option value="ko">🇰🇷 한국어</option>
-  </select>
-</div>
-</header>
-<body>
-
- <style>
-  .login-btn {
-    background-color: #000;
-    color: #fff;
-    font-size: 1.25rem;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-  }
-
-  .login-btn:hover {
-    background-color: #222;
-    transform: scale(1.03);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  }
-</style>
-<!-- 登录按钮 -->
-<button onclick="loginWithGoogle()" class="login-btn">用 Google 登录</button>
-
-<!-- Supabase JS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
 <!-- 初始化 Supabase -->
 <script>
   window.supabase = window.supabase.createClient(
@@ -75,5 +94,27 @@
       console.error(error);
     }
   }
+  // ✨ Magic Link 登录
+    async function loginWithMagic() {
+      const email = document.getElementById("email").value.trim();
+      if (!email) {
+        msgBox.textContent = "请输入邮箱后再点魔法链接";
+        return;
+      }
+
+      const { error } = await window.supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: 'https://topoto.netlify.app/index.html' // 登录后跳转
+        }
+      });
+
+      if (error) {
+        msgBox.textContent = "❌ 魔法链接发送失败：" + error.message;
+      } else {
+        msgBox.textContent = "📨 魔法链接已发送，请检查邮箱！";
+      }
+    }
+
 </script>
 </html>

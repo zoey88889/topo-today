@@ -30,3 +30,18 @@ async function logout() {
   await window.supabase.auth.signOut();
   window.location.href = "index.html";
 }
+
+// ✨ Magic Link 登录（可用于 login.html 中按钮调用）
+async function loginWithMagicLink(email) {
+  const { error } = await window.supabase.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: 'https://topoto.netlify.app/index.html'
+    }
+  });
+  if (error) {
+    alert("❌ 魔法链接发送失败：" + error.message);
+  } else {
+    alert("📩 魔法链接已发送，请查收邮箱！");
+  }
+}
