@@ -209,8 +209,9 @@ nav input {
   transition: 0.2s ease-in-out;
 }
 
-.rss-card h3 {
+    .rss-card h3 {
   margin-top: 0;
+  color: #a00404;
   font-size: 1.1rem;
 }
 .rss-card p {
