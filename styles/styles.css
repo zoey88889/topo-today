@@ -169,7 +169,16 @@ nav input {
 }
 
 /* 浮动按钮 */
-
+.floating-btn {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15); /* 半透明白色 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  color: white;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+}
 .floating-btn:hover {
   background: #ff85b6;
   transform: scale(1.05);
@@ -182,7 +191,15 @@ nav input {
   color: #fff;
   opacity: 0.8;
 }
-
+floating-group {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1000;
+}
 
 .btn-region {
   background-color: #f5f5f5;
