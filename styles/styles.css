@@ -169,16 +169,17 @@ nav input {
 }
 
 /* 浮动按钮 */
-.floating-btn {
-  padding: 4px 10px;
-  font-size: 8px;
-  background: #eee;
-  color: #b9b7b7;
-  margin: 5px 0;
-  border-radius: 8px;
-  display: block;
-}
 
+.floating-btn {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15); /* 半透明白色 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  color: white;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+}
 .floating-btn:hover {
   background: #ff85b6;
   transform: scale(1.05);
