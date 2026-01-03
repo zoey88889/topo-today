@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TOPO · 巴黎华人生活站 | France Edition</title>
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/styles.css"/>
 </head>
 <body>
 
@@ -12,6 +12,7 @@
   <h1>📍 巴黎 · 华人资讯平台</h1>
   <p>涵盖房屋租售、美食推荐、求职招聘、教育培训与生活服务</p >
 </header>
+
 
 <section class="modules">
   <h2>🌤️ 巴黎今日天气</h2>
@@ -27,8 +28,8 @@
 
 <section class="modules">
   <h2>🧭 巴黎生活分类导航</h2>
+   <div class="category-grid">
 
-  <div class="category-grid">
     <a class="card" href="post.html?region=paris&type=jobs">👩‍💼 招聘求职</a >
     <a class="card" href="post.html?region=paris&type=housing">🏠 房屋出租</a >
     <a class="card" href="post.html?region=paris&type=services">🛠️ 本地服务</a >
@@ -61,13 +62,11 @@
   </p >
 </div>
 
-  <!-- 渲染容器 -->
- 
 <section style="text-align:center; margin: 2rem 0;">
   <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
 </section>
 
- <div id="postContainer"></div> 
+<div id="footer"></div>
 <script>
   fetch("components/footer.html")
     .then(res => res.text())
@@ -77,5 +76,6 @@
 </script>
 
 <script src="scripts/ai-weather.js"></script>
+
 </body>
 </html>
