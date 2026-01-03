@@ -169,27 +169,31 @@ nav input {
 }
 
 /* 浮动按钮 */
+.floating-nav {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+
 .floating-btn {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.15); /* 半透明白色 */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  color: white;
-  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 16px;
   padding: 0.6rem 1rem;
   font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
+
 .floating-btn:hover {
-  background: #ff85b6;
   transform: scale(1.05);
-}
-.floating-text {
-  display: block;
-  font-size: 0.75rem;
-  text-align: center;
-  margin-top: 4px;
-  color: #fff;
-  opacity: 0.8;
 }
 floating-group {
   position: fixed;
