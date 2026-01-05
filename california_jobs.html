@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <title>🍜 TOPO | 加州美食推荐</title>
+  <title>🍜 TOPO | 加州招聘/找工作</title>
 
 
   <style>
@@ -20,7 +20,7 @@
 
 
 <body>
-  <h1>🍜 TOPO 美食推荐平台</h1>
+  <h1>🍜 TOPO 招聘市场/发现工作机会</h1>
 
   <!-- 登录区 -->
   <div class="auth-links" id="authArea">
@@ -65,10 +65,26 @@
       document.getElementById("footer").innerHTML = html;
     });
 </script>
-  <script>
-  const params = new URLSearchParams(window.location.search);
-  const region = params.get("region") || "Global";
-  document.getElementById("regionInput").value = region;
+<script>
+// ✅ 3. 页面加载：从文件名自动识别
+document.addEventListener("DOMContentLoaded", () => {
+  const fileName = window.location.pathname.split("/").pop().replace(".html", "");
+  const parts = fileName.split("_");
+
+  let region = null;
+  let category = null;
+
+  if (parts.length === 1) {
+    // food.html
+    category = parts[0];
+  } else if (parts.length === 2) {
+    // california_food.html
+    region = parts[0];
+    category = parts[1];
+  }
+
+  loadPosts(region, category).then(renderPosts);
+});
 </script>
 </body>
 </html>

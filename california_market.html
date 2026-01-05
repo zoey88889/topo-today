@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPO · 加州站｜洛杉矶 / 圣盖博 / 旧金山 华人信息导航</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+
+</head>
+<body>
+
+<header class="hero">
+<!-- 加州页面 -->
+<h1>📍 洛杉矶 / 圣盖博华人资讯</h1>
+</header>
+
+<section class="modules">
+  <h2>🌤️ 加州天气</h2>
+
+<!-- ☀️ 天气 -->
+<div id="weatherMiniCard">
+  <div class="weather-card-mini" onclick="toggleWeatherBox()">🌤️ 点击查看今日天气</div>
+</div>
+<div id="weatherBox"></div>
+  <div id="forecastBox"></div>
+  <div id="aiAdvice"></div>
+</div>
+
+</section>
+
+<section class="modules">
+  <h2>🧭 加州生活分类导航</h2>
+
+  <div class="category-grid">
+     
+    <a class="card" href="california_jobs.html">👩‍💼 招聘求职</a >
+    <a class="card" href="california_housing.html">🏠 房屋出租</a >
+    <a class="card" href="california_services.html">🛠️ 本地服务</a >
+    <a class="card" href="california_market.html">🛍️ 二手交易</a >
+    <a class="card" href="california_events.html">🎉 本地活动</a >
+    <a class="card" href="california_doctor.html">👨‍⚕️ 医疗健康</a >
+    <a class="card" href="california_study.html">📚 教育培训</a >
+    <a class="card" href="california_visa.html">✈️ 留学移民</a >
+    <a class="card" href="california_foods.html">美食推荐</a >
+    <a class="card" href="california_beauty.html">💇‍♀️ 美发美容</a >
+  </div>
+</section>
+
+  <div class="teaser-card" style="background: linear-gradient(145deg, #1f1f1f, #2a2a2a); color: #fff; padding: 2em; border-radius: 16px; font-family: 'JetBrains Mono', monospace; box-shadow: 0 0 25px rgba(0,0,0,0.4);">
+  <h2 style="font-size: 1.8em; margin-bottom: 0.5em;">🌐 TOPO 元宇宙资讯总站™</h2>
+  <p style="font-size: 1.1em; line-height: 1.6;">
+    正在开发中...🚀<br><br>
+    🌤️ <strong>实时天气 · 多城市同步</strong><br>
+    🧭 <strong>城市生活分类导航</strong><br>
+    📰 <strong>AI 新闻聚合 · 一键摘要</strong><br>
+    🖼️ <strong>Web3 vibe UI · 极简而灵动</strong><br>
+    🧠 <strong>GPT驱动内容系统 · 动态生成资讯</strong><br><br>
+    <em style="color:#9effd9;">未来资讯的入口，不再是门户，而是场域。</em>
+  </p >
+  
+  <hr style="margin: 1.5em 0; border-color: #555;" />
+  <p style="font-style: italic; color: #b3b3b3;">
+    🔮 Web3 + GPT + 🌍 vibe = <strong>TOPO</strong> 元宇宙资讯总站<br>
+    Coming soon to App Store · Netlify · 全宇宙 ⚙️
+  </p >
+</div>
+
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+
+
+
+  <!-- 渲染容器 -->
+  <div id="postContainer"></div>
+    <!-- 默认信息卡片 -->
+  <div class="post">
+    <h3>📢 想上广告？</h3>
+    <p>欢迎投稿你想推荐的信息内容，或联系 TOPO 团队合作发布！</p >
+  </div>
+<div id="postContainer"></div>
+</section>
+<script src="scripts/ai-weather.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
+
+
+<div id="footer"></div>
+<script>
+  fetch("components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const region = params.get("region") || "Global";
+  document.getElementById("regionInput").value = region;
+</script>
+</body>
+</html>
