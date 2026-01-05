@@ -61,6 +61,9 @@ async function loadPosts() {
   }
 
   console.log("📦 拉回的 posts：", data);
+  console.log("🎯 region", region);
+console.log("🎯 category", category);
+console.log("📦 拉回的 posts：", data);
   return data;
 }
 
