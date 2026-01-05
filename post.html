@@ -71,6 +71,9 @@
   const params = new URLSearchParams(window.location.search);
   const region = params.get("region") || "Global";
   document.getElementById("regionInput").value = region;
+  document.addEventListener("DOMContentLoaded", () => {
+  loadPosts().then(renderPosts);
+});
 </script>
 </body>
 </html>
