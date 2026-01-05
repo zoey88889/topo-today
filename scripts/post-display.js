@@ -24,7 +24,7 @@ function renderPosts(posts) {
 
     let imageHTML = "";
     if (Array.isArray(post.images) && post.images.length > 0) {
-      imageHTML = `<img src="${post.images[0]}" style="max-width:100%; border-radius: 6px; margin-top: 1rem;" />`;
+      imageHTML = `< img src="${post.images[0]}" style="max-width:100%; border-radius: 6px; margin-top: 1rem;" />`;
     }
 
     card.innerHTML = `
@@ -61,8 +61,7 @@ async function loadPosts(category) {
 
 // ✅ 3. 页面加载完后调用渲染
 document.addEventListener("DOMContentLoaded", () => {
-  const pagePath = window.location.pathname;
+  const pageName = window.location.pathname.split("/").pop().replace(".html", "").toLowerCase(); 
+  const [region, category] = pageName.split("_"); // eg. california_food → ["california", "food"]
 
-
-  loadPosts(category).then(renderPosts);
-});
+  loadPosts().then(renderPosts);

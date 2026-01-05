@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
+    
     const title = document.getElementById("title").value.trim();
     const content = document.getElementById("content").value.trim();
     const imageUpload = document.getElementById("imageUpload");
