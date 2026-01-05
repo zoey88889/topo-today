@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatbox.style.display = chatbox.style.display === "none" ? "block" : "none";
   });
 
-  inputBox.addEventListener("keypress", function (e) {
+   inputBox.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
       e.preventDefault();
       sendBtn.click();
