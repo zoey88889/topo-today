@@ -55,7 +55,8 @@ const category = urlParams.get('type') || 'general';
         content,
         images: imageUrls,
         author: user.email,
-        category
+        category,
+        region,
       }]);
 
     if (error) {

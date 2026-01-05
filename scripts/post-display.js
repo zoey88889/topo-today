@@ -16,7 +16,7 @@ function renderPosts(posts) {
 
     let imageHTML = "";
     if (Array.isArray(post.images) && post.images.length > 0) {
-      imageHTML = `< img src="${post.images[0]}" style="max-width:100%; border-radius:6px; margin-top:1rem;" />`;
+      imageHTML = `<img src="${post.images[0]}" style="max-width:100%; border-radius:6px; margin-top:1rem;" />`;
     }
 
     card.innerHTML = `
