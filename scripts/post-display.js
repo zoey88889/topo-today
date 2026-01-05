@@ -60,21 +60,20 @@ async function loadPosts(region, category) {
 }
 
 // ✅ 3. 页面加载：从文件名自动识别
+// ✅ 全局识别 region & category（放在 DOMContentLoaded 外部）
+const fileName = window.location.pathname.split("/").pop(); // california_food.html
+let region = "global";
+let category = "general";
+
+const parts = fileName.replace(".html", "").split("_"); 
+if (parts.length === 1) {
+  category = parts[0];
+} else if (parts.length === 2) {
+  region = parts[0];
+  category = parts[1];
+}
 document.addEventListener("DOMContentLoaded", () => {
   const fileName = window.location.pathname.split("/").pop().replace(".html", "");
   const parts = fileName.split("_");
-
-  let region = null;
-  let category = null;
-
-  if (parts.length === 1) {
-    // food.html
-    category = parts[0];
-  } else if (parts.length === 2) {
-    // california_food.html
-    region = parts[0];
-    category = parts[1];
-  }
-
   loadPosts(region, category).then(renderPosts);
 });

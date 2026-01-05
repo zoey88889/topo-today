@@ -31,17 +31,14 @@
   <div id="welcome" style="text-align:center; margin-top: 1rem;"></div>
 
        <!-- 表单区 -->
-  <form id="postForm">
-  <input type="text" id="title" required />
-  <textarea id="content" required></textarea>
-  <input type="file" id="imageUpload" multiple />
-
-  <!-- 手动设置固定地区和类型 -->
-  <input type="hidden" name="region" value="california" />
-  <input type="hidden" name="category" value="foods" />
-
-  <button type="submit">发布</button>
-</form>
+<!-- 表单区 -->
+  <form id="postForm" enctype="multipart/form-data">
+    <input type="text" id="title" placeholder="标题..." required />
+    <input type="file" id="imageUpload" accept="image/*" multiple />
+  
+    <textarea id="content" rows="4" placeholder="写下推荐内容..." required></textarea>
+    <button type="submit">发布</button>
+  </form>
   <!-- 默认信息卡片 -->
   <div class="post">
     <h3>📢 想上广告？</h3>
