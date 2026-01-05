@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputBox = document.getElementById("inputBox");
   const sendBtn = document.getElementById("sendBtn");
   const dodobotButton = document.getElementById("dodobot-button");
-  const chatbox = document.getElementById("chatbox");
+  const chatbox = document.getElementById("dodobot-widget");
 
   sendBtn.addEventListener("click", () => {
     const userText = inputBox.value.trim();
