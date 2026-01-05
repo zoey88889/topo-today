@@ -202,7 +202,7 @@
 
 
 <!-- 💬 Chatbot 展开区块 -->
-<div id="dodobot-widget" style="display: none; position: fixed; bottom: 110px; right: 20px; width: 300px; background: #fffafc; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); z-index: 9999; padding: 1rem;">
+<div id="dodobot-widget" style="display: block; position: fixed; bottom: 110px; right: 20px; width: 300px; background: #fffafc; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); z-index: 9999; padding: 1rem;">
 
   <div id="dodobot-avatar" style="text-align: center;">
     <img src="images/dodobot.gif" alt="Dodobot" width="60"
@@ -251,13 +251,7 @@ function toggleWeatherBox() {
 
 <script src="scripts/responses_extra.js"></script>
 <script src="scripts/chatbot.js"></script>
-<script>
-  function toggleDodobot() {
-    const widget = document.getElementById("dodobot-widget");
-    widget.style.display = widget.style.display === "none" ? "block" : "none";
-  }
-  
-</script>
+
 
 <script>
 function toggleExtra() {
