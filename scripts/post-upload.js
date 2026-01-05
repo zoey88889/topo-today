@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("postForm");
   if (!form) return; // 没有表单就不处理
-
+const region = document.querySelector('input[name="region"]').value;
+const category = document.querySelector('input[name="category"]').value;
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
+
     const title = document.getElementById("title").value.trim();
     const content = document.getElementById("content").value.trim();
     const imageUpload = document.getElementById("imageUpload");
@@ -46,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
     const fileName = path.split("/").pop(); // 如：food.html 
     const category = fileName.replace(".html", "").toLowerCase();
-
     // ✅ 写入 posts 表
     const { error } = await window.supabase
       .from("posts")
