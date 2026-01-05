@@ -40,25 +40,21 @@ function renderPosts(posts) {
 
 // ✅ 2. 数据拉取函数
 // ✅ 改进后的 loadPosts 支持 region 和 category
+// ✅ 拉取所有匹配 region + type 的内容
 async function loadPosts() {
   const urlParams = new URLSearchParams(window.location.search);
-  const region = urlParams.get("region") || "global";
-  const category = urlParams.get("type") || "general";
+  const region = urlParams.get("region")?.toLowerCase() || "global";
+  const category = urlParams.get("type")?.toLowerCase() || "general";
 
-let query = window.supabase
-  .from("posts")
-  .select("*")
-  .order("created_at", { ascending: false });
+  let query = window.supabase
+    .from("posts")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-if (region) {
-  query = query.eq("region", region);
-}
-if (category) {
-  query = query.eq("category", category);
-}
+  if (region) query = query.eq("region", region);
+  if (category) query = query.eq("category", category);
 
   const { data, error } = await query;
-
   if (error) {
     console.error("❌ 拉取失败：", error.message);
     return [];
@@ -68,10 +64,6 @@ if (category) {
   return data;
 }
 
-// ✅ 3. 页面加载完后调用渲染
 document.addEventListener("DOMContentLoaded", () => {
-  const pagePath = window.location.pathname;
-  const category = pagePath.split("/").pop().replace(".html", "").toLowerCase();
-
-  loadPosts(category).then(renderPosts);
+  loadPosts().then(renderPosts);
 });

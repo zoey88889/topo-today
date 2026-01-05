@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ 自动识别当前页面分类
     const path = window.location.pathname;
-    const fileName = path.split("/").pop(); // 如：food.html
+    const fileName = path.split("/").pop(); // 如：food.html 
     const category = fileName.replace(".html", "").toLowerCase();
 
     // ✅ 写入 posts 表

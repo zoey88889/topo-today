@@ -17,26 +17,7 @@
      
   </style>
 <link rel="privacy-policy" href="/privacy.html" />
-<!-- 🌐 语言切换 -->
-<div style="position: absolute; top: 1rem; right: 1rem;">
-  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
-    <option value="zh">🌏 中文</option>
-    <option value="en">🇺🇸 english</option>
-    <option value="ko">🇰🇷 한국어</option>
-  </select>
-</div>
-</header>
-<body>
 
-  <!-- 🌐 语言切换 -->
-<div style="position: absolute; top: 1rem; right: 1rem;">
-  <select id="langswitcher" style="padding: 4px 8px; border-radius: 6px;">
-    <option value="zh">🌏 中文</option>
-    <option value="en">🇺🇸 english</option>
-    <option value="ko">🇰🇷 한국어</option>
-  </select>
-</div>
-</header>
 
 <body>
   <h1>🍜 TOPO 美食推荐平台</h1>
@@ -53,7 +34,8 @@
   <form id="postForm" enctype="multipart/form-data">
     <input type="text" id="title" placeholder="标题..." required />
     <input type="file" id="imageUpload" accept="image/*" multiple />
-    <input type="hidden" name="region" value="California">
+     <input type="hidden" id="regionInput" name="region" />
+     <input type="hidden" id="categoryInput" name="category" />
     <textarea id="content" rows="4" placeholder="写下推荐内容..." required></textarea>
     <button type="submit">发布</button>
   </form>
