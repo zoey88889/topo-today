@@ -1,3 +1,16 @@
+// 自动识别 region 与 category，适配所有页面
+const fileName = window.location.pathname.split("/").pop(); // california_foods.html
+let region = "global";
+let category = "general";
+
+const parts = fileName.replace(".html", "").split("_");
+if (parts.length === 1) {
+  category = parts[0];
+} else if (parts.length === 2) {
+  region = parts[0];
+  category = parts[1];
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("postForm");
   if (!form) return; // 没有表单就不处理
