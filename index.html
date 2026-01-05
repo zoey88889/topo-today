@@ -199,12 +199,12 @@
   <div id="aiAdvice"></div>
 </div>
 
-
-<div id="dodobot-button" style="position: fixed; bottom: 30px; right: 20px; cursor: pointer; z-index: 9999;">
-  <img src="images/dodobot.gif" width="64" style="border-radius: 50%;">
+<!-- 🤖 Dodobot Widget 按钮（右下角固定） -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+  <img src="images/dodobot.gif" alt="Dodobot" width="80"
+    style="border-radius: 50%; box-shadow: 0 0 10px rgba(255,192,203,0.8); cursor: pointer;"
+    onclick="toggleDodobot()" />
 </div>
-<button id="sendBtn">发送</button>
-<input id="inputBox" placeholder="输入你的问题..." />
 <!-- 💬 Chatbot 展开区块 -->
 <div id="chatbot" style="display: none; position: fixed; bottom: 110px; right: 20px; width: 300px; background: #fffafc; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); z-index: 9999; padding: 1rem;">
 
