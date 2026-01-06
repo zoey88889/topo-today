@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>第九课｜部署与验证智能合约</title>
+  <style>
+    body { font-family: 'Helvetica Neue', sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 2rem; background: #f8f9fa; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    code { background: #eef; padding: 0.2em 0.4em; border-radius: 4px; }
+    .highlight { background: #ffe9e9; padding: 1rem; border-left: 4px solid #e74c3c; }
+  </style>
+</head>
+<body>
+
+  <h1>第九课｜如何验证合约并部署到主网</h1>
+
+  <p>在上一课中，我们了解了如何创建一个最简单的 ERC-20 Token 合约。本节课我们将深入学习如何将合约部署到以太坊主网，并进行验证，让你的 Token 对所有人可见、可信。</p>
+
+  <h2>🛠 准备工作</h2>
+  <ul>
+    <li>安装浏览器钱包 MetaMask</li>
+    <li>在 <code>Remix IDE</code> 打开你的合约</li>
+    <li>确保你拥有足够的 ETH 用于部署</li>
+    <li>连接 Remix 与 MetaMask 的 Injected Provider</li>
+  </ul>
+
+  <h2>🚀 部署步骤</h2>
+  <ol>
+    <li>打开 <a href="https://remix.ethereum.org" target="_blank">Remix IDE</a >，加载合约</li>
+    <li>选择 "Injected Provider - MetaMask"</li>
+    <li>编译合约后，点击 <strong>Deploy</strong> 按钮</li>
+    <li>MetaMask 弹出交易签名窗口，确认并等待交易完成</li>
+  </ol>
+
+  <h2>🔍 验证合约</h2>
+  <p>部署完成后，拿到你的合约地址，前往：</p >
+  <ul>
+    <li><a href="https://etherscan.io" target="_blank">Etherscan</a >（主网）</li>
+    <li><a href="https://sepolia.etherscan.io" target="_blank">Sepolia 测试网</a ></li>
+  </ul>
+
+  <p>找到你的合约页面后，点击 <strong>Contract → Verify and Publish</strong></p>
+
+  <h2>✅ 提交验证信息</h2>
+  <ul>
+    <li>选择 Compiler 版本与你在 Remix 编译时一致</li>
+    <li>输入 License 类型（如 MIT）</li>
+    <li>将你的合约代码粘贴进去，点击 “Verify”</li>
+    <li>等待几秒后，合约源码将公开显示在区块浏览器上</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>提示：</strong><br/>
+    Etherscan 会自动识别你是否使用了构造函数参数，请根据需要填写。
+  </div>
+
+  <h2>🎉 完成部署与验证</h2>
+  <p>现在你就拥有了一个部署在区块链上的公开可查的 Token 合约，用户可以通过钱包添加你的 Token 地址，开始交易、转账。</p>
+
+  <hr>
+
+  <p><strong>1/7/2026 下一课预告：</strong>
+     <p style="margin-top:3rem;"><em> 我们将探索如何将 Token 集成到 DApp 与前端页面中，实现钱包添加、余额显示、转账等功能。</p>
+
+        <a href="finance.html" class="btn-back">← 返回 Finance 页面</a>
+
+
+  </div>
+
+  <footer>
+    TOPO.Today ｜Learn Crypto with Joy 🪙
+  </footer>
+
+</body>
+</html>

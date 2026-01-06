@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>第八课｜部署 ERC-20 Token 合约</title>
+  <style>
+    body { font-family: "Helvetica Neue", sans-serif; margin: 2rem; background: #f5f5f5; color: #333; line-height: 1.8; }
+    h1 { color: #202020; }
+    h2 { color: #444; margin-top: 2rem; }
+    code, pre { background: #eee; padding: 0.2rem 0.5rem; border-radius: 4px; }
+    .highlight { background: #d6f5d6; padding: 0.5rem; border-left: 4px solid #3c9; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <h1>第八课｜如何部署你的 ERC-20 代币合约（Remix + MetaMask）</h1>
+
+  <p>在本课中，我们将通过 <strong>Remix IDE</strong> 和 <strong>MetaMask 钱包</strong> 部署你的第一个 ERC-20 Token。</p >
+
+  <h2>第一步：准备 MetaMask 钱包</h2>
+  <ul>
+    <li>访问 <a href="https://metamask.io" target="_blank">metamask.io</a > 下载浏览器插件并创建钱包。</li>
+    <li>切换到 <code>Goerli Testnet</code> 或 <code>Sepolia</code> 测试网络。</li>
+    <li>从 <a href="https://faucet.paradigm.xyz" target="_blank">测试币水龙头</a >领取 ETH。</li>
+  </ul>
+
+  <h2>第二步：打开 Remix IDE</h2>
+  <ul>
+    <li>访问 <a href="https://remix.ethereum.org" target="_blank">remix.ethereum.org</a ></li>
+    <li>在左侧点击「文件管理器」➜ 创建新文件：<code>MyToken.sol</code></li>
+    <li>复制粘贴你的 ERC-20 合约代码。</li>
+  </ul>
+
+  <h2>第三步：编译合约</h2>
+  <ol>
+    <li>点击「Solidity 编译器」模块。</li>
+    <li>确保编译器版本与你合约中 <code>pragma solidity ^0.8.0;</code> 匹配。</li>
+    <li>点击「Compile MyToken.sol」按钮。</li>
+  </ol>
+
+  <h2>第四步：部署合约</h2>
+  <ol>
+    <li>点击「部署与运行交易（Deploy & Run）」模块。</li>
+    <li>环境选择 <code>Injected Provider - MetaMask</code>，确保连接到正确的测试网络。</li>
+    <li>在下方选择合约名（例如 <code>MyToken</code>），填写构造函数参数（如代币名称、符号、初始总量）。</li>
+    <li>点击「Deploy」，并在 MetaMask 中确认交易。</li>
+  </ol>
+
+  <div class="highlight">
+    ✅ 你现在已经成功部署了自己的 ERC-20 Token 合约啦！
+  </div>
+
+  <h2>第五步：在钱包中查看你的代币</h2>
+  <ul>
+    <li>复制刚部署的 Token 合约地址。</li>
+    <li>在 MetaMask 中点击「导入代币」➜ 粘贴地址 ➜ 添加代币。</li>
+  </ul>
+
+  <h2>附录：推荐工具</h2>
+  <ul>
+    <li><strong>Remix IDE：</strong> Solidity 开发和测试首选</li>
+    <li><strong>Goerli/Sepolia Faucet：</strong> 免费测试币来源</li>
+    <li><strong>MetaMask：</strong> 浏览器钱包</li>
+  </ul>
+
+ <p style="margin-top:3rem;"><em> 比如如何设置钱包参与 DeFi 项目、如何识别骗局与高风险协议、如何查看钱包地址历史交易等。</p>
+        <a href="finance.html" class="btn-back">← 返回 Finance 页面</a >
+
+
+  </div>
+
+  <footer>
+    TOPO.Today ｜Learn Crypto with Joy 🪙
+  </footer>
+</body>
+</html>

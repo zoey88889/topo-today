@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>第三课｜ERC-20 代币标准入门</title>
+  <style>
+    body { font-family: sans-serif; background-color: #f9f9f9; padding: 2rem; line-height: 1.7; color: #333; }
+    h1, h2 { color: #222; }
+    code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.95rem; }
+    .code-block { background: #f0f0f0; padding: 1rem; border-radius: 6px; margin: 1rem 0; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>第三课｜ERC-20 是什么？</h1>
+
+  <p>ERC-20 是以太坊区块链上最常见的一种代币标准，它像一套规则，规范了 Token 如何创建、转账、授权等基本操作。几乎所有流通的加密代币（包括 USDT、UNI、SHIB 等）都遵循 ERC-20。</p >
+
+  <h2>🧩 ERC-20 标准的基本函数</h2>
+  <ul>
+    <li><code>totalSupply()</code>：总供应量</li>
+    <li><code>balanceOf(address account)</code>：查询某个地址的余额</li>
+    <li><code>transfer(address to, uint256 amount)</code>：发送 Token</li>
+    <li><code>approve(address spender, uint256 amount)</code>：授权他人代替你支出</li>
+    <li><code>transferFrom(address from, address to, uint256 amount)</code>：代支功能</li>
+    <li><code>allowance(address owner, address spender)</code>：查看授权额度</li>
+  </ul>
+
+  <h2>🛠️ 创建一个最简单的代币合约（Solidity 代码示例）</h2>
+  <div class="code-block">
+    pragma solidity ^0.8.0;
+
+    contract DovaToken {
+        string public name = "DOVA";
+        string public symbol = "DOVA";
+        uint8 public decimals = 18;
+        uint256 public totalSupply = 88000000 * 10**18;
+
+        mapping(address => uint256) public balanceOf;
+
+        constructor() {
+            balanceOf[msg.sender] = totalSupply;
+        }
+
+        function transfer(address to, uint256 value) public returns (bool success) {
+            require(balanceOf[msg.sender] >= value, "余额不足");
+            balanceOf[msg.sender] -= value;
+            balanceOf[to] += value;
+            return true;
+        }
+    }
+  </div>
+
+  <h2>📌 说明</h2>
+  <p>上面是一个极简版本，只实现了 <code>transfer</code> 功能。实际部署时你可能需要继承 OpenZeppelin 的标准合约库。</p >
+
+  <h2>📚 延伸阅读</h2>
+  <ul>
+    <li>ERC-20 全标准文档</li>
+    <li>使用 Remix 编译器部署合约</li>
+    <li>如何使用 Metamask 与合约互动</li>
+  </ul>
+   <p style="margin-top:3rem;"><em>📖 想更进一步？下一节我们将介绍 NFT 是什么？为什么艺术家喜欢它？ </em> </p>
+
+      <a href="finance.html" class="btn-back">← 返回 Finance 页面</a >
+
+
+  </div>
+
+  <footer>
+    TOPO.Today ｜Learn Crypto with Joy 🪙
+  </footer>
+</body>
+</html>
