@@ -1,3 +1,4 @@
+
 // 自动识别 region 与 category，适配所有页面
 const fileName = window.location.pathname.split("/").pop(); // california_foods.html
 let region = "global";
@@ -10,12 +11,9 @@ if (parts.length === 1) {
   region = parts[0];
   category = parts[1];
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("postForm");
   if (!form) return; // 没有表单就不处理
-const region = document.querySelector('input[name="region"]').value;
-const category = document.querySelector('input[name="category"]').value;
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
