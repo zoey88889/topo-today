@@ -224,6 +224,10 @@ nav input {
   margin-bottom: 1.2rem;
   color: #eaeaea;
   transition: 0.2s ease-in-out;
+    /* 新增适配手机端的关键属性 */
+  max-width: 100%;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
     .rss-card h3 {
@@ -241,6 +245,20 @@ nav input {
   font-size: 0.8rem;
   margin-top: 0.5rem;
   display: block;
+}
+ 
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background-color: #111;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background-color: #111;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
