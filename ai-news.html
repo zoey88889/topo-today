@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🤖 AI 热点速览 | TOPO TODAY</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+.bubble-card {
+  background: #fff;
+  border-left: 5px solid #0ff;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.bubble-card:hover {
+  transform: scale(1.02);
+  background: #f0faff;
+}
+
+.bubble-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.bubble-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.bubble-card em {
+  color: #777;
+  font-size: 0.85rem;
+}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>📰 每日 AI 新闻速览</h1>
+    <p>由 TOPO 自动抓取 + AI 预测趋势，每日精选 5–10 条</p >
+  </header>
+
+<!-- 🗓 2026‑01‑10 | OpenAI GPT-5 -->
+<div class="bubble-card">
+  <h3>🗓 2026‑01‑10｜OpenAI 推出 GPT‑5 可定制模型</h3>
+  <p>支持用户上传知识库、选择语气风格并进行语义微调，GPT 进入“企业内化”时代。<em>（来源：TechCrunch）</em></p >
+  <p><em>预测🌐：</em>每家公司都将训练自己的 AI 员工，“微型大模型”将成为 SaaS 市场新主角。</p >
+</div>
+
+<!-- 🗓 2026‑01‑09 | 微软收购 Notion AI -->
+<div class="bubble-card">
+  <h3>🗓 2026‑01‑09｜微软 Copilot 收购教育平台 Notion AI</h3>
+  <p>旨在整合 AI 写作、课程规划与思维导图功能，进军教育科技新领域。<em>（来源：The Verge）</em></p >
+  <p><em>预测🌐：</em>“AI+教育”将催生个性化学习路径，教育行业年营收将突破 1.2 万亿美元。</p >
+</div>
+
+<!-- 🗓 2026‑01‑08 | NVIDIA Titan X 芯片 -->
+<div class="bubble-card">
+  <h3>🗓 2026‑01‑08｜NVIDIA 发布专为 AI 模型设计的 Titan X 芯片</h3>
+  <p>运行速度提升 10 倍，专为多语言大模型与生成式搜索引擎优化。<em>（来源：WIRED）</em></p >
+  <p><em>预测🌐：</em>AI 处理器竞争白热化，2026 将是“GPU 战争元年”。</p >
+</div>
+
+<!-- 🗓 2026‑01‑07 | 日本厚生省 AI 法规翻译 -->
+<div class="bubble-card">
+  <h3>🗓 2026‑01‑07｜日本厚生省引入 AI 法规翻译模型</h3>
+  <p>支持全球医疗企业以本国语言解读日本法规，提高外资进入效率。<em>（来源：Nikkei Asia）</em></p >
+  <p><em>预测🌐：</em>“AI 法律助手”将成为跨境商业交易的必备工具。</p >
+</div>
+
+<!-- 🗓 2026‑01‑06 | Claude 3 财务分析工具 -->
+<div class="bubble-card">
+  <h3>🗓 2026‑01‑06｜Anthropic 宣布 Claude 3 接入企业财务分析</h3>
+  <p>新功能支持读取财报、建模未来趋势，已在 100+ 企业试点。<em>（来源：Forbes）</em></p >
+  <p><em>预测🌐：</em>AI CFO 正在形成，预计 2030 年 60% 中型企业将使用 AI 财务预测工具。</p >
+</div>
+  <script>
+    function toggleContent(el) {
+      const content = el.nextElementSibling;
+      content.classList.toggle("hidden");
+      el.innerText = content.classList.contains("hidden") ? "展开预测" : "收起预测";
+    }
+  </script>
+
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+  <script src="scripts/bubble-particle.js"></script>
+</body>
+</html>

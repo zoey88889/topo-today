@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>商业地产板块 | OFFICE /办公室</title>
+ <meta name="description" content="TOPO Today 商业地产板块提供纽约商业空间精选：SoHo 零售、Brooklyn 创意办公室、Midtown 高层写字楼，助力品牌拓展与企业落地。">
+<meta name="keywords" content="纽约商业地产, 曼哈顿店铺出租, 纽约办公室, Brooklyn loft 办公室, 商业地产顾问">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>TOPO 商业地产板块</h1>
+    <p>涵盖办公室、零售商铺、仓储与工业物业信息。</p >
+  </header>
+
+  <!-- 渲染容器 -->
+  <div id="postContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="scripts/supabase.js"></script>       <!-- 初始化配置 -->
+<script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+<script src="scripts/post-display.js"></script>   <!-- 渲染帖子 -->
+<script src="scripts/post-upload.js"></script>    <!-- 上传帖子 -->
+
+
+<div id="footer"></div>
+<script>
+  fetch("components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
+
+</body>
+</html>

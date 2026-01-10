@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📌 民生 / 福利资讯 | TOPO TODAY</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+
+  <style>
+    .welfare-card {
+      background: #fff8e1;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #ffb300;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .welfare-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    .welfare-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .divider {
+      margin: 1.5rem 0;
+      border-bottom: 1px dashed #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <h1>📌 民生 / 福利资讯</h1>
+    <p>每日精选：社区政策、住房补贴、健康资源、法律援助等</p >
+  </header>
+
+  <section class="modules" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+    
+<div class="welfare-card">
+  <h3>🧑‍⚕️ 华人健康资源中心新增服务</h3>
+  <small>🗓 2026-01-10</small>
+  <p>免费体检、心理咨询全面升级，支持中英韩多语种，覆盖多个社区医疗点，提升华人社区整体健康可及性。</p >
+  <p><em>来源：NYC Community Health Centers</em></p >
+</div>
+
+<div class="divider"></div>
+<div class="welfare-card">
+  <h3>🏠 纽约市住房补贴计划启动</h3>
+  <small>🗓 2026-01-10</small>
+  <p>纽约市政府宣布新一轮住房补贴，聚焦华人社区中低收入租户，提供租金援助与过渡支持。</p >
+  <p><em>来源：NYC Housing Authority</em></p >
+</div>
+<div class="welfare-card">
+  <h3>📢 地税退税时间延长公告</h3>
+  <small>🗓 2026‑01‑10</small>
+  <p>纽约市财政部门宣布本年度地税退税截止时间延长两周，让市民有更多时间核对账单并申请退税，特别惠及自住物业所有者与社区居民。</p >
+  <p><em>来源：NYC Department of Finance</em></p >
+</div>
+<div class="welfare-card">
+  <h3>⚖️ 纽约移民法援服务扩大</h3>
+  <small>🗓 2026-01-10</small>
+  <p>新增工签、绿卡流程咨询服务，并上线线上预约系统，帮助移民家庭更高效获取法律支持。</p >
+  <p><em>来源：NYC Immigrant Affairs</em></p >
+</div>
+
+<div class="divider"></div>
+
+<div class="welfare-card">
+  <h3>📚 校餐营养报告发布</h3>
+  <small>🗓 2026-01-09</small>
+  <p>市教育局公布校餐营养新标准，强调全谷物、低盐、低糖饮食结构，惠及多所华人学生密集学校。</p >
+  <p><em>来源：NYC Department of Education</em></p >
+</div>
+
+<div class="divider"></div>
+
+<div class="welfare-card">
+  <h3>💼 华人小企业专项贷款计划</h3>
+  <small>🗓 2026-01-09</small>
+  <p>纽约市联合金融机构推出专项低息贷款与创业辅导计划，支持华人小企业稳定经营与扩张。</p >
+  <p><em>来源：NYC Small Business Services</em></p >
+</div>
+<div class="welfare-card">
+  <h3>🔥 冬季取暖补贴申请指南发布</h3>
+  <small>🗓 2026‑01‑09</small>
+  <p>随着严冬临近，纽约市政府发布最新取暖补贴申请指南，符合收入条件的居民可申请燃气、电力和燃油取暖费用补助，帮助家庭度过寒冷季节。</p >
+  <p><em>来源：NYC Human Resources Administration</em></p >
+</div>
+  </section>
+
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+</body>
+</html>
