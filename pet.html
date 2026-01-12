@@ -73,11 +73,14 @@
 
     fetchPetRSS();
   </script>
+<!-- Leaflet 地图样式 -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
+<!-- Leaflet 地图脚本 -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 <script>
   
-  
-  // 初始化地图
+// 初始化地图
   const map = L.map('dogMap').setView([40.730610, -73.935242], 11); // 纽约坐标
 
   // 加载地图图层（OpenStreetMap）
@@ -107,11 +110,7 @@
       .bindPopup(`<strong>${park.name}</strong>`);
   });
 </script>
-<!-- Leaflet 地图样式 -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
-<!-- Leaflet 地图脚本 -->
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
   <!-- 页脚 -->
   <div id="footer"></div>
