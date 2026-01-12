@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
   images: imageUrls,
   author: user.email,
   category,
-  region,
 }])
     if (error) {
       alert("❌ 发布失败：" + error.message);
