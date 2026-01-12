@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎎 TOPO TODAY | 文化 · 城市记忆</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+
+  <!-- SEO canonical -->
+  <link rel="canonical" href="https://topo.today/culture.html">
+</head>
+
+<body>
+
+  <!-- 页头 -->
+  <header class="hero">
+    <h1>🎎 TOPO 文化 · 城市记忆</h1>
+    <p>华人文化节｜纽约故事｜本地艺术生活｜历史与回忆</p >
+  </header>
+
+  <!-- 投稿入口 -->
+  <div style="text-align:center; margin-top:1rem;">
+    <a href=" " style="padding:0.6rem 1.2rem; background:#3f51b5; color:#fff; border-radius:8px; text-decoration:none;">
+      📝 我要投稿
+    </a >
+  </div>
+
+  <!-- Supabase 动态渲染区 -->
+  <section class="modules" id="postContainer" style="margin-top:2rem;"></section>
+
+  <!-- RSS 自动拉取展示区 -->
+  <section class="modules" id="rssContainer" style="margin-top:2rem;"></section>
+
+  <!-- 内嵌脚本：拉取文化 RSS -->
+  <script>
+    async function fetchCultureRSS() {
+      const rssSources = [
+        "https://www.si.edu/rss",                                        // Smithsonian Institution
+        "https://www.metmuseum.org/rss",                                 // The Met Museum
+        "https://www.chinainstitute.org/feed/",                           // China Institute NYC
+        "https://www.nyc.gov/html/dcla/html/about/rss.shtml"              // NYC Cultural Affairs
+      ];
+
+      const container = document.getElementById("rssContainer");
+      container.innerHTML = "";
+
+      for (const rssUrl of rssSources) {
+        try {
+          const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl);
+          const res = await fetch(proxyUrl);
+          const text = await res.json();
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(text.contents, "text/xml");
+          const items = xml.querySelectorAll("item");
+
+          items.forEach((item, index) => {
+            if (index > 2) return; // 每个 RSS 最多显示 3 条
+
+            const title = item.querySelector("title")?.textContent || "无标题";
+            const desc = item.querySelector("description")?.textContent || "";
+            const link = item.querySelector("link")?.textContent || "#";
+
+            const card = document.createElement("div");
+            card.className = "card";
+            card.style = `
+              background: #fff;
+              border-left: 6px solid #3f51b5;
+              padding: 1rem;
+              margin-bottom: 1rem;
+              border-radius: 8px;
+            `;
+            card.innerHTML = `
+              <h3 style="margin-bottom:0.5rem;">🎎 ${title}</h3>
+              <p style="font-size:0.9rem;">${desc}</p >
+              <a href="${link}" target="_blank" style="font-size:0.85rem; color:#3f51b5;">🔗 阅读原文</a >
+            `;
+            container.appendChild(card);
+          });
+        } catch (err) {
+          console.warn("❌ RSS 读取失败：", rssUrl, err);
+        }
+      }
+    }
+
+    fetchCultureRSS();
+  </script>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>       <!-- supabase 初始化 -->
+  <script src="scripts/topo.init.js"></script>      <!-- 登录/登出 -->
+  <script src="scripts/post-display.js"></script>   <!-- 渲染 supabase 内容 -->
+
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐾 萌宠星球 | TOPO TODAY</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>🐾 萌宠星球 Pet Planet</h1>
+    <p>欢迎发布走失启示、领养信息、萌宠晒照、宠物活动、医生推荐等内容</p >
+  </header>
+
+  <!-- 投稿表单 -->
+  <section class="modules">
+    <form id="postForm" enctype="multipart/form-data" style="background:#fff; padding:1.5rem; border-radius:12px; max-width:600px; margin:0 auto;">
+      <input type="text" id="title" placeholder="标题：如『走失寻狗』『小猫领养』" required />
+      <input type="file" id="imageUpload" accept="image/*" multiple />
+      <textarea id="content" rows="5" placeholder="详细描述，如品种/特征/地点/联系方式…" required></textarea>
+      <button type="submit" style="margin-top: 1rem;">✨ 发布萌宠动态</button>
+    </form>
+  </section>
+
+  <!-- 用户发帖渲染容器 -->
+  <div id="postContainer" class="modules" style="padding:1rem;"></div>
+
+  <!-- RSS 抓取区域（自动更新） -->
+  <section class="modules" id="rssContainer" style="margin-top: 2rem;">
+    <h2>📡 实时宠物资讯推荐</h2>
+    <!-- 这里将动态插入RSS卡片 -->
+  </section>
+
+  <!-- 当前页面分类设定 -->
+  <script> window.TOPO_CATEGORY = "pet"; </script>
+
+  <!-- 加载脚本 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts/supabase.js"></script>
+  <script src="scripts/post-upload.js"></script>
+  <script src="scripts/post-display.js"></script>
+
+  <!-- RSS 抓取脚本（ASPCA / Petfinder） -->
+  <script>
+    async function fetchPetRSS() {
+      const rssUrl = "https://www.petfinder.com/blog/feed/"; // 可换成 ASPCA 也支持的 RSS
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+      const res = await fetch(apiUrl);
+      const json = await res.json();
+      const items = json.items || [];
+
+      const container = document.getElementById("rssContainer");
+
+      items.slice(0, 5).forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style = `
+          background: #e8f5e9;
+          border-left: 6px solid #66bb6a;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          border-radius: 10px;
+        `;
+        card.innerHTML = `
+          <h3>🐶 ${item.title}</h3>
+          <p>${item.description}</p >
+          <a href=" " target="_blank">🔗 查看详情</a >
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    fetchPetRSS();
+  </script>
+
+<script>
+  
+  
+  // 初始化地图
+  const map = L.map('dogMap').setView([40.730610, -73.935242], 11); // 纽约坐标
+
+  // 加载地图图层（OpenStreetMap）
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 添加狗狗公园位置（示例3个）
+  const dogParks = [
+    {
+      name: "Tompkins Square Dog Run",
+      coords: [40.726477, -73.981533]
+    },
+    {
+      name: "Madison Square Park Dog Run",
+      coords: [40.742046, -73.987563]
+    },
+    {
+      name: "Washington Square Park Dog Run",
+      coords: [40.730822, -73.997332]
+    }
+  ];
+
+  // 在地图上添加标记
+  dogParks.forEach(park => {
+    L.marker(park.coords).addTo(map)
+      .bindPopup(`<strong>${park.name}</strong>`);
+  });
+</script>
+<!-- Leaflet 地图样式 -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+<!-- Leaflet 地图脚本 -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+  <!-- 页脚 -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+  </script>
+
+</body>
+</html>
