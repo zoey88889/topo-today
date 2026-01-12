@@ -1,22 +1,30 @@
-// ✅ 1. 渲染函数
+// ✅ 1. 渲染函数先定义
 function renderPosts(posts) {
   const container = document.getElementById("postContainer");
   if (!container) return;
 
   container.innerHTML = "";
 
-  if (!posts || posts.length === 0) {
+  if (posts.length === 0) {
     container.innerHTML = `<p style="text-align:center;">⚠️ 暂无内容。</p >`;
     return;
   }
 
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const card = document.createElement("div");
     card.className = "post";
+    card.style = `
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    `;
 
     let imageHTML = "";
     if (Array.isArray(post.images) && post.images.length > 0) {
-      imageHTML = `<img src="${post.images[0]}" style="max-width:100%; border-radius:6px; margin-top:1rem;" />`;
+      imageHTML = `<img src="${post.images[0]}" style="max-width:100%; border-radius: 6px; margin-top: 1rem;" />`;
     }
 
     card.innerHTML = `
@@ -30,50 +38,31 @@ function renderPosts(posts) {
   });
 }
 
-// ✅ 2. 数据加载（支持 region + category）
-async function loadPosts(region, category) {
+// ✅ 2. 数据拉取函数
+async function loadPosts(category) {
   let query = window.supabase
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });
-
-  if (region) {
-    query = query.eq("region", region);
-  }
 
   if (category) {
     query = query.eq("category", category);
   }
 
   const { data, error } = await query;
-
   if (error) {
     console.error("❌ 拉取失败：", error.message);
     return [];
   }
 
-  console.log("🎯 region:", region);
-  console.log("🎯 category:", category);
   console.log("📦 拉回的 posts：", data);
-
   return data;
 }
 
-// ✅ 3. 页面加载：从文件名自动识别
-// ✅ 全局识别 region & category（放在 DOMContentLoaded 外部）
-const fileName = window.location.pathname.split("/").pop(); // california_food.html
-let region = "global";
-let category = "general";
-
-const parts = fileName.replace(".html", "").split("_"); 
-if (parts.length === 1) {
-  category = parts[0];
-} else if (parts.length === 2) {
-  region = parts[0];
-  category = parts[1];
-}
+// ✅ 3. 页面加载完后调用渲染
 document.addEventListener("DOMContentLoaded", () => {
-  const fileName = window.location.pathname.split("/").pop().replace(".html", "");
-  const parts = fileName.split("_");
-  loadPosts(region, category).then(renderPosts);
+  const pagePath = window.location.pathname;
+
+
+  loadPosts(category).then(renderPosts);
 });

@@ -1,19 +1,7 @@
-
-// 自动识别 region 与 category，适配所有页面
-const fileName = window.location.pathname.split("/").pop(); // california_foods.html
-let region = "global";
-let category = "general";
-
-const parts = fileName.replace(".html", "").split("_");
-if (parts.length === 1) {
-  category = parts[0];
-} else if (parts.length === 2) {
-  region = parts[0];
-  category = parts[1];
-}
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("postForm");
   if (!form) return; // 没有表单就不处理
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -56,8 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ 自动识别当前页面分类
     const path = window.location.pathname;
-    const fileName = path.split("/").pop(); // 如：food.html 
+    const fileName = path.split("/").pop(); // 如：food.html
     const category = fileName.replace(".html", "").toLowerCase();
+
     // ✅ 写入 posts 表
     const { error } = await window.supabase
       .from("posts")
