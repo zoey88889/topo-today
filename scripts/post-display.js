@@ -62,7 +62,8 @@ async function loadPosts(category) {
 // ✅ 3. 页面加载完后调用渲染
 document.addEventListener("DOMContentLoaded", () => {
   const pagePath = window.location.pathname;
-
+  const fileName = pagePath.split("/").pop(); // 例如 food.html
+  const category = fileName.replace(".html", "").toLowerCase();
 
   loadPosts(category).then(renderPosts);
 });
