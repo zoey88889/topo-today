@@ -31,6 +31,64 @@
   </style>
 </head>
 
+
+
+  
+<script>
+async function fetchBusinessRSS() {
+  const rssUrl = "https://feeds.marketwatch.com/marketwatch/topstories/";
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+  try {
+    const res = await fetch(apiUrl);
+    const json = await res.json();
+    const items = json.items || [];
+
+    const container = document.getElementById("rssContainer");
+    container.innerHTML = "";
+
+    if (items.length === 0) {
+      container.innerHTML = `<p style="text-align:center;">📡 暂无商业新闻，请稍后再试。</p >`;
+      return;
+    }
+
+    items.slice(0, 6).forEach(item => {
+      const title = item.title || "暂无标题";
+      const desc = item.description || "暂无摘要";
+      const link = item.link || "#";
+      const pubDate = item.pubDate?.split(" ")[0] || "";
+
+      const card = document.createElement("div");
+      card.className = "rss-card";
+      card.innerHTML = `
+        <h3>💼 ${title}</h3>
+        <p>${desc.slice(0, 90)}...</p >
+        <a href="${link}" target="_blank">🔗 查看原文</a >
+        <small>来源：MarketWatch | ${pubDate}</small>
+      `;
+      container.appendChild(card);
+    });
+  } catch (err) {
+    document.getElementById("rssContainer").innerHTML = `<p style="text-align:center;">⚠️ 获取失败，请检查网络或 API 状态。</p >`;
+    console.error(err);
+  }
+}
+
+fetchBusinessRSS();
+</script>
+<section style="text-align:center; margin: 2rem 0;">
+  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
+</section>
+<!-- Footer -->
+<div id="footer"></div>
+<script>
+  fetch("components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+    });
+</script>
+
    <div class="rss-card">
   <h3>💼 白银交易成本上涨，但价格仍有望冲击 $100</h3>
   <p>由于新的保证金要求，白银变得更难交易，但分析师认为其价格仍可能攀升至三位数。</p >
@@ -129,63 +187,6 @@
   <a href="  https://example.org/global-economy" target="_blank">🔗 来源：国际机构报告</a >
   <small>📅 2025/12/31</small>
   </div>
-
-
-  
-<script>
-async function fetchBusinessRSS() {
-  const rssUrl = "https://feeds.marketwatch.com/marketwatch/topstories/";
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
-  try {
-    const res = await fetch(apiUrl);
-    const json = await res.json();
-    const items = json.items || [];
-
-    const container = document.getElementById("rssContainer");
-    container.innerHTML = "";
-
-    if (items.length === 0) {
-      container.innerHTML = `<p style="text-align:center;">📡 暂无商业新闻，请稍后再试。</p >`;
-      return;
-    }
-
-    items.slice(0, 6).forEach(item => {
-      const title = item.title || "暂无标题";
-      const desc = item.description || "暂无摘要";
-      const link = item.link || "#";
-      const pubDate = item.pubDate?.split(" ")[0] || "";
-
-      const card = document.createElement("div");
-      card.className = "rss-card";
-      card.innerHTML = `
-        <h3>💼 ${title}</h3>
-        <p>${desc.slice(0, 90)}...</p >
-        <a href="${link}" target="_blank">🔗 查看原文</a >
-        <small>来源：MarketWatch | ${pubDate}</small>
-      `;
-      container.appendChild(card);
-    });
-  } catch (err) {
-    document.getElementById("rssContainer").innerHTML = `<p style="text-align:center;">⚠️ 获取失败，请检查网络或 API 状态。</p >`;
-    console.error(err);
-  }
-}
-
-fetchBusinessRSS();
-</script>
-<section style="text-align:center; margin: 2rem 0;">
-  <a href="index.html" class="btn-back">← 返回 TOPO 首页</a >
-</section>
-<!-- Footer -->
-<div id="footer"></div>
-<script>
-  fetch("components/footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer").innerHTML = html;
-    });
-</script>
 
 </body>
 </html>
