@@ -5,23 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💼 商业财经频道 | TOPO TODAY</title>
   <link rel="stylesheet" href="styles/styles.css" />
-  <style>
-.rss-card {
-  background: #fff;
-  border-left: 5px solid #2196f3;
-  padding: 1.2rem;
-  margin: 1rem auto;
-  border-radius: 12px;
-  max-width: 800px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
-</style>
+
   <header>
   <h1>💼 商业财经频道</h1>
   <p>自动聚合 Marketwatch、新浪财经、国际机构报告、和其他华文媒体等财经新闻</p >
 </header>
 
-    <div class="rss-card">
+ 
+  <style>
+    body { background: #f3f4f6; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .rss-card {
+      background: #ffffff;
+      border-left: 6px solid #2196f3;
+      margin: 1rem auto;
+      padding: 1.2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .rss-card h3 { margin: 0 0 0.5rem 0;  color: #003366;font-size: 1.1rem; }
+    .rss-card p { font-size: 0.9rem; color: #444; }
+    .rss-card a { color: #1a73e8; text-decoration: none; font-size: 0.85rem; }
+    .rss-card small { display: block; color: #aaa; margin-top: 0.3rem; font-size: 0.75rem; }
+    header { background: #003366; color: white; padding: 2rem; text-align: center; }
+  </style>
+</head>
+
+   <div class="rss-card">
   <h3>💼 白银交易成本上涨，但价格仍有望冲击 $100</h3>
   <p>由于新的保证金要求，白银变得更难交易，但分析师认为其价格仍可能攀升至三位数。</p >
   <p class="source">来源：MarketWatch｜2026-01-14</p >
@@ -120,26 +130,9 @@
   <small>📅 2025/12/31</small>
   
 </div>
-  <style>
-    body { background: #f3f4f6; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    .rss-card {
-      background: #ffffff;
-      border-left: 6px solid #2196f3;
-      margin: 1rem auto;
-      padding: 1.2rem;
-      border-radius: 12px;
-      max-width: 800px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
-    .rss-card h3 { margin: 0 0 0.5rem 0;  color: #003366;font-size: 1.1rem; }
-    .rss-card p { font-size: 0.9rem; color: #444; }
-    .rss-card a { color: #1a73e8; text-decoration: none; font-size: 0.85rem; }
-    .rss-card small { display: block; color: #aaa; margin-top: 0.3rem; font-size: 0.75rem; }
-    header { background: #003366; color: white; padding: 2rem; text-align: center; }
-  </style>
-</head>
 <body>
 
+  
 <script>
 async function fetchBusinessRSS() {
   const rssUrl = "https://feeds.marketwatch.com/marketwatch/topstories/";
