@@ -175,22 +175,7 @@
         document.getElementById("footer").innerHTML = html;
       });
   </script>
-    <!-- 多语言切换脚本（可选） -->
-  <script>
-    document.getElementById('langswitcher').addEventListener('change', function () {
-      const lang = this.value;
-      if (lang === 'zh') {
-        document.querySelector('h1').innerText = "📰 今日要闻";
-        document.querySelector('.hero p').innerText = "自动汇聚纽约华人圈与本地生活新闻";
-      } else if (lang === 'en') {
-        document.querySelector('h1').innerText = "📰 Today's News";
-        document.querySelector('.hero p').innerText = "Automatically curated headlines from the NYC Chinese community.";
-      } else if (lang === 'ko') {
-        document.querySelector('h1').innerText = "📰 오늘의 뉴스";
-        document.querySelector('.hero p').innerText = "뉴욕 중국 커뮤니티의 소식을 자동으로 수집합니다.";
-      }
-    });
-  </script>
+
   <!-- 页脚 -->
 <div id="footer"></div>
 <script>

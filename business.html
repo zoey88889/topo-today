@@ -174,9 +174,8 @@
   <section id="rssContainer" class="modules" style="padding: 2rem;"></section>
 <script>
 async function fetchBusinessRSS() {
-  const rssUrl = "https://feeds.marketwatch.com/marketwatch/topstories/";
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
+ const rssUrl = "https://feeds.marketwatch.com/marketwatch/business/";
+const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
   try {
     const res = await fetch(apiUrl);
     const json = await res.json();
