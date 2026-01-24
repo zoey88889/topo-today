@@ -173,14 +173,14 @@
 <div class="tabs">
   
 
-  <button class="tab-button" onclick="openTab('tab3')">📰 NY Times Real Estate</button>
-  <button class="tab-button" onclick="openTab('tab4')">📊 Streeteasy</button>
+  <button class="tab-button" onclick="openTab('tab1')">📰 NY Times Real Estate</button>
+  <button class="tab-button" onclick="openTab('tab2')">📊 Streeteasy</button>
 
 
 
 </div>
-<div id="tab3" class="tab-content"><p>加载 NY Times Real Estate 房产新闻中...</p ></div>
-<div id="tab4" class="tab-content"><p>加载 Streeteasy房产数据中...</p ></div>
+<div id="tab1" class="tab-content"><p>加载 NY Times Real Estate 房产新闻中...</p ></div>
+<div id="tab2" class="tab-content"><p>加载 Streeteasy房产数据中...</p ></div>
 </div>
 
 
@@ -216,10 +216,10 @@ async function loadRSS(feedUrl, containerId) {
 }
 
 // 加载 NYT 房产 RSS
-loadRSS('https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml', 'tab3');
+loadRSS('https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml', 'tab1');
 
 // 加载 Streeteasy
-loadRSS('https://streeteasy.com/blog/feed/', 'tab4');
+loadRSS('https://streeteasy.com/blog/feed/', 'tab2');
 
 </script>
 </body>
