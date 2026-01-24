@@ -101,16 +101,18 @@
   <button class="tab-button" onclick="openTab('tab1')">🏛️ NY DOS</button>
   <button class="tab-button" onclick="openTab('tab2')">🏗️ NY DOB</button>
   <button class="tab-button" onclick="openTab('tab3')">📰 NYT</button>
-  <button class="tab-button" onclick="openTab('tab4')">💼 The Real Deal</button>
+  <button class="tab-button" onclick="openTab('tab4')">📊 Streeteasy</button>
+    <button class="tab-button" onclick="openTab('tab5')">📺 New York Magazine </button>
 </div>
 
-<div id="tab1" class="tab-content">📜 NY DOS 内容待填充，如执照信息、地产法规等。</div>
-<div id="tab2" class="tab-content">🏗️ NY DOB 内容待填充，如违章建筑更新、项目审批等。</div>
+<div id="tab1" class="tab-content">📜 NY DOS 中文内容待填充，如执照信息、地产法规等。</div>
+<div id="tab2" class="tab-content">🏗️ NY DOB 中文内容待填充，如违章建筑更新、项目审批等。</div>
 <div id="tab3" class="tab-content"><p>加载 NYT 房产新闻中...</p ></div>
-<div id="tab4" class="tab-content"><p>加载 The Real Deal 新闻中...</p ></div>
-<div id="tab4" class="tab-content">
+<div id="tab4" class="tab-content"><p>加载 Streeteasy新闻中...</p ></div>
+<div id="tab5" class="tab-content"><p>加载 New York Magazine新闻中...</p ></div>
+
   <div class="rss-item">
-    <a href=" " target="_blank">
+    <a href="" target="_blank">
       NYC’s Largest Rent Freeze Proposal Draws Praise and Pushback
     </a >
     <p>2026-01-24</p >
@@ -158,7 +160,8 @@ loadRSS('https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml', 'tab3');
 loadRSS('https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml', 'tab3');
 
 // 加载 The Real Deal RSS（可能需改为 RSSHub 或第三方代理）
-loadRSS('https://therealdeal.com/feed/', 'tab4');
+loadRSS('https://streeteasy.com/blog/feed/', 'tab4');
+loadRSS('https://nymag.com/intelligencer/real-estate/rss.xml', 'tab5');
 </script>
 </body>
 </html>
