@@ -19,7 +19,7 @@ async function loadRSS(feedUrl) {
       const div = document.createElement("div");
       div.className = "rss-item";
       div.innerHTML = `
-        <h3><a href="${item.link}" target="_blank" rel="noopener noreferrer">${title}</a ></h3>
+        <h3><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a ></h3>
         <p>${description}</p >
       `;
       container.appendChild(div);
