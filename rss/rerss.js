@@ -1,34 +1,43 @@
-const feedUrls = [
-  "https://newyorkyimby.com/feed",
-  "https://www.cityrealty.com/nyc/resources/rss"
+const CORS_PROXY = "https://api.allorigins.win/get?url=";
+
+const feeds = [
+  {
+    id: "yimby",
+    url: "https://newyorkyimby.com/feed"
+  },
+  {
+    id: "cityrealty",
+    url: "https://www.cityrealty.com/nyc/resources/rss"
+  }
 ];
 
-const feedContainer = document.getElementById("rss-feed");
-
-function loadRSS(url) {
-  fetch(url)
-    .then(res => res.text())
-    .then(str => {
-      const parser = new window.DOMParser();
-      const xml = parser.parseFromString(str, "text/xml");
+function loadRSS(feed) {
+  const target = document.querySelector(`#${feed.id} .items`);
+  fetch(CORS_PROXY + encodeURIComponent(feed.url))
+    .then(res => res.json())
+    .then(data => {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(data.contents, "application/xml");
       const items = xml.querySelectorAll("item");
 
-      items.forEach((item, i) => {
-        if (i >= 5) return; // 最多加载5条
+      items.forEach((item, index) => {
+        if (index >= 5) return; // 限制显示前5条
         const title = item.querySelector("title").textContent;
         const link = item.querySelector("link").textContent;
-        const li = document.createElement("li");
-        li.innerHTML = `<a href="${link}" target="_blank">${title}</a >`;
-        feedContainer.appendChild(li);
+        const pubDate = item.querySelector("pubDate")?.textContent || "";
+
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<a href="${link}" target="_blank">${title}</a ><br><small>${pubDate}</small>`;
+        target.appendChild(div);
       });
     })
     .catch(err => {
-      console.error("RSS 加载失败: ", err);
-      const li = document.createElement("li");
-      li.textContent = `❌ 无法加载 RSS: ${url}`;
-      feedContainer.appendChild(li);
+      const errorDiv = document.createElement("div");
+      errorDiv.className = "item";
+      errorDiv.innerHTML = `<span style="color:red">RSS 加载失败: ${err.message}</span>`;
+      target.appendChild(errorDiv);
     });
 }
 
-// 加载所有 RSS 源
-feedUrls.forEach(loadRSS);
+feeds.forEach(feed => loadRSS(feed));
