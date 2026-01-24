@@ -1,40 +1,19 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RealDeal NY RSS Feed</title>
+  <title>The Real Deal RSS </title>
   <style>
-    body {
-      font-family: sans-serif;
-      background: #f7f7f7;
-      padding: 2em;
-    }
-    h2 {
-      color: #333;
-    }
-    .feed {
-      margin-top: 1em;
-    }
-    .entry {
-      margin-bottom: 1.5em;
-      padding: 1em;
-      background: white;
-      border-left: 4px solid #0077cc;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    .entry h3 {
-      margin: 0 0 0.5em;
-    }
-    .entry p {
-      margin: 0;
-      color: #555;
-    }
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #rss-feed { max-width: 800px; margin: auto; }
+    .rss-item { margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+    .rss-item h3 { margin: 0 0 5px; font-size: 18px; }
+    .rss-item p { font-size: 14px; color: #666; }
   </style>
 </head>
 <body>
-  <h2>📰 RealDeal NY 最新资讯</h2>
-  <div id="feed" class="feed">Loading...</div>
+  <h1>📰 RealDeal NY 最新资讯</h1>
+  <div id="rss-feed">Loading...</div>
 
   <script src="/scripts/realdealrss.js"></script>
 </body>
