@@ -102,14 +102,15 @@
   <button class="tab-button" onclick="openTab('tab2')">🏗️ NY DOB</button>
   <button class="tab-button" onclick="openTab('tab3')">📰 NY Times Real Estate</button>
   <button class="tab-button" onclick="openTab('tab4')">📊 Streeteasy</button>
-   <a class="card" href="realdealrss.html" style="background:#fed3ce; border-left:4px solid #030b60;">📰 THE REAL DEAL资讯</a >
-</div>
+ <button class="tab-button" onclick="openTab('tab5')">🏙️New York YIMBY</button>
+ <button class="tab-button" onclick="openTab('tab6')">📖CityRealty Blog</button>
 
 <div id="tab1" class="tab-content">📜 NY DOS 中文内容待填充，如执照信息、地产法规等。</div>
 <div id="tab2" class="tab-content">🏗️ NY DOB 中文内容待填充，如违章建筑更新、项目审批等。</div>
 <div id="tab3" class="tab-content"><p>加载 NY Times Real Estate 房产新闻中...</p ></div>
 <div id="tab4" class="tab-content"><p>加载 Streeteasy房产数据中...</p ></div>
-
+<div id="tab5" class="tab-content"><p>加载 New York YIMBY 房产数据中...</p ></div>
+<div id="tab6" class="tab-content"><p>加载 CityRealty Blog房产数据中...</p ></div>
 
 
 <script>
@@ -146,7 +147,10 @@ loadRSS('https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml', 'tab3');
 
 // 加载 Streeteasy
 loadRSS('https://streeteasy.com/blog/feed/', 'tab4');
-
+// 加载YIMBY
+loadRSS('https://newyorkyimby.com/feeds', 'tab5');
+// 加载 CITYREALTY BLOG
+loadRSS('https://www.cityrealty.com/nyc/resources/rssd/', 'tab6');
 </script>
 </body>
 </html>
