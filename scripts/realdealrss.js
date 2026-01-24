@@ -1,35 +1,31 @@
-async function loadRSSFeed() {
-  const feedContainer = document.getElementById('feed');
-  const proxyUrl = 'https://api.allorigins.win/get?url=';
-  const rssUrl = encodeURIComponent('https://therealdeal.com/feed/');
-  const fullUrl = `${proxyUrl}${rssUrl}`;
+// 你需要部署这个 JS 文件在和 HTML 同目录下
+
+const FEED_URL = "https://rsshub.app/therealdeal/ny";  // RSSHub 需要自行部署或使用本地代理
+const TARGET_DIV = document.getElementById("feed");
+
+async function loadRSS() {
+  TARGET_DIV.innerHTML = "正在加载中...";
 
   try {
-    const res = await fetch(fullUrl);
-    const data = await res.json();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, 'application/xml');
+    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(FEED_URL)}`);
+    if (!response.ok) throw new Error("Feed fetch failed");
 
-    const items = xml.querySelectorAll('item');
-    feedContainer.innerHTML = '';
+    const data = await response.json();
+    if (!data.items) throw new Error("No items in feed");
 
-    items.forEach(item => {
-      const title = item.querySelector('title')?.textContent;
-      const link = item.querySelector('link')?.textContent;
-      const desc = item.querySelector('description')?.textContent;
+    const itemsHTML = data.items.map(item => `
+      <div class="entry">
+        <h3><a href="${item.link}" target="_blank">${item.title}</a ></h3>
+        <p>${item.pubDate}</p >
+        <p>${item.description || ''}</p >
+      </div>
+    `).join('');
 
-      const div = document.createElement('div');
-      div.className = 'item';
-      div.innerHTML = `
-        <h2><a href="${items.link}" target="_blank">${title}</a ></h2>
-        <p>${desc}</p >
-      `;
-      feedContainer.appendChild(div);
-    });
-  } catch (err) {
-    feedContainer.innerHTML = '⚠️ Failed to load feed.';
-    console.error(err);
+    TARGET_DIV.innerHTML = itemsHTML;
+  } catch (error) {
+    console.error("RSS Load Error:", error);
+    TARGET_DIV.innerHTML = "❌ 无法加载 RSS 数据，请稍后重试或检查 RSSHub 服务是否可用。";
   }
 }
 
-loadRSSFeed();
+loadRSS();
