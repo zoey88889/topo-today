@@ -99,7 +99,7 @@
           const card = document.createElement('div');
           card.className = 'rss-card';
           card.innerHTML = `
-            <h4><a href=" " target="_blank">${item.title}</a ></h4>
+            <h4><a href="${items.link}" target="_blank">${item.title}</a ></h4>
             <p>${new Date(item.pubDate).toLocaleDateString()}</p >
             <p>${item.description ? item.description.replace(/<[^>]+>/g, '').slice(0,120)+'...' : ''}</p >
           `;
