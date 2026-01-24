@@ -102,8 +102,8 @@
   <button class="tab-button" onclick="openTab('tab2')">🏗️ NY DOB</button>
   <button class="tab-button" onclick="openTab('tab3')">📰 NYT</button>
   <button class="tab-button" onclick="openTab('tab4')">📊 Streeteasy</button>
-    <button class="tab-button" onclick="openTab('tab5')">🏠Cubed</button>
-  <button class="tab-button" onclick="openTab('tab6')">🏠Zillow </button>
+  <button class="tab-button" onclick="openTab('tab5')">💼 THE REAL DEAL</button>
+  <button class="tab-button" onclick="openTab('tab6')">📖 New York Real Estate Journal</button>
   
 </div>
 
@@ -111,23 +111,10 @@
 <div id="tab2" class="tab-content">🏗️ NY DOB 中文内容待填充，如违章建筑更新、项目审批等。</div>
 <div id="tab3" class="tab-content"><p>加载 NYT 房产新闻中...</p ></div>
 <div id="tab4" class="tab-content"><p>加载 Streeteasy房产数据中...</p ></div>
-<div id="tab5" class="tab-content"><p>加载Cubed房产数据中...</p ></div>
-<div id="tab6" class="tab-content"><p>加载Zillow房产数据中...</p ></div>
+<div id="tab5" class="tab-content"><p>加载 THE REAL DEAL房产新闻中...</p ></div>
+<div id="tab6" class="tab-content"><p>加载 New York Real Estate Journal 房产新闻中...</p ></div>
 
 
-  <div class="rss-item">
-    <a href="" target="_blank">
-      NYC’s Largest Rent Freeze Proposal Draws Praise and Pushback
-    </a >
-    <p>2026-01-24</p >
-  </div>
-  <div class="rss-item">
-    <a href="https://therealdeal.com/new-york/2026/01/20/developers-rally-against-new-taxes/" target="_blank">
-      Developers Rally Against New Taxes in Albany
-    </a >
-    <p>2026-01-20</p >
-  </div>
-</div>
 <script>
 function openTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
@@ -160,13 +147,12 @@ async function loadRSS(feedUrl, containerId) {
 // 加载 NYT 房产 RSS
 loadRSS('https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml', 'tab3');
 
-// 加载 NYT 房产 RSS
-loadRSS('https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml', 'tab3');
-
-// 加载 The Real Deal RSS（可能需改为 RSSHub 或第三方代理）
+// 加载 Streeteasy
 loadRSS('https://streeteasy.com/blog/feed/', 'tab4');
-loadRSS('https://rsshub.app/curbed/ny', 'tab5');
-loadRSS('https://yourrsshub.com/zillow/nyc', 'tab6');
+// 加载 The Real Deal RSS（可能需改为 RSSHub 或第三方代理）
+loadRSS('https://rsshub.app/therealdeal/ny', 'tab5');
+// 加载 NYREJ 房产 RSS
+loadRSS('https://nyrej.com/news/rss', 'tab6');
 </script>
 </body>
 </html>
