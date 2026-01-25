@@ -42,7 +42,3 @@ fetchHealthRSS("https://rss.nytimes.com/services/xml/rss/nyt/Health.xml", "nytBo
 
 /* ✅ 新增中文健康 RSS（已测试可抓取） */
 fetchHealthRSS("https://www.chinanews.com.cn/rss/health.xml", "chinaNewsHealth", "中新网健康");
-
-/* ❌ 暂时不可用（保留但注释掉） */
-// fetchHealthRSS("https://www.healthline.com/rss", "healthlineBox", "Healthline");
-// fetchHealthRSS("https://www.mayoclinic.org/rss/rss-news", "mayoBox", "Mayo Clinic");
