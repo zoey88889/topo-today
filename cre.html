@@ -50,7 +50,36 @@
     </section>
 
   </main>
+<input type="text" id="addressInput" placeholder="请输入地址">
+<button onclick="addProperty()">添加楼盘</button>
 
+<div id="map" style="height: 600px; margin-top: 20px;"></div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+<script>
+  const map = L.map('map').setView([40.75, -73.98], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+  async function addProperty() {
+    const address = document.getElementById("addressInput").value;
+    if (!address) return alert("请输入地址");
+
+    // 调用地理编码 API
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`);
+    const data = await response.json();
+
+    if (data && data.length > 0) {
+      const { lat, lon } = data[0];
+      const marker = L.marker([lat, lon]).addTo(map);
+      marker.bindPopup(`<b>${address}</b><br>坐标：${lat}, ${lon}`).openPopup();
+      map.setView([lat, lon], 15);
+    } else {
+      alert("找不到该地址的坐标，请确认拼写");
+    }
+  }
+</script>
   <footer>
     <p>© 2025–2026 TOPO Today & Dodva Universe INC. All rights reserved.</p >
   </footer>
